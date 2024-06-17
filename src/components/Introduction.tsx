@@ -21,25 +21,27 @@ export default function Introduction() {
                 height={200}
                 className="object-cover border border-gray-200 rounded-full overflow-hidden mb-4"
               />
+              <h1>New Custom Build</h1>
+            </div>
+            <div >
+              <Image
+                alt="image1"
+                src={image1.src}
+                width={200}
+                height={200}
+                className="object-cover border border-gray-200 rounded-full overflow-hidden mb-4"
+              />
+              <h1>Home Addition(ADU)</h1>
+            </div>
+            <div >
+              <Image
+                alt="image1"
+                src={image1.src}
+                width={200}
+                height={200}
+                className="object-cover border border-gray-200 rounded-full overflow-hidden mb-4"
+              />
               <h1>Renovation</h1>
-            </div>
-            <div >
-              <Image
-                alt="image1"
-                src={image1.src}
-                width={200}
-                height={200}
-                className="object-cover border border-gray-200 rounded-full overflow-hidden mb-4"
-              />
-            </div>
-            <div >
-              <Image
-                alt="image1"
-                src={image1.src}
-                width={200}
-                height={200}
-                className="object-cover border border-gray-200 rounded-full overflow-hidden mb-4"
-              />
             </div>
             
           </div>

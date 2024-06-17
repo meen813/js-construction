@@ -6,8 +6,8 @@ export default function Introduction() {
     <section className="py-20 px-10 md:px-20  text-center">
       <div className="flex justify-center">
         <div className="max-w-3xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6 ">
-            Services We Can Provide
+          <h2 className="text-3xl md:text-4xl font-bold mb-6 tracking-wider">
+            Services We Provide
           </h2>
           <p className="text-lg md:text-xl tracking-widest">
             We excel in custom home building, general contracting, renovations and remodels, home additions, and outdoor living spaces. Our expertise ensures that every project is executed with precision and attention to detail, delivering exceptional results that exceed client expectations.

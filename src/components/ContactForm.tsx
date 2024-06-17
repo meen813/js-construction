@@ -24,11 +24,11 @@ export default function ContactForm() {
         <label className="block text-left">
           <span className="text-gray-700">Project</span>
           <span className="text-red-500">*</span>
-          <select name="purpose" required className="mt-1 p-2 border border-gray-300 w-full">
+          <select name="purpose" required className="mt-1 p-2 border border-gray-300 w-full tracking-wide">
             <option value="">Select a purpose</option>
-            <option value="remodeling">Remodeling</option>
-            <option value="maintenance">Maintenance</option>
-            <option value="addition">Addition</option>
+            <option value="remodeling">New Custom Building</option>
+            <option value="maintenance">Home Addition(ADU)</option>
+            <option value="addition">Renovation</option>
           </select>
         </label>
         <label className="block text-left">

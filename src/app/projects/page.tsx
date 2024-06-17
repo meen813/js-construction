@@ -1,17 +1,19 @@
-export default function Page() {
+'use client';
 
+import ProjectGrid from '@/components/ProjectGrid';
+
+export default function ProjectsPage() {
   return (
-    <section className="flex flex-col text-center items-center"> 
-      <div className="p-10">
+    <section className="flex flex-col text-center items-center gap-5">
+      <div className="p-12"/>
 
-      </div>
-      <div className="mt-12 text-center item-center max-w-2xl">
-        <h1 className="font-bold text-3xl">Our Projects</h1>
-        <p className="mt-5">
-          Projects
-          Welcome to our curated collection of projects, where you'll find homes transformed from dream to reality. Each is a testament to our commitment to craftsmanship, attention to detail, and dedication to bringing our clients' visions to life. From the sweeping elegance of mid-century modern renovations to the bespoke charm of custom-built homes, our directory is designed illustrate the possibilities that await when you choose to embark on this journey with us.
+      <div className="mt-12 text-center max-w-2xl">
+        <h1 className="font-bold text-3xl tracking-wider">Our Projects</h1>
+        <p className="mt-5 font-semibold">
+          Welcome to our project gallery. Here you'll find homes transformed from vision to reality, showcasing our commitment to quality craftsmanship and attention to detail.
         </p>
       </div>
+      <ProjectGrid />
     </section>
   );
 }

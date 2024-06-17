@@ -26,13 +26,13 @@ export default function Header() {
           >
             <h1>{"Projects"}</h1>
           </Link>
-          <Link
+          {/* <Link
             className="hover:text-gray-300 transition-colors duration-300 transform hover:-translate-y-1"
             href="/forum"
             rel="noopener noreferrer"
           >
             {"Forum"}
-          </Link>
+          </Link> */}
           <Link
             className="hover:text-gray-300 transition-colors duration-300 transform hover:-translate-y-1"
             href="/contact"

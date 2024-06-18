@@ -24,7 +24,7 @@ export async function POST(req: NextRequest) {
 
   const mailOptions = {
     from: email,
-    to: 'meen813@hotmail.com', // 회사 이메일 주소
+    to: 'meen813@hotmail.com', //company email
     subject: 'New Inquiry from Contact Form',
     text: `
       Name: ${name}

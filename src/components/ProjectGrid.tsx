@@ -15,7 +15,6 @@ const projects = [
   { id: 5, title: 'Project 5', image: image5.src },
   { id: 6, title: 'Project 6', image: image6.src },
   { id: 7, title: 'Project 7', image: image1.src },
-  // 더 많은 프로젝트 추가
 ];
 
 export default function ProjectGrid() {

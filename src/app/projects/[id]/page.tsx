@@ -16,6 +16,7 @@ const projects = [
   { id: 4, title: 'Project 4', description: 'Details about Project 4', image: image4.src },
   { id: 5, title: 'Project 5', description: 'Details about Project 5', image: image5.src },
   { id: 6, title: 'Project 6', description: 'Details about Project 6', image: image6.src },
+  { id: 7, title: 'Project 6', description: 'Details about Project 6', image: image6.src },
   // 더 많은 프로젝트 추가
 ];
 

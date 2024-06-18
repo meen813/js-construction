@@ -3,10 +3,10 @@ import Link from "next/link";
 export default function Header() {
   
   return (
-    <header className="fixed top-0 left-0 w-full p-10 bg-black bg-opacity-10 transition-all duration-300 ease-in-out z-10 text-white hover:bg-black hover:bg-opacity-50">
+    <header className="fixed top-0 left-0 w-full p-6 bg-black bg-opacity-10 transition-all duration-300 ease-in-out z-10 text-white hover:bg-black hover:bg-opacity-50">
       <section className="flex flex-col md:flex-row items-center justify-center">
         <Link href="/">
-          <h1 className="text-3xl md:text-4xl font-bold hover:text-gray-300 mr-20">
+          <h1 className="text-2xl md:text-3xl font-bold hover:text-gray-300 mr-20 md:block hidden">
             {"J&S Construction"}
           </h1>
         </Link>

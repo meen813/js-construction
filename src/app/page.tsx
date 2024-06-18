@@ -38,7 +38,7 @@ export default function Home() {
         <div className="absolute inset-0 bg-black opacity-60" style={{ zIndex: 1 }} />
         <div className='absolute inset-0 flex items-center justify-center text-content fade-in' style={{ zIndex: 2 }}>
           <div className='text-white text-center max-w-2xl mx-auto'>
-            <h1 className='text-4xl md:text-5xl tracking-wide'>
+            <h1 className='text-2xl md:text-3xl font-bold tracking-wide'>
               J&S Construction Inc.
             </h1>
             <p className='mt-10 text-xl md:text-2xl font-semibold tracking-widest'>

@@ -45,7 +45,7 @@ export default function ProjectDetailPage() {
       </div>
       {/* <p className="mt-5">{project.description}</p> */}
       <p className="mt-5 max-w-4xl">
-        Welcome to our project gallery. Here you'll find homes transformed from vision to reality, showcasing our commitment to quality craftsmanship and attention to detail.          Welcome to our project gallery. Here you'll find homes transformed from vision to reality, showcasing our commitment to quality craftsmanship and attention to detail.
+        Welcome to our project gallery. Here you will find homes transformed from vision to reality, showcasing our commitment to quality craftsmanship and attention to detail.          Welcome to our project gallery. Here you'll find homes transformed from vision to reality, showcasing our commitment to quality craftsmanship and attention to detail.
       </p>
     </section>
   );

@@ -1,8 +1,103 @@
-export default function Page() {
-  
+'use client';
+
+import { useEffect, useState } from 'react';
+import Link from 'next/link';
+
+type Post = {
+  postId: string;
+  title: string;
+  content: string;
+  author: string;
+  imageUrl: string;
+  createdAt: string;
+};
+
+export default function Forum() {
+  const [posts, setPosts] = useState<Post[]>([]);
+  const [loading, setLoading] = useState<boolean>(true);
+
+  useEffect(() => {
+    const getPosts = async () => {
+      try {
+        const response = await fetch('/api/posts');
+        if (!response.ok) {
+          throw new Error('Failed to fetch');
+        }
+        const data = await response.json();
+        data.sort((a: Post, b: Post) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());
+        setPosts(data);
+        setLoading(false);
+      } catch (error) {
+        console.error('Error fetching posts:', error);
+        setLoading(false);
+      }
+    };
+
+    getPosts();
+  }, []);
+
+  if (loading) {
+    return <p>Loading...</p>;
+  }
+
+  if (posts.length === 0) {
+    return <p>No posts found</p>;
+  }
+
+  const formatDate = (dateString: string) => {
+    const date = new Date(dateString);
+    const now = new Date();
+    const timeDifference = now.getTime() - date.getTime();
+    const oneDayInMilliseconds = 24 * 60 * 60 * 1000;
+
+    if (timeDifference < oneDayInMilliseconds) {
+      return date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: false });
+    } else {
+      return date.toLocaleDateString();
+    }
+  };
+
   return (
-    <div>
-      Inquiry Forum
-    </div>
+    <section className="p-8">
+      <div className="p-10" />
+      <h1 className="text-3xl font-bold flex justify-center mb-7">Forum</h1>
+      <div className="flex flex-col items-center w-full">
+        <div className="flex justify-start mr-40 w-full max-w-4xl mb-4">
+          <Link href="/newPost">
+            <button className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">
+              New Post
+            </button>
+          </Link>
+        </div>
+        <div className="overflow-x-auto w-full flex justify-center">
+          <table className="min-w-4xl min-w-[60%] max-w-4xl bg-gray-100 border">
+            <thead>
+              <tr>
+                <th className="px-4 py-2 border">Post#</th>
+                <th className="px-4 py-2 border">Title</th>
+                <th className="px-4 py-2 border">Author</th>
+                <th className="px-4 py-2 border">Posted On</th>
+              </tr>
+            </thead>
+            <tbody>
+              {posts.map((post, index) => (
+                <tr key={post.postId} className="hover:bg-gray-100 text-center">
+                  <td className="px-4 py-2 border">
+                    {index + 1}
+                  </td>
+                  <td className="px-4 py-2 border">
+                    <Link href={`/forum/${post.postId}`}>
+                      {post.title}
+                    </Link>
+                  </td>
+                  <td className="px-4 py-2 border">{post.author}</td>
+                  <td className="px-4 py-2 border">{formatDate(post.createdAt)}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
   );
 }

@@ -66,10 +66,10 @@ export default function Forum() {
           <table className="min-w-4xl min-w-[60%] max-w-4xl bg-gray-100 border">
             <thead>
               <tr>
-                <th className="px-4 py-2 border">Post#</th>
+                <th className="px-4 py-2 border w-1/12">Post#</th>
                 <th className="px-4 py-2 border">Title</th>
-                <th className="px-4 py-2 border">Author</th>
-                <th className="px-4 py-2 border">Posted On</th>
+                <th className="px-4 py-2 border w-2/12">Author</th>
+                <th className="px-4 py-2 border w-2/12">Posted On</th>
               </tr>
             </thead>
             <tbody>

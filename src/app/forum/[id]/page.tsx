@@ -51,26 +51,27 @@ export default function PostPage() {
   return (
     <section className="p-8">
       <div className="p-10" />
-      <div className='flex flex-col items-center w-full'>
-        <div className='flex flex-row overflow-x-auto w-1/2 justify-between bg-gray-200'>
-          <p className="text-gray-500">{post.author}</p>
-          <p className="text-gray-500">{new Date(post.createdAt).toLocaleString()}</p>
+      <div className="flex flex-col items-center w-full max-w-2xl mx-auto bg-white rounded-lg shadow-lg">
+        <div className="flex flex-row justify-between w-full p-4 bg-gray-100 rounded-t-lg">
+          <p className="text-gray-700 font-semibold">{post.author}</p>
+          <p className="text-gray-700">{new Date(post.createdAt).toLocaleString()}</p>
         </div>
-        <div className="mb-4 bg-red-100 w-1/2">
-          <p className="text-3xl font-bold">{post.title}</p>
+        <div className="w-full p-4">
+          <h1 className="text-4xl font-bold mb-4">{post.title}</h1>
           {post.imageUrl && (
-            <Image
-              src={post.imageUrl}
-              alt={post.title}
-              // layout="fill"
-              objectFit="cover"
-              className="rounded-lg shadow-lg"
-              width={500}
-              height={200}
-            />
+            <div className="mb-4">
+              <Image
+                src={post.imageUrl}
+                alt={post.title}
+                objectFit="cover"
+                className="rounded-lg shadow-lg"
+                width={800}
+                height={400}
+              />
+            </div>
           )}
+          <p className="text-gray-700">{post.content}</p>
         </div>
-        <p className="text-gray-700">{post.content}</p>
       </div>
     </section>
   );

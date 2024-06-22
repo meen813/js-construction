@@ -10,6 +10,12 @@ type Post = {
   author: string;
   imageUrl: string;
   createdAt: string;
+  formattedDate: string;
+};
+
+const formatDate = (dateString: string) => {
+  const date = new Date(dateString);
+  return date.toLocaleDateString('en-CA');
 };
 
 export default function Forum() {
@@ -23,7 +29,7 @@ export default function Forum() {
         if (!response.ok) {
           throw new Error('Failed to fetch');
         }
-        const data = await response.json();
+        let data = await response.json();
         data.sort((a: Post, b: Post) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());
         setPosts(data);
         setLoading(false);
@@ -44,23 +50,10 @@ export default function Forum() {
     return <p>No posts found</p>;
   }
 
-  const formatDate = (dateString: string) => {
-    const date = new Date(dateString);
-    const now = new Date();
-    const timeDifference = now.getTime() - date.getTime();
-    const oneDayInMilliseconds = 24 * 60 * 60 * 1000;
-
-    if (timeDifference < oneDayInMilliseconds) {
-      return date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: false });
-    } else {
-      return date.toLocaleDateString();
-    }
-  };
-
   return (
     <section className="p-8">
       <div className="p-10" />
-      <h1 className="text-3xl font-bold flex justify-center mb-7">Forum</h1>
+      <h1 className="text-3xl font-bold flex justify-center mb-7">User Forum</h1>
       <div className="flex flex-col items-center w-full">
         <div className="flex justify-start mr-40 w-full max-w-4xl mb-4">
           <Link href="/newPost">

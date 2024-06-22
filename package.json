@@ -10,13 +10,15 @@
   },
   "dependencies": {
     "@tailwindcss/aspect-ratio": "^0.4.2",
+    "aws-sdk": "^2.1646.0",
     "dotenv": "^16.4.5",
     "next": "14.2.4",
     "nodemailer": "^6.9.13",
     "react": "^18",
     "react-dom": "^18",
     "react-multi-carousel": "^2.8.5",
-    "swr": "^2.2.5"
+    "swr": "^2.2.5",
+    "uuid": "^10.0.0"
   },
   "devDependencies": {
     "@types/node": "^20",

@@ -11,19 +11,19 @@ export default function ProjectPreview() {
             Our Featured Projects
           </h2>
         </div>
-        <div >
-          <ScrollableBar>
-            {projects.map((project) => (
-                <Image
-                  key={project.id}
-                  alt={"images"}
-                  src={project.image}
-                  width={300}
-                  height={200}
-                />
-            ))}
-          </ScrollableBar>
-        </div>
+        <ScrollableBar>
+          {projects.map((project) => (
+            <div key={project.id} className="p-2">
+              <Image
+                alt={project.title}
+                src={project.image}
+                width={300}
+                height={200}
+                className="rounded-lg shadow-lg"
+              />
+            </div>
+          ))}
+        </ScrollableBar>
       </div>
     </section>
   );

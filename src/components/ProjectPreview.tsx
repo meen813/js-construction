@@ -1,14 +1,6 @@
-
 import Image from "next/image";
-import image1 from '../../public/image1.webp';
-import image2 from '../../public/image2.webp';
-import image3 from '../../public/image3.webp';
-import image4 from '../../public/image4.webp';
-import image5 from '../../public/image5.webp';
-import image6 from '../../public/image6.webp';
 import ScrollableBar from "./ScrollableBar";
-const images = [image1, image2, image3, image4, image5, image6];
-
+import { projects } from "@/projects/data";
 
 export default function ProjectPreview() {
   return (
@@ -21,11 +13,11 @@ export default function ProjectPreview() {
         </div>
         <div >
           <ScrollableBar>
-            {images.map((image, index) => (
+            {projects.map((project) => (
                 <Image
-                  key={index}
-                  alt="images"
-                  src={image}
+                  key={project.id}
+                  alt={"images"}
+                  src={project.image}
                   width={300}
                   height={200}
                 />

@@ -51,19 +51,19 @@ export default function Forum() {
   }
 
   return (
-    <section className="p-8">
+    <section className="p-4 md:p-8">
       <div className="p-10" />
-      <h1 className="text-3xl font-bold flex justify-center mb-7">User Forum</h1>
+      <h1 className="text-2xl md:text-3xl font-bold flex justify-center mb-7">User Forum</h1>
       <div className="flex flex-col items-center w-full">
-        <div className="flex justify-start mr-40 w-full max-w-4xl mb-4">
+        <div className="flex justify-end w-full max-w-4xl mb-4">
           <Link href="/newPost">
             <button className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">
               New Post
             </button>
           </Link>
         </div>
-        <div className="overflow-x-auto w-full flex justify-center">
-          <table className="min-w-4xl min-w-[60%] max-w-4xl bg-gray-100 border">
+        <div className="overflow-x-auto w-full max-w-4xl">
+          <table className="w-full bg-gray-100 border">
             <thead>
               <tr>
                 <th className="px-4 py-2 border w-1/12">Post#</th>

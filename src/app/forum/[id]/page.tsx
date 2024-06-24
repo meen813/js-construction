@@ -11,13 +11,13 @@ type Post = {
   author: string;
   imageUrl: string;
   createdAt: string;
-}
+};
 
 export default function PostPage() {
   const [post, setPost] = useState<Post | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
   const params = useParams();
-  const { id } = params; 
+  const { id } = params;
 
   useEffect(() => {
     if (id) {
@@ -63,10 +63,11 @@ export default function PostPage() {
               <Image
                 src={post.imageUrl}
                 alt={post.title}
+                layout="responsive"
                 objectFit="cover"
                 className="rounded-lg shadow-lg"
                 width={800}
-                height={400}
+                height={450}
               />
             </div>
           )}

@@ -24,11 +24,7 @@ export default function ProjectPreview() {
             ))}
           </ScrollableBar>
         </div>
-
       </div>
-
-
-      <div></div>
     </section>
   );
 }

@@ -16,8 +16,8 @@ type Post = {
 export default function PostPage() {
   const [post, setPost] = useState<Post | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
-  const params = useParams(); // useParams 훅 사용
-  const { id } = params; // id를 params에서 추출
+  const params = useParams();
+  const { id } = params; 
 
   useEffect(() => {
     if (id) {

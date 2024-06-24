@@ -1,23 +1,16 @@
 import Link from 'next/link';
-import Image from 'next/image';
-import image1 from '../../public/image1.webp';
-import image2 from '../../public/image2.webp';
-import image3 from '../../public/image3.webp';
-import image4 from '../../public/image4.webp';
-import image5 from '../../public/image5.webp';
-import image6 from '../../public/image6.webp';
+import Image, { StaticImageData } from 'next/image';
 
-const projects = [
-  { id: 1, title: 'Project 1', image: image1.src },
-  { id: 2, title: 'Project 2', image: image2.src },
-  { id: 3, title: 'Project 3', image: image3.src },
-  { id: 4, title: 'Project 4', image: image4.src },
-  { id: 5, title: 'Project 5', image: image5.src },
-  { id: 6, title: 'Project 6', image: image6.src },
-  { id: 7, title: 'Project 7', image: image1.src },
-];
+type Props = {
+  projects: {
+    id: number;
+    title: string;
+    description: string;
+    image: StaticImageData;
+  }[]
+}
 
-export default function ProjectGrid() {
+export default function ProjectGrid({ projects }: Props) {
   return (
     <div className="container mx-auto px-4 py-10">
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -41,3 +34,4 @@ export default function ProjectGrid() {
     </div>
   );
 }
+

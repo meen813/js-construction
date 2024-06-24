@@ -1,6 +1,7 @@
 'use client';
 
 import ProjectGrid from '@/components/ProjectGrid';
+import { projects } from '../../projects/data';
 
 export default function ProjectsPage() {
   return (
@@ -13,7 +14,7 @@ export default function ProjectsPage() {
           Welcome to our project gallery. Here you will find homes transformed from vision to reality, showcasing our commitment to quality craftsmanship and attention to detail.
         </p>
       </div>
-      <ProjectGrid />
+      <ProjectGrid projects={projects} />
     </section>
   );
 }

@@ -5,15 +5,8 @@ import dotenv from 'dotenv';
 
 dotenv.config({ path: path.resolve(process.cwd(), '.env.local') });
 
-// console.log('EMAIL_USER:', process.env.EMAIL_USER); 
-// console.log('EMAIL_PASS:', process.env.EMAIL_PASS);
-
 export async function POST(req: NextRequest) {
   const { name, email, phone, address, purpose, message } = await req.json();
-
-  // console.log('EMAIL_USER (POST):', process.env.EMAIL_USER); 
-  // console.log('EMAIL_PASS (POST):', process.env.EMAIL_PASS); 
-
   const transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
@@ -24,7 +17,7 @@ export async function POST(req: NextRequest) {
 
   const mailOptions = {
     from: email,
-    to: 'js821@hotmail.com', //company email
+    to: process.env.COMPANY_EMAIL, //company email
     subject: 'New Inquiry from Contact Form',
     text: `
       Name: ${name}

@@ -11,7 +11,7 @@ export default function Footer() {
               <span className="text-gradient">Hwang J&S Construction</span>
             </h3>
             <p className="text-gray-300 mb-6 leading-relaxed">
-            Premier general contractor in Orange County and Los Angeles County, California. Since 2012, we have specialized in delivering exceptional construction services with unmatched quality and customer satisfaction.
+            Premier general contractor in Orange County and Los Angeles County, California. Since 2011, we have specialized in delivering exceptional construction services with unmatched quality and customer satisfaction.
             </p>
           </div>
 

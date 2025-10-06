@@ -9,13 +9,13 @@ import santaAna7 from '../../public/Santa Ana Motel renovation 2016/20160818_164
 
 const project11: Project = {
   id: 11,
-  title: 'Santa Ana Motel Structural Renovation (2016)',
-  shortDescription: 'Comprehensive structural reinforcement and exterior renovation of two-story motel.',
+  title: 'Santa Ana Motel Structural Remodel (2016)',
+  shortDescription: 'Comprehensive structural reinforcement and exterior remodel of two-story motel.',
   tagline: 'Enhanced structural integrity with precision carpentry',
   year: 2016,
   category: 'commercial',
   projectType: 'remodel',
-  description: "A comprehensive structural renovation project for a two-story motel building in Santa Ana, California. This project focused on restoring deteriorated balcony framing, strengthening the structure for long-term durability, and upgrading finishes while minimizing disruption to ongoing operations. The renovation included structural reinforcement with heavy-duty steel connectors, replacement of decayed lumber with pressure-treated materials, and seismic upgrades for enhanced safety and longevity.",
+  description: "A comprehensive structural remodel project for a two-story motel building in Santa Ana, California. This project focused on restoring deteriorated balcony framing, strengthening the structure for long-term durability, and upgrading finishes while minimizing disruption to ongoing operations. The remodel included structural reinforcement with heavy-duty steel connectors, replacement of decayed lumber with pressure-treated materials, and seismic upgrades for enhanced safety and longevity.",
   image: santaAna1,
   additionalImages: [
     santaAna1,

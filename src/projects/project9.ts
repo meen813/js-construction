@@ -18,7 +18,7 @@ const project9: Project = {
   tagline: 'Enhanced waterproofing and long-term durability',
   year: 2017,
   category: 'commercial',
-  projectType: 'remodel',
+  projectType: 'renovation',
   description: "A comprehensive roof renovation project for a large commercial mall complex in Pomona, California. This project involved complete removal of deteriorated roofing membrane, replacement of damaged plywood substrate, and installation of a new multi-layer torch-down roofing system. The renovation improved water drainage, enhanced waterproofing performance, and extended the roof's service life while maintaining tenant operations throughout construction.",
   image: pomona1,
   additionalImages: [

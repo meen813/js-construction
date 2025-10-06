@@ -14,7 +14,7 @@ const project7: Project = {
   tagline: 'Enhancing outdoor living with custom woodwork',
   year: 2019,
   category: 'residential',
-  projectType: 'addition',
+  projectType: 'new-build',
   description: "A custom backyard patio project in Garden Grove, California featuring a freestanding wooden structure with pitched roof and pergola restoration. This residential project enhanced the homeowner's outdoor living space with custom wood framing, tongue-and-groove ceiling panels, and decorative support braces for a clean, modern aesthetic. Completed in 2019.",
   image: gardenGrove1,
   additionalImages: [

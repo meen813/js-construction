@@ -7,13 +7,13 @@ import kitchenImage5 from '../../public/Kitchen Renovation/temp_1600188757718.-8
 
 const project5: Project = {
   id: 5,
-  title: 'Fullerton Kitchen Remodel (2022)',
+  title: 'Fullerton Kitchen Renovation (2022)',
   shortDescription: 'Dark shaker cabinets with white quartz countertops and waterfall island.',
   tagline: 'Elegant functionality meets contemporary design',
   year: 2022,
   category: 'residential',
-  projectType: 'remodel',
-  description: "This kitchen remodel transformed an outdated space into a sleek, modern cooking area. Featuring dark shaker cabinets paired with white Calacatta-style quartz countertops and full backsplash, the design balances elegance and functionality. A spacious island with an integrated cooktop and waterfall edges serves as the centerpiece, while stainless-steel appliances and a farmhouse sink complete the clean, contemporary look.",
+  projectType: 'renovation',
+  description: "This kitchen renovation transformed an outdated space into a sleek, modern cooking area. Featuring dark shaker cabinets paired with white Calacatta-style quartz countertops and full backsplash, the design balances elegance and functionality. A spacious island with an integrated cooktop and waterfall edges serves as the centerpiece, while stainless-steel appliances and a farmhouse sink complete the clean, contemporary look.",
   image: kitchenImage1,
   additionalImages: [kitchenImage2, kitchenImage3, kitchenImage4, kitchenImage5],
 };

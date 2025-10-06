@@ -10,8 +10,8 @@ const project8: Project = {
   tagline: 'Professional lobby area with modern design and functionality',
   year: 2016,
   category: 'commercial',
-  projectType: 'remodel',
-  description: "A custom reception counter installation project for an acupuncture clinic in Buena Park, California. This commercial interior renovation created a welcoming, professional lobby area with a two-tier countertop design, high-gloss stone surface, and tile-faced front panels. The project enhanced workspace functionality while maintaining the clinic's calm and healing atmosphere.",
+  projectType: 'new-build',
+  description: "A custom reception counter installation project for an acupuncture clinic in Buena Park, California. This commercial interior build created a welcoming, professional lobby area with a two-tier countertop design, high-gloss stone surface, and tile-faced front panels. The project enhanced workspace functionality while maintaining the clinic's calm and healing atmosphere.",
   image: acupuncture1,
   additionalImages: [
     acupuncture2,

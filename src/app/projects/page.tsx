@@ -15,7 +15,7 @@ export default function ProjectsPage() {
             </h1>
             <p className="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed mb-8">
               Explore our completed residential and commercial construction projects across Southern California — including Fullerton, Manhattan Beach, and La Palma. 
-              From custom home builds and ADU additions to commercial renovations and ADA compliance upgrades, our portfolio showcases our commitment to quality craftsmanship and attention to detail.
+              From custom home builds and ADU additions to commercial remodels and ADA compliance upgrades, our portfolio showcases our commitment to quality craftsmanship and attention to detail.
             </p>
             <div className="w-24 h-1 bg-gradient-to-r from-blue-500 to-emerald-500 mx-auto rounded-full"></div>
           </div>

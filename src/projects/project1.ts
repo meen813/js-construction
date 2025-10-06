@@ -21,13 +21,13 @@ import mallImage19 from '../../public/Mall Renovation Project/Screenshot_2025072
 
 const project1: Project = {
   id: 1,
-  title: 'La Palma Commercial Mall Renovation (2025)',
+  title: 'La Palma Commercial Mall Remodel (2025)',
   shortDescription: 'Exterior shell rebuild and façade modernization.',
-  tagline: 'Contemporary commercial renovation with enhanced accessibility',
+  tagline: 'Contemporary commercial remodel with enhanced accessibility',
   year: 2025,
   category: 'commercial',
   projectType: 'remodel',
-  description: "A comprehensive commercial mall renovation project in La Palma, California. This project involves expanding from 2 to 3 retail spaces and completely modernizing the exterior facade. The renovation includes contemporary design elements, improved accessibility, and enhanced customer experience. Project started in May 2025 and is currently ongoing with completion expected in November 2025.",
+  description: "A comprehensive commercial mall remodel project in La Palma, California. This project involves expanding from 2 to 3 retail spaces and completely modernizing the exterior facade. The remodel includes contemporary design elements, improved accessibility, and enhanced customer experience. Project started in May 2025 and is currently ongoing with completion expected in November 2025.",
   image: mallImage19,
   additionalImages: [
     mallImage1, mallImage2, mallImage3, mallImage4, mallImage5, mallImage6, 

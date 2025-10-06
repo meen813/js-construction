@@ -10,7 +10,7 @@ type Props = {
 }
 
 type FilterType = 'all' | 'residential' | 'commercial';
-type ProjectFilterType = 'all' | 'remodel' | 'ada-upgrade' | 'addition';
+type ProjectFilterType = 'all' | 'new-build' | 'remodel' | 'renovation' | 'ada-upgrade' | 'addition';
 
 export default function ProjectGrid({ projects }: Props) {
   const [categoryFilter, setCategoryFilter] = useState<FilterType>('all');
@@ -75,6 +75,16 @@ export default function ProjectGrid({ projects }: Props) {
             All Types
           </button>
           <button
+            onClick={() => setProjectTypeFilter('new-build')}
+            className={`px-3 py-1.5 rounded-full text-xs font-medium transition-all duration-200 ${
+              projectTypeFilter === 'new-build'
+                ? 'bg-emerald-600 text-white shadow-md'
+                : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+            }`}
+          >
+            New Build
+          </button>
+          <button
             onClick={() => setProjectTypeFilter('remodel')}
             className={`px-3 py-1.5 rounded-full text-xs font-medium transition-all duration-200 ${
               projectTypeFilter === 'remodel'
@@ -83,6 +93,16 @@ export default function ProjectGrid({ projects }: Props) {
             }`}
           >
             Remodel
+          </button>
+          <button
+            onClick={() => setProjectTypeFilter('renovation')}
+            className={`px-3 py-1.5 rounded-full text-xs font-medium transition-all duration-200 ${
+              projectTypeFilter === 'renovation'
+                ? 'bg-emerald-600 text-white shadow-md'
+                : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+            }`}
+          >
+            Renovation
           </button>
           <button
             onClick={() => setProjectTypeFilter('addition')}
@@ -119,6 +139,11 @@ export default function ProjectGrid({ projects }: Props) {
                   alt={project.title}
                   fill
                   className="object-cover transition-transform duration-300 group-hover:scale-105"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                  quality={85}
+                  loading="lazy"
+                  placeholder="blur"
+                  blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCdABmX/9k="
                 />
                 
                 {/* Hover Overlay */}

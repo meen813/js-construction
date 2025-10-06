@@ -185,7 +185,8 @@ export default function ContactForm() {
                 <option value="">Select your project type</option>
                 <option value="remodeling">New Custom Building</option>
                 <option value="maintenance">Home Addition (ADU)</option>
-                <option value="addition">Renovation</option>
+                <option value="addition">Remodel</option>
+                <option value="renovation">Renovation</option>
                 <option value="other">Other</option>
               </select>
             </div>

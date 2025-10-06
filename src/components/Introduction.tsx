@@ -20,9 +20,15 @@ export default function Introduction() {
     },
     {
       image: image3,
+      title: "Remodel",
+      description: "Major structural changes and comprehensive renovations requiring permits and significant construction work.",
+      features: ["Structural Changes", "Permit Handling", "Major Construction"]
+    },
+    {
+      image: image3,
       title: "Renovation",
-      description: "Transform your existing space with our comprehensive renovation services that breathe new life into your home.",
-      features: ["Modern Updates", "Structural Integrity", "Value Enhancement"]
+      description: "Smaller-scale maintenance and improvement work to refresh and enhance your existing space.",
+      features: ["Interior Updates", "Cosmetic Improvements", "Quick Turnaround"]
     }
   ];
 
@@ -35,14 +41,14 @@ export default function Introduction() {
             <span className="text-gradient">Services We Provide</span>
           </h2>
           <p className="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
-          We handle both commercial and residential projects, specializing in custom builds, renovations, tenant improvements, and structural upgrades.
+          We handle both commercial and residential projects, specializing in custom builds, remodels, tenant improvements, and structural upgrades.
           Every project is completed with precision, craftsmanship, and a commitment to quality.
           </p>
           <div className="w-24 h-1 bg-gradient-to-r from-blue-500 to-emerald-500 mx-auto mt-6 rounded-full"></div>
         </div>
 
         {/* Services Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 lg:gap-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 lg:gap-12">
           {services.map((service, index) => (
             <div key={index} className="card p-4 md:p-6 lg:p-8 text-center group hover:scale-105 transition-all duration-300">
               <div className="relative mb-4 md:mb-6">
@@ -52,6 +58,11 @@ export default function Introduction() {
                   width={200}
                   height={200}
                   className="w-full h-32 md:h-40 lg:h-48 object-cover rounded-2xl shadow-lg mx-auto group-hover:shadow-xl transition-shadow duration-300"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                  quality={85}
+                  loading="lazy"
+                  placeholder="blur"
+                  blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCdABmX/9k="
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               </div>

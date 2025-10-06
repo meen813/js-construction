@@ -36,15 +36,28 @@ export default function ServicesPage() {
     },
     {
       image: renovation,
-      title: "Renovation",
-      description: "Transform your existing space with our comprehensive renovation services that breathe new life into your home.",
-      features: ["Modern Updates", "Structural Integrity", "Value Enhancement"],
+      title: "Remodel",
+      description: "Major structural changes and comprehensive renovations requiring permits and significant construction work.",
+      features: ["Structural Changes", "Permit Handling", "Major Construction"],
       details: [
-        "Kitchen and bathroom renovations",
-        "Flooring and interior updates",
+        "Kitchen and bathroom remodels",
         "Structural improvements and repairs",
+        "Permit acquisition and compliance",
         "Energy efficiency upgrades",
         "Custom millwork and finishes"
+      ]
+    },
+    {
+      image: renovation,
+      title: "Renovation",
+      description: "Smaller-scale maintenance and improvement work to refresh and enhance your existing space.",
+      features: ["Interior Updates", "Cosmetic Improvements", "Quick Turnaround"],
+      details: [
+        "Interior painting and finishes",
+        "Flooring updates and repairs",
+        "Lighting and fixture upgrades",
+        "Cosmetic improvements",
+        "Quick maintenance projects"
       ]
     }
   ];
@@ -59,7 +72,7 @@ export default function ServicesPage() {
               <span className="text-gradient">Our Services</span>
             </h1>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed mb-8">
-              We excel in custom home building, general contracting, renovations and remodels, home additions, and outdoor living spaces. 
+              We excel in custom home building, general contracting, remodels, home additions, and outdoor living spaces. 
               Our expertise ensures that every project is executed with precision and attention to detail.
             </p>
             <div className="w-24 h-1 bg-gradient-to-r from-blue-500 to-emerald-500 mx-auto rounded-full"></div>
@@ -71,7 +84,7 @@ export default function ServicesPage() {
       <section className="py-20 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
           {/* Services Grid */}
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-12 mb-16">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12 mb-16">
             {services.map((service, index) => (
               <div key={index} className="card p-8 text-center group hover:scale-105 transition-all duration-300">
                 <div className="relative mb-6">
@@ -81,6 +94,11 @@ export default function ServicesPage() {
                     width={300}
                     height={200}
                     className="object-cover rounded-2xl shadow-lg mx-auto group-hover:shadow-xl transition-shadow duration-300"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                    quality={85}
+                    loading="lazy"
+                    placeholder="blur"
+                    blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCdABmX/9k="
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 </div>

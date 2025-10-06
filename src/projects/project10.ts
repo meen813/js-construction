@@ -12,13 +12,13 @@ import lynwood10 from '../../public/Lynwood adu renovation 2017/20161123_162409.
 
 const project10: Project = {
   id: 10,
-  title: 'Lynwood ADU Renovation Project (2017)',
-  shortDescription: 'Complete renovation and modernization of an accessory dwelling unit.',
+  title: 'Lynwood ADU Remodel Project (2017)',
+  shortDescription: 'Complete remodel and modernization of an accessory dwelling unit.',
   tagline: 'Energy-efficient living space with modern finishes',
   year: 2017,
   category: 'residential',
   projectType: 'remodel',
-  description: "A comprehensive renovation project for an accessory dwelling unit (ADU) in Lynwood, California. This project transformed an aging structure into a comfortable and energy-efficient living space through exterior and interior upgrades. The renovation included structural reinforcement, new stucco finish, energy-efficient windows and doors, modern flooring, recessed lighting, and full electrical and plumbing updates for current building code compliance.",
+  description: "A comprehensive remodel project for an accessory dwelling unit (ADU) in Lynwood, California. This project transformed an aging structure into a comfortable and energy-efficient living space through exterior and interior upgrades. The remodel included structural reinforcement, new stucco finish, energy-efficient windows and doors, modern flooring, recessed lighting, and full electrical and plumbing updates for current building code compliance.",
   image: lynwood1,
   additionalImages: [
     lynwood2,

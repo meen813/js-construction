@@ -8,7 +8,7 @@ export type Project = {
   tagline: string;
   year: number;
   category: 'residential' | 'commercial';
-  projectType: 'remodel' | 'ada-upgrade' | 'addition';
+  projectType: 'new-build' | 'remodel' | 'renovation' | 'ada-upgrade' | 'addition';
   image: StaticImageData;
   additionalImages?: StaticImageData[];
 };

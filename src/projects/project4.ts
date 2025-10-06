@@ -8,7 +8,7 @@ const project4: Project = {
   tagline: 'Professional gateway with enhanced accessibility',
   year: 2025,
   category: 'commercial',
-  projectType: 'remodel',
+  projectType: 'renovation',
   description: "This project involved a complete remodel of the main entrance at the Manhattan Beach Mall, transforming it into a modern and welcoming gateway. The design features warm textured wall panels, durable tile flooring, and a sleek metal staircase with clean lines. The refreshed entrance enhances both accessibility and aesthetics, offering a professional first impression for visitors and tenants.",
   image: lobbyImage,
 };

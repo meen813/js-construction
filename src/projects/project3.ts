@@ -9,7 +9,7 @@ const project3: Project = {
   tagline: 'Contemporary look with structural integrity',
   year: 2023,
   category: 'residential',
-  projectType: 'remodel',
+  projectType: 'new-build',
   description: "This project features a stunning custom staircase with elegant wood finishes and modern design elements. The floating steps create a contemporary look while maintaining structural integrity and safety.",
   image: stairsImage1,
   additionalImages: [stairsImage2],

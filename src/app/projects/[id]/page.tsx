@@ -207,7 +207,12 @@ export default function ProjectDetailPage() {
                       project.id === 3 ? 'Custom Staircase Design' :
                       project.id === 4 ? 'Mall Entrance Renovation' :
                       project.id === 5 ? 'Kitchen Remodel' :
-                      project.id === 6 ? 'ADA Improvement' : 'Construction Project'}</p>
+                      project.id === 6 ? 'ADA Improvement' :
+                      project.id === 7 ? 'Residential Backyard Patio' :
+                      project.id === 8 ? 'Commercial Interior Renovation' :
+                      project.id === 9 ? 'Commercial Roof Renovation' :
+                      project.id === 10 ? 'Residential Renovation & Conversion' :
+                      project.id === 11 ? 'Commercial Renovation' : 'Construction Project'}</p>
                   </div>
                   
                   <div>
@@ -217,7 +222,12 @@ export default function ProjectDetailPage() {
                       project.id === 3 ? 'Orange County, California' :
                       project.id === 4 ? 'Manhattan Beach, California' :
                       project.id === 5 ? 'Fullerton, California' :
-                      project.id === 6 ? 'Manhattan Beach, California' : 'California'}</p>
+                      project.id === 6 ? 'Manhattan Beach, California' :
+                      project.id === 7 ? 'Garden Grove, California' :
+                      project.id === 8 ? 'Buena Park, California' :
+                      project.id === 9 ? 'Pomona, California' :
+                      project.id === 10 ? 'Lynwood, California' :
+                      project.id === 11 ? 'Santa Ana, California' : 'California'}</p>
                   </div>
                   
                   <div>
@@ -227,7 +237,12 @@ export default function ProjectDetailPage() {
                       project.id === 3 ? 'Completed 2024' :
                       project.id === 4 ? 'Completed 2025' :
                       project.id === 5 ? 'Completed 2022' :
-                      project.id === 6 ? 'Completed Early 2025' : 'Completed'}</p>
+                      project.id === 6 ? 'Completed Early 2025' :
+                      project.id === 7 ? 'Completed 2019' :
+                      project.id === 8 ? 'Completed 2016' :
+                      project.id === 9 ? 'Completed 2017' :
+                      project.id === 10 ? 'Completed 2017' :
+                      project.id === 11 ? 'Completed 2016' : 'Completed'}</p>
                   </div>
                 </div>
 

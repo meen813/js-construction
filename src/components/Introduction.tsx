@@ -35,8 +35,8 @@ export default function Introduction() {
             <span className="text-gradient">Services We Provide</span>
           </h2>
           <p className="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
-            We excel in custom home building, general contracting, renovations and remodels, home additions, and outdoor living spaces. 
-            Our expertise ensures that every project is executed with precision and attention to detail, delivering exceptional results that exceed client expectations.
+          We handle both commercial and residential projects, specializing in custom builds, renovations, tenant improvements, and structural upgrades.
+          Every project is completed with precision, craftsmanship, and a commitment to quality.
           </p>
           <div className="w-24 h-1 bg-gradient-to-r from-blue-500 to-emerald-500 mx-auto mt-6 rounded-full"></div>
         </div>

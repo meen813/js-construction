@@ -7,8 +7,8 @@ import Footer from "@/components/Footer";
 const sans = Open_Sans({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "J&S Construction Inc.",
-  description: "J&S Construction's Portfolio",
+  title: "Hwang J&S Construction",
+  description: "Hwang J&S Construction's Portfolio",
 };
 
 export default function RootLayout({

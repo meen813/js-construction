@@ -1,36 +1,136 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Hwang J&S Construction Website
+
+A professional construction company website built with Next.js, featuring project galleries, contact forms, and service information.
+
+## Features
+
+- 🏗️ **Project Portfolio** - Showcase completed construction projects with filtering
+- 📧 **Contact Form** - Secure contact form with rate limiting and validation
+- 🎨 **Modern Design** - Responsive design with professional aesthetics
+- 🔒 **Security** - Comprehensive security measures and input validation
+- 📱 **Mobile Responsive** - Optimized for all device sizes
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
+
+- Node.js 18+ 
+- npm, yarn, pnpm, or bun
+
+### Environment Variables
+
+Create a `.env.local` file in the root directory with the following variables:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+# Email Configuration (Required)
+EMAIL_USER=your-email@gmail.com
+EMAIL_PASS=your-app-password
+COMPANY_EMAIL=company@example.com
+
+# AWS Configuration (Optional - for S3 image uploads)
+AWS_REGION=us-west-1
+BUCKET_NAME=your-bucket-name
+
+# Site Configuration
+NEXT_PUBLIC_SITE_URL=https://your-domain.com
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Installation
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+1. Clone the repository
+2. Install dependencies:
+   ```bash
+   npm install
+   # or
+   yarn install
+   ```
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+3. Set up environment variables (see above)
+4. Run the development server:
+   ```bash
+   npm run dev
+   # or
+   yarn dev
+   ```
 
-## Learn More
+5. Open [http://localhost:3000](http://localhost:3000) in your browser
 
-To learn more about Next.js, take a look at the following resources:
+## Security Features
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### 🔒 **Implemented Security Measures**
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+- **Input Validation**: Server-side and client-side validation for all form inputs
+- **Rate Limiting**: API endpoints protected against spam (5 requests per 15 minutes)
+- **Security Headers**: XSS protection, content type sniffing prevention, frame options
+- **Email Security**: Sanitized inputs, proper error handling, no sensitive data exposure
+- **Environment Validation**: Required environment variables validation on startup
 
-## Deploy on Vercel
+### 🛡️ **Security Headers**
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- `X-Frame-Options: DENY` - Prevents clickjacking
+- `X-Content-Type-Options: nosniff` - Prevents MIME type sniffing
+- `X-XSS-Protection: 1; mode=block` - XSS protection
+- `Referrer-Policy: strict-origin-when-cross-origin` - Controls referrer information
+- `Permissions-Policy` - Restricts browser features
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## Project Structure
+
+```
+src/
+├── app/                 # Next.js app router pages
+│   ├── api/            # API routes
+│   ├── projects/       # Project pages
+│   ├── services/       # Services page
+│   └── contact/        # Contact page
+├── components/         # React components
+├── projects/           # Project data and types
+└── lib/               # Utility functions
+```
+
+## Deployment
+
+### Vercel (Recommended)
+
+1. Push your code to GitHub
+2. Connect your repository to Vercel
+3. Set environment variables in Vercel dashboard
+4. Deploy automatically
+
+### Other Platforms
+
+The app can be deployed to any platform that supports Next.js:
+- Netlify
+- AWS Amplify
+- Railway
+- DigitalOcean App Platform
+
+## Environment Variables Setup
+
+### Gmail Setup (for contact form)
+
+1. Enable 2-factor authentication on your Gmail account
+2. Generate an App Password:
+   - Go to Google Account settings
+   - Security → 2-Step Verification → App passwords
+   - Generate password for "Mail"
+3. Use the app password as `EMAIL_PASS`
+
+### Required Variables
+
+| Variable | Description | Example |
+|----------|-------------|---------|
+| `EMAIL_USER` | Gmail address for sending emails | `your-email@gmail.com` |
+| `EMAIL_PASS` | Gmail app password | `your-16-char-password` |
+| `COMPANY_EMAIL` | Company email for receiving inquiries | `info@company.com` |
+
+## Contributing
+
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes
+4. Test thoroughly
+5. Submit a pull request
+
+## License
+
+This project is private and proprietary to Hwang J&S Construction.

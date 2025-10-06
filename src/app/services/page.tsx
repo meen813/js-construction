@@ -106,7 +106,7 @@ export default function ServicesPage() {
 
                 {/* Detailed Features */}
                 <div className="text-left">
-                  <h4 className="font-semibold text-gray-900 mb-3">What's Included:</h4>
+                  <h4 className="font-semibold text-gray-900 mb-3">What&apos;s Included:</h4>
                   <ul className="space-y-2 text-sm text-gray-600">
                     {service.details.map((detail, detailIndex) => (
                       <li key={detailIndex} className="flex items-start">
@@ -129,7 +129,7 @@ export default function ServicesPage() {
                 Ready to Start Your Project?
               </h3>
               <p className="text-xl text-gray-600 mb-8">
-                Let's discuss your vision and bring it to life with our expert construction services. 
+                Let&apos;s discuss your vision and bring it to life with our expert construction services. 
                 We provide free consultations and detailed project estimates.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">

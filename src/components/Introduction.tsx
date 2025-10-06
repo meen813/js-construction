@@ -85,7 +85,7 @@ export default function Introduction() {
               Ready to Start Your Project?
             </h3>
             <p className="text-gray-600 mb-6">
-              Let's discuss your vision and bring it to life with our expert construction services.
+              Let&apos;s discuss your vision and bring it to life with our expert construction services.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href="/contact" className="btn-primary">

@@ -100,7 +100,7 @@ export default function ContactForm() {
           </h2>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed">
             Ready to start your construction project? Get a personalized quote from our expert team. 
-            We'll respond within 24 hours.
+            We&apos;ll respond within 24 hours.
           </p>
           <div className="w-24 h-1 bg-gradient-to-r from-blue-500 to-emerald-500 mx-auto mt-6 rounded-full"></div>
         </div>

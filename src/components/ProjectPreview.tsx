@@ -54,7 +54,7 @@ export default function ProjectPreview() {
                         </p>
                         <div className="mt-4 flex items-center justify-between">
                           <span className="text-sm text-gray-500">
-                            Construction
+                            {project.category === 'commercial' ? 'Commercial' : 'Residential'}
                           </span>
                           <div className="flex items-center text-blue-600 text-sm font-medium">
                             Learn More
@@ -102,7 +102,7 @@ export default function ProjectPreview() {
                       {project.description || "A stunning construction project showcasing our expertise and attention to detail."}
                     </p>
                     <div className="mt-3 flex items-center justify-between">
-                      <span className="text-xs text-gray-500">Construction</span>
+                      <span className="text-xs text-gray-500">{project.category === 'commercial' ? 'Commercial' : 'Residential'}</span>
                       <div className="flex items-center text-blue-600 text-sm font-medium">
                         Learn More
                         <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">

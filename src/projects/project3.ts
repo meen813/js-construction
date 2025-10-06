@@ -12,7 +12,7 @@ const project3: Project = {
   projectType: 'remodel',
   description: "This project features a stunning custom staircase with elegant wood finishes and modern design elements. The floating steps create a contemporary look while maintaining structural integrity and safety.",
   image: stairsImage1,
-  additionalImages: [stairsImage1, stairsImage2],
+  additionalImages: [stairsImage2],
 };
 
 export default project3;

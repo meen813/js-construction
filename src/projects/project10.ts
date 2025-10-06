@@ -21,7 +21,6 @@ const project10: Project = {
   description: "A comprehensive renovation project for an accessory dwelling unit (ADU) in Lynwood, California. This project transformed an aging structure into a comfortable and energy-efficient living space through exterior and interior upgrades. The renovation included structural reinforcement, new stucco finish, energy-efficient windows and doors, modern flooring, recessed lighting, and full electrical and plumbing updates for current building code compliance.",
   image: lynwood1,
   additionalImages: [
-    lynwood1,
     lynwood2,
     lynwood3,
     lynwood4,

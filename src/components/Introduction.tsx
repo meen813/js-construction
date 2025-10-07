@@ -2,33 +2,38 @@ import Image from "next/image";
 import Link from "next/link";
 import image1 from '../../public/new building.webp'
 import image2 from '../../public/Home addition.webp';
-import image3 from '../../public/renovation.webp';
+import renovationImage from '../../public/renovation.png';
+import remodelImage from '../../public/remodel.webp';
 
 export default function Introduction() {
   const services = [
     {
       image: image1,
       title: "New Custom Build",
-      description: "From concept to completion, we build your dream home with precision and quality craftsmanship.",
-      features: ["Custom Design", "Quality Materials", "Timely Delivery"]
+      subtitle: "Where your vision becomes architecture.",
+      description: "From the first sketch to the final inspection, we craft homes tailored to your lifestyle — built with precision, integrity, and timeless design.",
+      features: ["Architectural Design Collaboration", "Premium Materials & Detailing", "On-schedule Delivery"]
     },
     {
       image: image2,
       title: "Home Addition (ADU)",
-      description: "Expand your living space with expertly designed additions that seamlessly integrate with your existing home.",
-      features: ["Space Planning", "Permit Handling", "Seamless Integration"]
+      subtitle: "Expand your living, not just your space.",
+      description: "We design and build additions that look and feel like they've always belonged — blending seamlessly with your existing home while enhancing comfort and value.",
+      features: ["Smart Space Planning", "Full Permit Coordination", "Seamless Structural Integration"]
     },
     {
-      image: image3,
-      title: "Remodel",
-      description: "Major structural changes and comprehensive renovations requiring permits and significant construction work.",
-      features: ["Structural Changes", "Permit Handling", "Major Construction"]
-    },
-    {
-      image: image3,
+      image: renovationImage,
       title: "Renovation",
-      description: "Smaller-scale maintenance and improvement work to refresh and enhance your existing space.",
-      features: ["Interior Updates", "Cosmetic Improvements", "Quick Turnaround"]
+      subtitle: "Transform outdated into outstanding.",
+      description: "For properties needing major upgrades, we handle every phase — from engineering and structural changes to high-end finishes — ensuring lasting value and compliance.",
+      features: ["Structural Reinforcement", "Large-Scale Upgrades", "Expert Project Management"]
+    },
+    {
+      image: remodelImage,
+      title: "Remodel",
+      subtitle: "Revive, refresh, and reimagine your space.",
+      description: "Whether it's a kitchen, bath, or full interior update, we modernize your home with functional layouts and refined aesthetics.",
+      features: ["Interior Redesigns", "Fixture & Equipment Upgrades", "Elegant Finishing Touches"]
     }
   ];
 
@@ -51,13 +56,12 @@ export default function Introduction() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 lg:gap-12">
           {services.map((service, index) => (
             <div key={index} className="card p-4 md:p-6 lg:p-8 text-center group hover:scale-105 transition-all duration-300">
-              <div className="relative mb-4 md:mb-6">
+              <div className="relative mb-4 md:mb-6 aspect-[4/3] overflow-hidden rounded-2xl">
                 <Image
                   alt={service.title}
                   src={service.image}
-                  width={200}
-                  height={200}
-                  className="w-full h-32 md:h-40 lg:h-48 object-cover rounded-2xl shadow-lg mx-auto group-hover:shadow-xl transition-shadow duration-300"
+                  fill
+                  className="object-cover shadow-lg group-hover:shadow-xl transition-shadow duration-300"
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                   quality={85}
                   loading="lazy"
@@ -67,18 +71,22 @@ export default function Introduction() {
                 <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               </div>
               
-              <h3 className="text-lg md:text-xl lg:text-2xl font-bold text-gray-900 mb-3 md:mb-4 group-hover:text-blue-600 transition-colors duration-300">
+              <h3 className="text-lg md:text-xl lg:text-2xl font-bold text-gray-900 mb-2 group-hover:text-blue-600 transition-colors duration-300">
                 {service.title}
               </h3>
+              
+              <p className="text-xs md:text-sm text-blue-600 font-medium mb-3 md:mb-4 italic">
+                {service.subtitle}
+              </p>
               
               <p className="text-sm md:text-base text-gray-600 mb-4 md:mb-6 leading-relaxed">
                 {service.description}
               </p>
               
-              <div className="space-y-1 md:space-y-2">
+              <div className="space-y-1 md:space-y-2 text-left">
                 {service.features.map((feature, featureIndex) => (
-                  <div key={featureIndex} className="flex items-center justify-center text-xs md:text-sm text-gray-500">
-                    <svg className="w-3 h-3 md:w-4 md:h-4 mr-2 text-emerald-500" fill="currentColor" viewBox="0 0 20 20">
+                  <div key={featureIndex} className="flex items-center text-xs md:text-sm text-gray-500">
+                    <svg className="w-3 h-3 md:w-4 md:h-4 mr-2 text-emerald-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                       <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                     </svg>
                     {feature}

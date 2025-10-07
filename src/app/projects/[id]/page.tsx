@@ -3,7 +3,7 @@
 import { useParams } from 'next/navigation';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { projects } from '@/projects/data';
 
 export default function ProjectDetailPage() {
@@ -12,6 +12,7 @@ export default function ProjectDetailPage() {
   const project = projects.find(p => p.id === Number(id));
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [currentDetailImageIndex, setCurrentDetailImageIndex] = useState(0);
+  const thumbnailContainerRef = useRef<HTMLDivElement>(null);
   
   // 모든 이미지를 하나의 배열로 결합
   const allImages = project ? [project.image, ...(project.additionalImages || [])] : [];
@@ -26,6 +27,28 @@ export default function ProjectDetailPage() {
       return () => clearInterval(interval);
     }
   }, [allImages.length]);
+  
+  // 썸네일 자동 스크롤
+  useEffect(() => {
+    if (thumbnailContainerRef.current) {
+      const container = thumbnailContainerRef.current;
+      const thumbnail = container.children[currentDetailImageIndex] as HTMLElement;
+      
+      if (thumbnail) {
+        const containerWidth = container.offsetWidth;
+        const thumbnailLeft = thumbnail.offsetLeft;
+        const thumbnailWidth = thumbnail.offsetWidth;
+        
+        // 썸네일을 중앙에 배치
+        const scrollPosition = thumbnailLeft - (containerWidth / 2) + (thumbnailWidth / 2);
+        
+        container.scrollTo({
+          left: scrollPosition,
+          behavior: 'smooth'
+        });
+      }
+    }
+  }, [currentDetailImageIndex]);
   
   const nextImage = () => {
     setCurrentImageIndex((prev) => (prev + 1) % allImages.length);
@@ -131,70 +154,79 @@ export default function ProjectDetailPage() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             {/* Project Image */}
             <div className="order-2 lg:order-1">
-              <div className="relative overflow-hidden rounded-2xl shadow-2xl">
-                {allImages.map((image, index) => (
-                  <Image
-                    key={index}
-                    src={image}
-                    alt={`${project.title} - Image ${index + 1}`}
-                    width={600}
-                    height={400}
-                    className={`w-full h-auto object-cover transition-opacity duration-500 ${
-                      index === currentDetailImageIndex ? 'opacity-100' : 'opacity-0 absolute inset-0'
-                    }`}
-                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 600px"
-                    quality={85}
-                    loading={index === 0 ? "eager" : "lazy"}
-                    priority={index === 0}
-                    placeholder="blur"
-                    blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCdABmX/9k="
-                  />
-                ))}
+              <div className="space-y-4">
+                {/* Main Image Container */}
+                <div className="relative overflow-hidden rounded-2xl shadow-2xl">
+                  {allImages.map((image, index) => (
+                    <Image
+                      key={index}
+                      src={image}
+                      alt={`${project.title} - Image ${index + 1}`}
+                      width={600}
+                      height={400}
+                      className={`w-full h-auto object-cover transition-opacity duration-500 ${
+                        index === currentDetailImageIndex ? 'opacity-100' : 'opacity-0 absolute inset-0'
+                      }`}
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 600px"
+                      quality={85}
+                      loading={index === 0 ? "eager" : "lazy"}
+                      priority={index === 0}
+                      placeholder="blur"
+                      blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCdABmX/9k="
+                    />
+                  ))}
+                  
+                  {/* Manual Navigation Buttons */}
+                  {allImages.length > 1 && (
+                    <>
+                      <button
+                        onClick={prevDetailImage}
+                        className="absolute left-4 top-1/2 transform -translate-y-1/2 z-20 bg-white/20 hover:bg-white/40 text-white p-3 rounded-full transition-all duration-300 backdrop-blur-sm"
+                        aria-label="Previous image"
+                      >
+                        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                        </svg>
+                      </button>
+                      <button
+                        onClick={nextDetailImage}
+                        className="absolute right-4 top-1/2 transform -translate-y-1/2 z-20 bg-white/20 hover:bg-white/40 text-white p-3 rounded-full transition-all duration-300 backdrop-blur-sm"
+                        aria-label="Next image"
+                      >
+                        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                        </svg>
+                      </button>
+                    </>
+                  )}
+                </div>
                 
-                {/* Manual Navigation Buttons */}
+                {/* Thumbnail Navigation - Outside Below Main Image */}
                 {allImages.length > 1 && (
-                  <>
-                    <button
-                      onClick={prevDetailImage}
-                      className="absolute left-4 top-1/2 transform -translate-y-1/2 z-20 bg-white/20 hover:bg-white/40 text-white p-3 rounded-full transition-all duration-300 backdrop-blur-sm"
-                    >
-                      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-                      </svg>
-                    </button>
-                    <button
-                      onClick={nextDetailImage}
-                      className="absolute right-4 top-1/2 transform -translate-y-1/2 z-20 bg-white/20 hover:bg-white/40 text-white p-3 rounded-full transition-all duration-300 backdrop-blur-sm"
-                    >
-                      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                      </svg>
-                    </button>
-                  </>
-                )}
-                
-                {/* Thumbnail Navigation */}
-                {allImages.length > 1 && (
-                  <div className="absolute bottom-4 left-4 right-4 flex space-x-2">
+                  <div 
+                    ref={thumbnailContainerRef}
+                    className="flex gap-2 overflow-x-auto pb-2 px-1 scroll-smooth"
+                  >
                     {allImages.map((image, index) => (
                       <button
                         key={index}
                         onClick={() => setCurrentDetailImageIndex(index)}
-                        className={`relative overflow-hidden rounded-lg transition-all duration-300 ${
-                          index === currentDetailImageIndex ? 'ring-2 ring-white' : 'opacity-70 hover:opacity-100'
+                        className={`relative flex-shrink-0 overflow-hidden rounded-lg transition-all duration-300 ${
+                          index === currentDetailImageIndex 
+                            ? 'ring-2 ring-blue-500 scale-105' 
+                            : 'opacity-70 hover:opacity-100 hover:scale-105'
                         }`}
+                        aria-label={`View image ${index + 1}`}
                       >
                         <Image
                           src={image}
                           alt={`Thumbnail ${index + 1}`}
-                          width={80}
-                          height={60}
-                          className="w-20 h-15 object-cover"
-                          sizes="80px"
+                          width={100}
+                          height={75}
+                          className="w-24 h-18 object-cover"
+                          sizes="100px"
                           quality={75}
                           loading="lazy"
-                          placeholder="blur"
-                          blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCdABmX/9k="
                         />
                       </button>
                     ))}

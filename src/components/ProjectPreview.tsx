@@ -27,13 +27,12 @@ export default function ProjectPreview() {
                 <div key={project.id} className="p-4">
                   <Link href={`/projects/${project.id}`} className="group block">
                     <div className="card overflow-hidden group-hover:shadow-2xl transition-all duration-300">
-                      <div className="relative overflow-hidden">
+                      <div className="relative overflow-hidden aspect-[4/3]">
                         <Image
                           alt={project.title}
                           src={project.image}
-                          width={350}
-                          height={250}
-                          className="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500"
+                          fill
+                          className="object-cover group-hover:scale-110 transition-transform duration-500"
                           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                           quality={85}
                           loading="lazy"
@@ -81,13 +80,12 @@ export default function ProjectPreview() {
             {projects.slice(0, 2).map((project) => (
               <Link key={project.id} href={`/projects/${project.id}`} className="group block">
                 <div className="card overflow-hidden group-hover:shadow-xl transition-all duration-300">
-                  <div className="relative overflow-hidden">
+                  <div className="relative overflow-hidden aspect-[4/3]">
                     <Image
                       alt={project.title}
                       src={project.image}
-                      width={400}
-                      height={300}
-                      className="w-full h-48 object-cover"
+                      fill
+                      className="object-cover"
                       sizes="100vw"
                       quality={85}
                       loading="lazy"

@@ -13,7 +13,7 @@ export const metadata: Metadata = {
     template: "%s | Hwang J&S Construction"
   },
   description: "Expert construction and renovation services in Southern California. Specializing in ADU, commercial renovations, kitchen remodeling, and more. Licensed and insured contractors.",
-  keywords: ["construction", "renovation", "ADU", "commercial construction", "kitchen remodeling", "home addition", "Southern California", "general contractor"],
+  keywords: ["construction", "renovation", "ADU", "commercial construction", "kitchen remodeling", "home addition", "Southern California", "general contractor", "HJS Construction", "Hwang J&S", "Hwang JS Construction"],
   authors: [{ name: "Hwang J&S Construction" }],
   creator: "Hwang J&S Construction",
   publisher: "Hwang J&S Construction",

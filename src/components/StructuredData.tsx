@@ -18,6 +18,7 @@ export const organizationSchema = {
   "@context": "https://schema.org",
   "@type": "GeneralContractor",
   "name": "Hwang J&S Construction",
+  "alternateName": ["HJS Construction", "Hwang JS Construction"],
   "url": "https://www.hjsconstruction.com",
   "logo": "https://www.hjsconstruction.com/logo/logo.png",
   "description": "Expert construction and renovation services in Southern California. Specializing in ADU, commercial renovations, kitchen remodeling, and more.",

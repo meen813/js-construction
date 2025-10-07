@@ -3,7 +3,7 @@ User-agent: *
 Disallow: /
 
 # Host
-Host: https://www.hjsconstruction.com
+Host: https://hjsconstruction.com
 
 # Sitemaps
-Sitemap: https://www.hjsconstruction.com/sitemap.xml
+Sitemap: https://hjsconstruction.com/sitemap.xml

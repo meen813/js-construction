@@ -2,7 +2,7 @@
 const isProd = process.env.VERCEL_ENV === 'production';
 
 export default {
-  siteUrl: 'https://hjsconstruction.com',
+  siteUrl: 'https://www.hjsconstruction.com',
   generateRobotsTxt: true,
   sitemapSize: 7000,
   changefreq: 'weekly',

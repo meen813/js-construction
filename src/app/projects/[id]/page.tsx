@@ -5,6 +5,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useState, useEffect, useRef } from 'react';
 import { projects } from '@/projects/data';
+import StructuredData, { generateProjectSchema, generateBreadcrumbSchema } from '@/components/StructuredData';
 
 export default function ProjectDetailPage() {
   const params = useParams();
@@ -80,8 +81,53 @@ export default function ProjectDetailPage() {
     );
   }
 
+  // Generate location based on project id
+  const projectLocation = 
+    project.id === 1 ? 'La Palma, California' :
+    project.id === 2 ? 'Fountain Valley, California' :
+    project.id === 3 ? 'Orange County, California' :
+    project.id === 4 ? 'Manhattan Beach, California' :
+    project.id === 5 ? 'Fullerton, California' :
+    project.id === 6 ? 'Manhattan Beach, California' :
+    project.id === 7 ? 'Garden Grove, California' :
+    project.id === 8 ? 'Buena Park, California' :
+    project.id === 9 ? 'Pomona, California' :
+    project.id === 10 ? 'Lynwood, California' :
+    project.id === 11 ? 'Santa Ana, California' : 'California';
+
+  const projectCompletionDate =
+    project.id === 1 ? '2025-11' :
+    project.id === 2 ? '2024' :
+    project.id === 3 ? '2024' :
+    project.id === 4 ? '2025' :
+    project.id === 5 ? '2022' :
+    project.id === 6 ? '2025' :
+    project.id === 7 ? '2019' :
+    project.id === 8 ? '2016' :
+    project.id === 9 ? '2017' :
+    project.id === 10 ? '2017' :
+    project.id === 11 ? '2016' : undefined;
+
+  const projectSchema = generateProjectSchema({
+    id: project.id,
+    title: project.title,
+    description: project.description,
+    image: typeof project.image === 'string' ? project.image : project.image.src,
+    location: projectLocation,
+    completionDate: projectCompletionDate
+  });
+
+  const breadcrumbSchema = generateBreadcrumbSchema([
+    { name: 'Home', url: '/' },
+    { name: 'Projects', url: '/projects' },
+    { name: project.title, url: `/projects/${project.id}` }
+  ]);
+
   return (
     <div className="min-h-screen bg-white">
+      <StructuredData data={projectSchema} />
+      <StructuredData data={breadcrumbSchema} />
+      
       {/* Hero Section */}
       <section className="relative h-screen flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0">

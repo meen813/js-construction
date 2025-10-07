@@ -2,10 +2,18 @@
 
 import ProjectGrid from '@/components/ProjectGrid';
 import { projects } from '../../projects/data';
+import StructuredData, { generateBreadcrumbSchema } from '@/components/StructuredData';
 
 export default function ProjectsPage() {
+  const breadcrumbSchema = generateBreadcrumbSchema([
+    { name: 'Home', url: '/' },
+    { name: 'Projects', url: '/projects' }
+  ]);
+
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
+      <StructuredData data={breadcrumbSchema} />
+      
       {/* Hero Section */}
       <section className="pt-20 pb-16 bg-gradient-to-br from-blue-50 via-white to-emerald-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

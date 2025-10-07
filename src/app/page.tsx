@@ -8,6 +8,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import ProjectPreview from '@/components/ProjectPreview';
 import Introduction from '@/components/Introduction';
+import StructuredData, { organizationSchema, servicesSchema } from '@/components/StructuredData';
 
 const images = [image1, image3, image4];
 
@@ -24,6 +25,9 @@ export default function Home() {
 
   return (
     <>
+      <StructuredData data={organizationSchema} />
+      <StructuredData data={servicesSchema} />
+      
       {/* Hero Section */}
       <section className="h-screen relative overflow-hidden">
         <div className="absolute inset-0">

@@ -8,9 +8,12 @@ export default {
   changefreq: 'weekly',
   priority: 0.7,
   robotsTxtOptions: {
-    policies: isProd
-      ? [{ userAgent: '*', allow: '/' }]
-      : [{ userAgent: '*', disallow: '/' }],
+    policies: [
+      {
+        userAgent: '*',
+        allow: '/',
+      },
+    ],
   },
   exclude: [
     '/admin*',

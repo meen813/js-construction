@@ -182,7 +182,7 @@ export const projects: Project[] = [
     additionalImages: [
       aduImage1, aduImage2, aduImage3, aduImage4, aduImage5, aduImage6, 
       aduImage7, aduImage8, aduImage9, aduImage10, aduImage11, 
-      aduImage12, aduImage13, aduImage14, aduImage15, aduImage16
+      aduImage12, aduImage13, aduImage14, aduImage15
     ],
   },
   

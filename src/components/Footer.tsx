@@ -7,8 +7,8 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Company Info */}
           <div className="lg:col-span-2">
-            <h3 className="text-2xl font-bold mb-4">
-              <span className="text-gradient">Hwang J&S Construction</span>
+            <h3 className="text-2xl font-bold mb-4 text-white">
+              Hwang J&S Construction
             </h3>
             <p className="text-gray-300 mb-6 leading-relaxed">
             Premier general contractor in Orange County and Los Angeles County, California. Since 2011, we have specialized in delivering exceptional construction services with unmatched quality and customer satisfaction.
@@ -41,9 +41,14 @@ export default function Footer() {
         {/* Bottom Bar */}
         <div className="border-t border-gray-700 mt-12 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center">
-            <p className="text-gray-400 text-sm">
-              ©2024 Hwang J&S Construction | All Rights Reserved
-            </p>
+            <div className="text-center md:text-left">
+              <p className="text-gray-400 text-sm">
+                ©2024 Hwang J&S Construction | All Rights Reserved
+              </p>
+              <p className="text-gray-400 text-sm mt-1">
+                License #960757
+              </p>
+            </div>
             <div className="flex space-x-6 mt-4 md:mt-0">
               <a href="#" className="text-gray-400 hover:text-white text-sm transition-colors duration-300">Privacy Policy</a>
               <a href="#" className="text-gray-400 hover:text-white text-sm transition-colors duration-300">Terms of Service</a>

@@ -20,6 +20,9 @@ import mallImage16 from '../../public/Mall Renovation Project/20250905_073620.jp
 import mallImage17 from '../../public/Mall Renovation Project/20250916_142924.jpg';
 import mallImage18 from '../../public/Mall Renovation Project/20250916_153205.jpg';
 import mallImage19 from '../../public/Mall Renovation Project/Screenshot_20250724_101856_KakaoTalk.jpg';
+import mallImage20 from '../../public/Mall Renovation Project/KakaoTalk_20251104_155045558.jpg';
+import mallImage21 from '../../public/Mall Renovation Project/KakaoTalk_20251104_155045558_01.jpg';
+import mallImage22 from '../../public/Mall Renovation Project/KakaoTalk_20251104_155045558_03.jpg';
 
 // Project 2 Images
 import aduImage1 from '../../public/adu/adu.jpg';
@@ -38,10 +41,6 @@ import aduImage13 from '../../public/adu/20250114_082634.jpg';
 import aduImage14 from '../../public/adu/20250114_082715.jpg';
 import aduImage15 from '../../public/adu/20250304_123150.jpg';
 import aduImage16 from '../../public/adu/20250304_123215.jpg';
-
-// Project 3 Images
-import stairsImage1 from '../../public/stairs/stairs1.jpg';
-import stairsImage2 from '../../public/stairs/stairs2.jpg';
 
 // Project 4 Images
 import lobbyImage from '../../public/Mall Office Lobby/20250715_130946.jpg';
@@ -133,7 +132,7 @@ export const projects: Project[] = [
       mallImage1, mallImage2, mallImage3, mallImage4, mallImage5, mallImage6, 
       mallImage7, mallImage8, mallImage9, mallImage10, mallImage11, 
       mallImage12, mallImage13, mallImage14, mallImage15, mallImage16, 
-      mallImage17, mallImage18
+      mallImage17, mallImage18, mallImage20, mallImage21, mallImage22
     ],
   },
   
@@ -184,20 +183,6 @@ export const projects: Project[] = [
       aduImage7, aduImage8, aduImage9, aduImage10, aduImage11, 
       aduImage12, aduImage13, aduImage14, aduImage15
     ],
-  },
-  
-  // Project 3 - Custom Staircase Design (2023)
-  {
-    id: 3,
-    title: 'Custom Staircase Design (2023)',
-    shortDescription: 'Floating steps with elegant wood finishes and modern design.',
-    tagline: 'Contemporary look with structural integrity',
-    year: 2023,
-    category: 'residential',
-    projectType: 'new-build',
-    description: "This project features a stunning custom staircase with elegant wood finishes and modern design elements. The floating steps create a contemporary look while maintaining structural integrity and safety.",
-    image: stairsImage1,
-    additionalImages: [stairsImage2],
   },
   
   // Project 5 - Fullerton Kitchen Renovation (2022)

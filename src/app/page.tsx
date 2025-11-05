@@ -1,28 +1,11 @@
 'use client';
 import ContactForm from '../components/ContactForm';
-import image1 from '../../public/image1.webp';
-import image3 from '../../public/image3.webp';
-import image4 from '../../public/image4.webp';
-import { useEffect, useState } from 'react';
-import Image from 'next/image';
 import Link from 'next/link';
 import ProjectPreview from '@/components/ProjectPreview';
 import Introduction from '@/components/Introduction';
 import StructuredData, { organizationSchema, servicesSchema } from '@/components/StructuredData';
 
-const images = [image1, image3, image4];
-
 export default function Home() {
-  const [currentImageIndex, setCurrentImageIndex] = useState(0);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length);
-    }, 6000);
-
-    return () => clearInterval(interval);
-  }, []);
-
   return (
     <>
       <StructuredData data={organizationSchema} />
@@ -31,21 +14,16 @@ export default function Home() {
       {/* Hero Section */}
       <section className="h-screen relative overflow-hidden">
         <div className="absolute inset-0">
-          {images.map((image, index) => (
-            <Image
-              key={index}
-              src={image}
-              alt={`Construction project image ${index + 1}`}
-              fill
-              className={`object-cover transition-opacity duration-1500 ${index === currentImageIndex ? 'opacity-100' : 'opacity-0'}`}
-              style={{ zIndex: index === currentImageIndex ? 1 : 0 }}
-              priority={index === 0}
-              sizes="100vw"
-              quality={85}
-              placeholder="blur"
-              blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCdABmX/9k="
-            />
-          ))}
+          <video
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="w-full h-full object-cover"
+          >
+            <source src="/video/5501.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
         </div>
         
         {/* Enhanced overlay with gradient */}

@@ -71,8 +71,11 @@ export default function RootLayout({
   return (
     <html lang="en" className={sans.className}>
       <body className="flex flex-col ">
+        <a href="#main-content" className="skip-link">
+          Skip to main content
+        </a>
         <Header/>
-        <main className="flex-grow bg-white">{children}</main>
+        <main id="main-content" role="main" className="flex-grow bg-white">{children}</main>
         <Footer/>
       </body>
     </html>

@@ -12,12 +12,23 @@ const responsive = {
   }
 };
 
-export default function ScrollableBar({ children }: { children: React.ReactNode }) {
+type ScrollableBarProps = {
+  children: React.ReactNode;
+  ariaLabel?: string;
+};
+
+export default function ScrollableBar({ children, ariaLabel }: ScrollableBarProps) {
   return (
     <Carousel
       containerClass="w-full flex gap-2"
       itemClass="flex justify-center item-center"
-      responsive={responsive}>
+      draggable
+      swipeable
+      focusOnSelect
+      renderDotsOutside
+      responsive={responsive}
+      aria-label={ariaLabel}
+    >
       {children}
     </Carousel>
   )

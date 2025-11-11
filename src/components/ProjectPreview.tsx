@@ -5,31 +5,31 @@ import { projects } from "@/projects/data";
 
 export default function ProjectPreview() {
   return (
-    <section className="py-20 px-4 sm:px-6 lg:px-8">
+    <section className="py-20 px-4 sm:px-6 lg:px-8" aria-labelledby="featured-projects-heading">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+          <h2 id="featured-projects-heading" className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
             <span className="text-gradient">Our Featured Projects</span>
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
             Explore our portfolio of exceptional construction projects that showcase our commitment to quality, innovation, and client satisfaction.
           </p>
-          <div className="w-24 h-1 bg-gradient-to-r from-blue-500 to-emerald-500 mx-auto mt-6 rounded-full"></div>
+          <div className="w-24 h-1 bg-gradient-to-r from-blue-500 to-emerald-500 mx-auto mt-6 rounded-full" aria-hidden="true"></div>
         </div>
 
         {/* Projects Grid */}
         <div className="mb-12">
           {/* Desktop: ScrollableBar */}
           <div className="hidden md:block">
-            <ScrollableBar>
+            <ScrollableBar ariaLabel="Featured projects carousel">
               {projects.map((project) => (
                 <div key={project.id} className="p-4">
-                  <Link href={`/projects/${project.id}`} className="group block">
+                  <Link href={`/projects/${project.id}`} className="group block" aria-label={`View details for ${project.title}`}>
                     <div className="card overflow-hidden group-hover:shadow-2xl transition-all duration-300">
                       <div className="relative overflow-hidden aspect-[4/3]">
                         <Image
-                          alt={project.title}
+                          alt={`${project.title} – ${project.shortDescription}`}
                           src={project.image}
                           fill
                           className="object-cover group-hover:scale-110 transition-transform duration-500"
@@ -39,11 +39,11 @@ export default function ProjectPreview() {
                           placeholder="blur"
                           blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCdABmX/9k="
                         />
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" aria-hidden="true"></div>
                         <div className="absolute bottom-4 left-4 right-4 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                           <div className="flex items-center justify-between">
                             <span className="text-sm font-medium">View Details</span>
-                            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                             </svg>
                           </div>
@@ -62,7 +62,7 @@ export default function ProjectPreview() {
                           </span>
                           <div className="flex items-center text-blue-600 text-sm font-medium">
                             Learn More
-                            <svg className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <svg className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                             </svg>
                           </div>
@@ -78,11 +78,11 @@ export default function ProjectPreview() {
           {/* Mobile: Vertical Stack */}
           <div className="md:hidden space-y-6">
             {projects.slice(0, 2).map((project) => (
-              <Link key={project.id} href={`/projects/${project.id}`} className="group block">
+              <Link key={project.id} href={`/projects/${project.id}`} className="group block" aria-label={`View details for ${project.title}`}>
                 <div className="card overflow-hidden group-hover:shadow-xl transition-all duration-300">
                   <div className="relative overflow-hidden aspect-[4/3]">
                     <Image
-                      alt={project.title}
+                      alt={`${project.title} – ${project.shortDescription}`}
                       src={project.image}
                       fill
                       className="object-cover"
@@ -92,11 +92,11 @@ export default function ProjectPreview() {
                       placeholder="blur"
                       blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCdABmX/9k="
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent"></div>
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" aria-hidden="true"></div>
                     <div className="absolute bottom-4 left-4 right-4 text-white">
                       <div className="flex items-center justify-between">
                         <span className="text-sm font-medium">View Details</span>
-                        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                         </svg>
                       </div>
@@ -113,7 +113,7 @@ export default function ProjectPreview() {
                       <span className="text-xs text-gray-500">{project.category === 'commercial' ? 'Commercial' : 'Residential'}</span>
                       <div className="flex items-center text-blue-600 text-sm font-medium">
                         Learn More
-                        <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                         </svg>
                       </div>
@@ -134,7 +134,7 @@ export default function ProjectPreview() {
             <p className="text-gray-600 mb-6">
               Discover our complete portfolio and see how we can bring your vision to life.
             </p>
-            <Link href="/projects" className="btn-primary">
+            <Link href="/projects" className="btn-primary" aria-label="View all construction projects">
               View All Projects
             </Link>
           </div>

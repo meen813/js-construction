@@ -4,6 +4,7 @@ import { useParams } from 'next/navigation';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useState, useEffect, useRef } from 'react';
+import type { KeyboardEvent } from 'react';
 import { projects } from '@/projects/data';
 import StructuredData, { generateProjectSchema, generateBreadcrumbSchema } from '@/components/StructuredData';
 
@@ -13,21 +14,49 @@ export default function ProjectDetailPage() {
   const project = projects.find(p => p.id === Number(id));
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [currentDetailImageIndex, setCurrentDetailImageIndex] = useState(0);
+  const [isAutoAdvance, setIsAutoAdvance] = useState(true);
+  const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
   const thumbnailContainerRef = useRef<HTMLDivElement>(null);
   
   // 모든 이미지를 하나의 배열로 결합
   const allImages = project ? [project.image, ...(project.additionalImages || [])] : [];
   
+  // 사용자 환경설정에 따라 자동 전환 제어
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+
+    const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const handleChange = (event: MediaQueryListEvent) => {
+      setPrefersReducedMotion(event.matches);
+      if (event.matches) {
+        setIsAutoAdvance(false);
+      }
+    };
+
+    setPrefersReducedMotion(mediaQuery.matches);
+    if (mediaQuery.matches) {
+      setIsAutoAdvance(false);
+    }
+
+    mediaQuery.addEventListener('change', handleChange);
+
+    return () => mediaQuery.removeEventListener('change', handleChange);
+  }, []);
+  
   // 자동 전환을 위한 useEffect
   useEffect(() => {
-    if (allImages.length > 1) {
+    if (allImages.length > 1 && isAutoAdvance) {
       const interval = setInterval(() => {
-        setCurrentImageIndex((prev) => (prev + 1) % allImages.length);
-      }, 4000); // 4초마다 전환
+        setCurrentImageIndex((prev) => {
+          const nextIndex = (prev + 1) % allImages.length;
+          setCurrentDetailImageIndex(nextIndex);
+          return nextIndex;
+        });
+      }, 4000);
       
       return () => clearInterval(interval);
     }
-  }, [allImages.length]);
+  }, [allImages.length, isAutoAdvance]);
   
   // 썸네일 자동 스크롤
   useEffect(() => {
@@ -45,26 +74,77 @@ export default function ProjectDetailPage() {
         
         container.scrollTo({
           left: scrollPosition,
-          behavior: 'smooth'
+          behavior: prefersReducedMotion ? 'auto' : 'smooth'
         });
       }
     }
-  }, [currentDetailImageIndex]);
+  }, [currentDetailImageIndex, prefersReducedMotion]);
   
   const nextImage = () => {
-    setCurrentImageIndex((prev) => (prev + 1) % allImages.length);
+    if (allImages.length === 0) return;
+    setCurrentImageIndex((prev) => {
+      const nextIndex = (prev + 1) % allImages.length;
+      setCurrentDetailImageIndex(nextIndex);
+      return nextIndex;
+    });
   };
   
   const prevImage = () => {
-    setCurrentImageIndex((prev) => (prev - 1 + allImages.length) % allImages.length);
+    if (allImages.length === 0) return;
+    setCurrentImageIndex((prev) => {
+      const nextIndex = (prev - 1 + allImages.length) % allImages.length;
+      setCurrentDetailImageIndex(nextIndex);
+      return nextIndex;
+    });
   };
   
   const nextDetailImage = () => {
-    setCurrentDetailImageIndex((prev) => (prev + 1) % allImages.length);
+    if (allImages.length === 0) return;
+    setCurrentDetailImageIndex((prev) => {
+      const nextIndex = (prev + 1) % allImages.length;
+      setCurrentImageIndex(nextIndex);
+      return nextIndex;
+    });
   };
   
   const prevDetailImage = () => {
-    setCurrentDetailImageIndex((prev) => (prev - 1 + allImages.length) % allImages.length);
+    if (allImages.length === 0) return;
+    setCurrentDetailImageIndex((prev) => {
+      const nextIndex = (prev - 1 + allImages.length) % allImages.length;
+      setCurrentImageIndex(nextIndex);
+      return nextIndex;
+    });
+  };
+
+  const toggleAutoAdvance = () => {
+    if (allImages.length <= 1) return;
+    setIsAutoAdvance((prev) => !prev);
+  };
+
+  const handleIndicatorKeyDown = (event: KeyboardEvent<HTMLButtonElement>, index: number) => {
+    if (allImages.length <= 1) return;
+
+    const key = event.key;
+    if (key === 'ArrowRight' || key === 'Right') {
+      event.preventDefault();
+      const nextIndex = (index + 1) % allImages.length;
+      setCurrentImageIndex(nextIndex);
+      setCurrentDetailImageIndex(nextIndex);
+    } else if (key === 'ArrowLeft' || key === 'Left') {
+      event.preventDefault();
+      const nextIndex = (index - 1 + allImages.length) % allImages.length;
+      setCurrentImageIndex(nextIndex);
+      setCurrentDetailImageIndex(nextIndex);
+    } else if (key === 'Home') {
+      event.preventDefault();
+      setCurrentImageIndex(0);
+      setCurrentDetailImageIndex(0);
+    } else if (key === 'End') {
+      event.preventDefault();
+      const lastIndex = allImages.length - 1;
+      setCurrentImageIndex(lastIndex);
+      setCurrentDetailImageIndex(lastIndex);
+    }
   };
 
   if (!project) {
@@ -129,13 +209,13 @@ export default function ProjectDetailPage() {
       <StructuredData data={breadcrumbSchema} />
       
       {/* Hero Section */}
-      <section className="relative h-screen flex items-center justify-center overflow-hidden">
-        <div className="absolute inset-0">
+      <section className="relative h-screen flex items-center justify-center overflow-hidden" aria-labelledby="project-hero-heading">
+        <div className="absolute inset-0" aria-hidden="true">
           {allImages.map((image, index) => (
             <Image
               key={index}
               src={image}
-              alt={`${project.title} - Image ${index + 1}`}
+              alt={`${project.title} progress image ${index + 1}`}
               fill
               className={`object-cover transition-opacity duration-1000 ${
                 index === currentImageIndex ? 'opacity-100' : 'opacity-0'
@@ -145,20 +225,62 @@ export default function ProjectDetailPage() {
           ))}
           <div className="absolute inset-0 bg-black/40"></div>
         </div>
-        
-        
+
+        {allImages.length > 1 && (
+          <div className="absolute inset-0 flex items-center justify-between px-4 z-30" aria-label="Hero image navigation">
+            <button
+              type="button"
+              onClick={prevImage}
+              className="bg-white/25 hover:bg-white/40 text-white p-3 rounded-full transition-all duration-300 backdrop-blur-sm"
+              aria-label="View previous project image"
+            >
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+              </svg>
+            </button>
+            <button
+              type="button"
+              onClick={nextImage}
+              className="bg-white/25 hover:bg-white/40 text-white p-3 rounded-full transition-all duration-300 backdrop-blur-sm"
+              aria-label="View next project image"
+            >
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+              </svg>
+            </button>
+          </div>
+        )}
+
         {/* Image Indicators */}
         {allImages.length > 1 && (
-          <div className="absolute bottom-20 left-1/2 transform -translate-x-1/2 z-20 flex space-x-2">
-            {allImages.map((_, index) => (
-              <button
-                key={index}
-                onClick={() => setCurrentImageIndex(index)}
-                className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                  index === currentImageIndex ? 'bg-white' : 'bg-white/50'
-                }`}
-              />
-            ))}
+          <div className="absolute bottom-20 left-1/2 transform -translate-x-1/2 z-20 flex flex-col items-center space-y-3">
+            <div className="flex space-x-2" aria-label="Select project image">
+              {allImages.map((_, index) => (
+                <button
+                  key={index}
+                  type="button"
+                  onKeyDown={(event) => handleIndicatorKeyDown(event, index)}
+                  onClick={() => {
+                    setCurrentImageIndex(index);
+                    setCurrentDetailImageIndex(index);
+                  }}
+                  className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                    index === currentImageIndex ? 'bg-white' : 'bg-white/50'
+                  }`}
+                  aria-label={`Show project image ${index + 1}`}
+                  aria-pressed={index === currentImageIndex}
+                  tabIndex={index === currentImageIndex ? 0 : -1}
+                />
+              ))}
+            </div>
+            <button
+              type="button"
+              onClick={toggleAutoAdvance}
+              className="text-xs uppercase tracking-wide bg-white/20 text-white px-3 py-1 rounded-full hover:bg-white/30 transition-colors"
+              aria-pressed={isAutoAdvance}
+            >
+              {isAutoAdvance ? 'Pause slideshow' : 'Play slideshow'}
+            </button>
           </div>
         )}
         
@@ -167,19 +289,20 @@ export default function ProjectDetailPage() {
             <Link 
               href="/projects" 
               className="inline-flex items-center text-white/80 hover:text-white transition-colors duration-300 mb-6"
+              aria-label="Return to all projects"
             >
-              <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
               </svg>
               Back to Projects
             </Link>
           </div>
           
-          <h1 className="text-5xl md:text-7xl font-bold mb-6 tracking-tight">
+          <h1 id="project-hero-heading" className="text-5xl md:text-7xl font-bold mb-6 tracking-tight">
             {project.title}
           </h1>
           
-          <div className="w-24 h-1 bg-white mx-auto mb-8"></div>
+          <div className="w-24 h-1 bg-white mx-auto mb-8" aria-hidden="true"></div>
           
           <p className="text-xl md:text-2xl font-light leading-relaxed max-w-3xl mx-auto">
             {project.description}
@@ -187,7 +310,7 @@ export default function ProjectDetailPage() {
         </div>
 
         {/* Scroll indicator */}
-        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-white animate-bounce">
+        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-white animate-bounce" aria-hidden="true">
           <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
           </svg>
@@ -195,7 +318,7 @@ export default function ProjectDetailPage() {
       </section>
 
       {/* Project Details */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8">
+      <section className="py-20 px-4 sm:px-6 lg:px-8" aria-labelledby="project-overview-heading">
         <div className="max-w-6xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             {/* Project Image */}
@@ -207,7 +330,7 @@ export default function ProjectDetailPage() {
                     <Image
                       key={index}
                       src={image}
-                      alt={`${project.title} - Image ${index + 1}`}
+                      alt={`${project.title} detail image ${index + 1}`}
                       width={600}
                       height={400}
                       className={`w-full h-auto object-cover transition-opacity duration-500 ${
@@ -218,7 +341,7 @@ export default function ProjectDetailPage() {
                       loading={index === 0 ? "eager" : "lazy"}
                       priority={index === 0}
                       placeholder="blur"
-                      blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCdABmX/9k="
+                      blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxAAPwCdABmX/9k="
                     />
                   ))}
                   
@@ -226,6 +349,7 @@ export default function ProjectDetailPage() {
                   {allImages.length > 1 && (
                     <>
                       <button
+                        type="button"
                         onClick={prevDetailImage}
                         className="absolute left-4 top-1/2 transform -translate-y-1/2 z-20 bg-white/20 hover:bg-white/40 text-white p-3 rounded-full transition-all duration-300 backdrop-blur-sm"
                         aria-label="Previous image"
@@ -235,6 +359,7 @@ export default function ProjectDetailPage() {
                         </svg>
                       </button>
                       <button
+                        type="button"
                         onClick={nextDetailImage}
                         className="absolute right-4 top-1/2 transform -translate-y-1/2 z-20 bg-white/20 hover:bg-white/40 text-white p-3 rounded-full transition-all duration-300 backdrop-blur-sm"
                         aria-label="Next image"
@@ -255,8 +380,12 @@ export default function ProjectDetailPage() {
                   >
                     {allImages.map((image, index) => (
                       <button
+                        type="button"
                         key={index}
-                        onClick={() => setCurrentDetailImageIndex(index)}
+                        onClick={() => {
+                          setCurrentDetailImageIndex(index);
+                          setCurrentImageIndex(index);
+                        }}
                         className={`relative flex-shrink-0 overflow-hidden rounded-lg transition-all duration-300 ${
                           index === currentDetailImageIndex 
                             ? 'ring-2 ring-blue-500 scale-105' 
@@ -266,7 +395,7 @@ export default function ProjectDetailPage() {
                       >
                         <Image
                           src={image}
-                          alt={`Thumbnail ${index + 1}`}
+                          alt={`${project.title} thumbnail ${index + 1}`}
                           width={100}
                           height={75}
                           className="w-24 h-18 object-cover"
@@ -284,7 +413,7 @@ export default function ProjectDetailPage() {
             {/* Project Info */}
             <div className="order-1 lg:order-2">
               <div className="max-w-lg">
-                <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
+                <h2 id="project-overview-heading" className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
                   Project Overview
                 </h2>
                 
@@ -356,10 +485,10 @@ export default function ProjectDetailPage() {
       </section>
 
       {/* Features Section */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gray-50">
+      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gray-50" aria-labelledby="project-features-heading">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+            <h2 id="project-features-heading" className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
               <span className="text-gradient">Project Features</span>
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
@@ -398,10 +527,10 @@ export default function ProjectDetailPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8">
+      <section className="py-20 px-4 sm:px-6 lg:px-8" aria-labelledby="project-cta-heading">
         <div className="max-w-4xl mx-auto text-center">
           <div className="card-gradient p-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
+            <h2 id="project-cta-heading" className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
               Ready to Create Something Amazing?
             </h2>
             <p className="text-xl text-gray-600 mb-8 leading-relaxed">

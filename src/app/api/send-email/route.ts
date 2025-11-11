@@ -99,8 +99,13 @@ export async function POST(req: NextRequest) {
     }
     
     // Create transporter
+    // Supports both Gmail and Hotmail/Outlook
+    const emailDomain = process.env.EMAIL_USER?.toLowerCase().includes('@gmail.com') ? 'gmail' : 
+                       process.env.EMAIL_USER?.toLowerCase().includes('@hotmail.com') || 
+                       process.env.EMAIL_USER?.toLowerCase().includes('@outlook.com') ? 'hotmail' : 'gmail';
+    
     const transporter = nodemailer.createTransport({
-      service: 'gmail',
+      service: emailDomain,
       auth: {
         user: process.env.EMAIL_USER,
         pass: process.env.EMAIL_PASS,

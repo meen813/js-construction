@@ -15,7 +15,6 @@ Important integration points
 Developer workflows & commands
 - Typical dev run: `npm run dev` (see `package.json` in repo root). Build and start with `npm run build` and `npm run start`.
 - Linting: `npm run lint` uses Next's lint config.
-- Lambda helper: there is a small `lambda-function` folder with its own `package.json` using `aws-sdk` (no scripts). Treat this as a separate artifact if adding serverless helpers.
 
 Project-specific conventions & patterns
 - API design: API route files export `GET`/`POST` functions that use `NextRequest` and return `NextResponse.json(...)`.
@@ -38,7 +37,7 @@ Files to reference when editing or adding features
 - `src/components/ContactForm.tsx` — client form, shows fetch('/api/send-email') usage and expected JSON payload
 - `src/app/api/send-email/route.ts` — nodemailer usage and `.env.local` loading
 - `src/app/api/posts/route.ts` and `src/app/service/posts.ts` — S3 uploads and DynamoDB usage patterns
-- `package.json` & `lambda-function/package.json` — scripts, dependencies
+- `package.json` — scripts, dependencies
 
 If unsure, ask the maintainers about:
 - Required AWS resources (DynamoDB table name, S3 bucket name) and preferred test credentials. The code uses sensible defaults but deployment needs real resources.

@@ -13,21 +13,46 @@ export default function ProjectDetailPage() {
   const project = projects.find(p => p.id === Number(id));
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [currentDetailImageIndex, setCurrentDetailImageIndex] = useState(0);
+  const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
   const thumbnailContainerRef = useRef<HTMLDivElement>(null);
   
   // 모든 이미지를 하나의 배열로 결합
   const allImages = project ? [project.image, ...(project.additionalImages || [])] : [];
   
-  // 자동 전환을 위한 useEffect
+  // Check for prefers-reduced-motion preference
   useEffect(() => {
-    if (allImages.length > 1) {
+    const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+    setPrefersReducedMotion(mediaQuery.matches);
+
+    const handleChange = (e: MediaQueryListEvent) => {
+      setPrefersReducedMotion(e.matches);
+    };
+
+    if (mediaQuery.addEventListener) {
+      mediaQuery.addEventListener('change', handleChange);
+    } else {
+      mediaQuery.addListener(handleChange);
+    }
+
+    return () => {
+      if (mediaQuery.removeEventListener) {
+        mediaQuery.removeEventListener('change', handleChange);
+      } else {
+        mediaQuery.removeListener(handleChange);
+      }
+    };
+  }, []);
+  
+  // 자동 전환을 위한 useEffect (reduced motion일 때는 비활성화)
+  useEffect(() => {
+    if (allImages.length > 1 && !prefersReducedMotion) {
       const interval = setInterval(() => {
         setCurrentImageIndex((prev) => (prev + 1) % allImages.length);
       }, 4000); // 4초마다 전환
       
       return () => clearInterval(interval);
     }
-  }, [allImages.length]);
+  }, [allImages.length, prefersReducedMotion]);
   
   // 썸네일 자동 스크롤
   useEffect(() => {
@@ -45,11 +70,11 @@ export default function ProjectDetailPage() {
         
         container.scrollTo({
           left: scrollPosition,
-          behavior: 'smooth'
+          behavior: prefersReducedMotion ? 'auto' : 'smooth'
         });
       }
     }
-  }, [currentDetailImageIndex]);
+  }, [currentDetailImageIndex, prefersReducedMotion]);
   
   const nextImage = () => {
     setCurrentImageIndex((prev) => (prev + 1) % allImages.length);
@@ -149,12 +174,14 @@ export default function ProjectDetailPage() {
         
         {/* Image Indicators */}
         {allImages.length > 1 && (
-          <div className="absolute bottom-20 left-1/2 transform -translate-x-1/2 z-20 flex space-x-2">
+          <div className="absolute bottom-20 left-1/2 transform -translate-x-1/2 z-20 flex space-x-2" role="group" aria-label="Image indicators">
             {allImages.map((_, index) => (
               <button
                 key={index}
                 onClick={() => setCurrentImageIndex(index)}
-                className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                aria-label={`Go to image ${index + 1} of ${allImages.length}`}
+                aria-pressed={index === currentImageIndex}
+                className={`w-3 h-3 rounded-full transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-transparent ${
                   index === currentImageIndex ? 'bg-white' : 'bg-white/50'
                 }`}
               />
@@ -166,9 +193,9 @@ export default function ProjectDetailPage() {
           <div className="mb-8">
             <Link 
               href="/projects" 
-              className="inline-flex items-center text-white/80 hover:text-white transition-colors duration-300 mb-6"
+              className="inline-flex items-center text-white/80 hover:text-white transition-colors duration-300 mb-6 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-transparent rounded"
             >
-              <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
               </svg>
               Back to Projects
@@ -187,8 +214,8 @@ export default function ProjectDetailPage() {
         </div>
 
         {/* Scroll indicator */}
-        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-white animate-bounce">
-          <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <div className={`absolute bottom-8 left-1/2 transform -translate-x-1/2 text-white ${prefersReducedMotion ? '' : 'animate-bounce'}`} aria-hidden="true">
+          <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
           </svg>
         </div>
@@ -227,19 +254,19 @@ export default function ProjectDetailPage() {
                     <>
                       <button
                         onClick={prevDetailImage}
-                        className="absolute left-4 top-1/2 transform -translate-y-1/2 z-20 bg-white/20 hover:bg-white/40 text-white p-3 rounded-full transition-all duration-300 backdrop-blur-sm"
-                        aria-label="Previous image"
+                        className="absolute left-4 top-1/2 transform -translate-y-1/2 z-20 bg-white/20 hover:bg-white/40 text-white p-3 rounded-full transition-all duration-300 backdrop-blur-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-transparent"
+                        aria-label={`Previous image (${currentDetailImageIndex + 1} of ${allImages.length})`}
                       >
-                        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
                         </svg>
                       </button>
                       <button
                         onClick={nextDetailImage}
-                        className="absolute right-4 top-1/2 transform -translate-y-1/2 z-20 bg-white/20 hover:bg-white/40 text-white p-3 rounded-full transition-all duration-300 backdrop-blur-sm"
-                        aria-label="Next image"
+                        className="absolute right-4 top-1/2 transform -translate-y-1/2 z-20 bg-white/20 hover:bg-white/40 text-white p-3 rounded-full transition-all duration-300 backdrop-blur-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-transparent"
+                        aria-label={`Next image (${currentDetailImageIndex + 1} of ${allImages.length})`}
                       >
-                        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                         </svg>
                       </button>
@@ -251,18 +278,21 @@ export default function ProjectDetailPage() {
                 {allImages.length > 1 && (
                   <div 
                     ref={thumbnailContainerRef}
-                    className="flex gap-2 overflow-x-auto pb-2 px-1 scroll-smooth"
+                    className={`flex gap-2 overflow-x-auto pb-2 px-1 ${prefersReducedMotion ? '' : 'scroll-smooth'}`}
+                    role="group"
+                    aria-label="Image thumbnails"
                   >
                     {allImages.map((image, index) => (
                       <button
                         key={index}
                         onClick={() => setCurrentDetailImageIndex(index)}
-                        className={`relative flex-shrink-0 overflow-hidden rounded-lg transition-all duration-300 ${
+                        aria-pressed={index === currentDetailImageIndex}
+                        className={`relative flex-shrink-0 overflow-hidden rounded-lg transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 ${
                           index === currentDetailImageIndex 
                             ? 'ring-2 ring-blue-500 scale-105' 
                             : 'opacity-70 hover:opacity-100 hover:scale-105'
                         }`}
-                        aria-label={`View image ${index + 1}`}
+                        aria-label={`View image ${index + 1} of ${allImages.length}`}
                       >
                         <Image
                           src={image}

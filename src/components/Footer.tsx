@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export default function Footer() {
   return (
-    <footer className="bg-gradient-to-br from-gray-900 via-slate-900 to-gray-800 text-white">
+    <footer role="contentinfo" className="bg-gradient-to-br from-gray-900 via-slate-900 to-gray-800 text-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Company Info */}
@@ -11,20 +11,21 @@ export default function Footer() {
               Hwang J&S Construction
             </h3>
             <p className="text-gray-300 mb-6 leading-relaxed">
-            Premier general contractor in Orange County and Los Angeles County, California. Since 2011, we have specialized in delivering exceptional construction services with unmatched quality and customer satisfaction.
+            Trusted general contractor serving Orange County and Los Angeles County since 2011. We specialize in commercial renovation, tenant improvement, ADA upgrades, and residential construction — delivering every project with safety, quality, and reliability.
             </p>
           </div>
 
           {/* Quick Links */}
-          <div>
+          <nav aria-label="Footer navigation">
             <h4 className="text-lg font-semibold mb-4">Quick Links</h4>
             <ul className="space-y-2">
-              <li><Link href="/" className="text-gray-300 hover:text-white transition-colors duration-300">Home</Link></li>
-              <li><Link href="/projects" className="text-gray-300 hover:text-white transition-colors duration-300">Projects</Link></li>
-              <li><Link href="/services" className="text-gray-300 hover:text-white transition-colors duration-300">Services</Link></li>
-              <li><Link href="/contact" className="text-gray-300 hover:text-white transition-colors duration-300">Contact</Link></li>
+              <li><Link href="/" className="text-gray-300 hover:text-white transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-gray-900 rounded">Home</Link></li>
+              <li><Link href="/projects" className="text-gray-300 hover:text-white transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-gray-900 rounded">Projects</Link></li>
+              <li><Link href="/services" className="text-gray-300 hover:text-white transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-gray-900 rounded">Services</Link></li>
+              <li><Link href="/why-us" className="text-gray-300 hover:text-white transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-gray-900 rounded">Why Us</Link></li>
+              <li><Link href="/contact" className="text-gray-300 hover:text-white transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-gray-900 rounded">Contact</Link></li>
             </ul>
-          </div>
+          </nav>
 
           {/* Services */}
           <div>
@@ -43,17 +44,20 @@ export default function Footer() {
           <div className="flex flex-col md:flex-row justify-between items-center">
             <div className="text-center md:text-left">
               <p className="text-gray-400 text-sm">
-                ©2024 Hwang J&S Construction | All Rights Reserved
+                ©2025 Hwang J&S Construction | All Rights Reserved
               </p>
               <p className="text-gray-400 text-sm mt-1">
                 License #960757
               </p>
             </div>
-            <div className="flex space-x-6 mt-4 md:mt-0">
-              <a href="#" className="text-gray-400 hover:text-white text-sm transition-colors duration-300">Privacy Policy</a>
-              <a href="#" className="text-gray-400 hover:text-white text-sm transition-colors duration-300">Terms of Service</a>
-              <a href="#" className="text-gray-400 hover:text-white text-sm transition-colors duration-300">Licenses</a>
-            </div>
+            <nav aria-label="Legal links">
+              <div className="flex flex-wrap gap-4 md:gap-6 mt-4 md:mt-0">
+                <Link href="/accessibility" className="text-gray-400 hover:text-white text-sm transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-gray-900 rounded">Accessibility</Link>
+                <a href="#" className="text-gray-400 hover:text-white text-sm transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-gray-900 rounded" aria-disabled="true" tabIndex={-1}>Privacy Policy</a>
+                <a href="#" className="text-gray-400 hover:text-white text-sm transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-gray-900 rounded" aria-disabled="true" tabIndex={-1}>Terms of Service</a>
+                <a href="#" className="text-gray-400 hover:text-white text-sm transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-gray-900 rounded" aria-disabled="true" tabIndex={-1}>Licenses</a>
+              </div>
+            </nav>
           </div>
         </div>
       </div>

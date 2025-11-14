@@ -86,7 +86,7 @@ export default function WhyUsPage() {
               </div>
               <h3 className="text-2xl font-bold text-gray-900 mb-4">Reliable After-Service</h3>
               <p className="text-gray-600 leading-relaxed">
-                Our responsibility doesn't end at project completion. We provide responsive after-service and warranty support when clients need us.
+                Our responsibility doesn&apos;t end at project completion. We provide responsive after-service and warranty support when clients need us.
               </p>
             </div>
           </div>
@@ -183,7 +183,7 @@ export default function WhyUsPage() {
                 <div className="flex-1">
                   <h3 className="text-xl font-bold text-gray-900 mb-3">Quality Craftsmanship</h3>
                   <p className="text-gray-600 leading-relaxed">
-                    We focus on durable, clean, and professional results that reflect well on our clients' properties.
+                    We focus on durable, clean, and professional results that reflect well on our clients&apos; properties.
                   </p>
                 </div>
               </div>
@@ -255,11 +255,11 @@ export default function WhyUsPage() {
         <div className="max-w-7xl mx-auto">
           <div className="max-w-4xl mx-auto text-center">
             <h2 id="after-service-heading" className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
-              We're Still Here After the Work Is Done
+              We&apos;re Still Here After the Work Is Done
             </h2>
             
             <p className="text-lg md:text-xl text-gray-600 leading-relaxed mb-8">
-              We don't disappear after the final inspection. If something needs adjustment or follow-up, we respond quickly and take responsibility for our work. Many of our clients call us back for additional phases because they trust how we stand behind our projects.
+              We don&apos;t disappear after the final inspection. If something needs adjustment or follow-up, we respond quickly and take responsibility for our work. Many of our clients call us back for additional phases because they trust how we stand behind our projects.
             </p>
             
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12">
@@ -297,7 +297,7 @@ export default function WhyUsPage() {
             </h2>
             
             <p className="text-xl text-gray-600 mb-8 leading-relaxed">
-              Whether you're planning a mall renovation, ADA improvements, or a residential addition, we're here to help you build with confidence.
+              Whether you&apos;re planning a mall renovation, ADA improvements, or a residential addition, we&apos;re here to help you build with confidence.
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center">

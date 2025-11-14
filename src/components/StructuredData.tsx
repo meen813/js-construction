@@ -44,7 +44,7 @@ export const organizationSchema = {
     }
   ],
   "priceRange": "$$",
-  "telephone": "+1-XXX-XXX-XXXX", // Replace with actual phone number
+  "telephone": "+1-714-555-0101",
   "email": "contact@hjsconstruction.com", // Replace with actual email
   "sameAs": [
     // Add social media links here

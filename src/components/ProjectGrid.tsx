@@ -68,8 +68,11 @@ export default function ProjectGrid({ projects }: Props) {
     const cleanedTitle = cleanTitle(project.title);
     
     return (
-      <Link href={`/projects/${project.id}`}>
-        <div className="group cursor-pointer">
+      <Link 
+        href={`/projects/${project.id}`}
+        aria-label={`View ${cleanedTitle} project details`}
+      >
+        <article className="group cursor-pointer">
           {/* Card Container with Modern Styling */}
           <div className="relative w-full overflow-hidden rounded-2xl border border-gray-200/60 bg-white shadow-sm transition-all duration-500 ease-out group-hover:scale-[1.02] group-hover:-translate-y-1 group-hover:shadow-xl group-hover:border-gray-300/80">
             {/* Image Container with 16:9 Aspect Ratio */}
@@ -81,7 +84,7 @@ export default function ProjectGrid({ projects }: Props) {
                   <div className="col-span-2 relative">
                     <Image
                       src={project.image}
-                      alt={project.title}
+                      alt={`${cleanedTitle} - Main project image showing ${project.shortDescription || 'construction work'}`}
                       fill
                       className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
                       style={{
@@ -100,7 +103,7 @@ export default function ProjectGrid({ projects }: Props) {
                       <div key={idx} className="relative flex-1">
                         <Image
                           src={img}
-                          alt={`${project.title} - Detail ${idx + 1}`}
+                          alt={`${cleanedTitle} - Additional detail image ${idx + 1} of ${project.shortDescription || 'project'}`}
                           fill
                           className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
                           style={{
@@ -120,7 +123,7 @@ export default function ProjectGrid({ projects }: Props) {
                 /* Single Image with Enhanced Styling */
                 <Image
                   src={project.image}
-                  alt={project.title}
+                  alt={`${cleanedTitle} - Main project image showing ${project.shortDescription || 'construction work'}`}
                   fill
                   className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
                   style={{
@@ -151,9 +154,9 @@ export default function ProjectGrid({ projects }: Props) {
             {/* Project Info - Minimalist Style */}
             <div className="p-6 space-y-3">
               <div className="flex items-start justify-between gap-2">
-                <h2 className="text-xl font-bold text-gray-900 group-hover:text-blue-600 transition-colors duration-300 leading-tight flex-1 min-w-0">
+                <h3 className="text-xl font-bold text-gray-900 group-hover:text-blue-600 transition-colors duration-300 leading-tight flex-1 min-w-0">
                   {cleanedTitle}
-                </h2>
+                </h3>
                 <span className="inline-flex items-center px-2 py-0.5 bg-gray-100 text-gray-600 text-xs font-medium rounded-md whitespace-nowrap flex-shrink-0 ml-2">
                   {project.year}
                 </span>
@@ -168,7 +171,7 @@ export default function ProjectGrid({ projects }: Props) {
               </p>
             </div>
           </div>
-        </div>
+        </article>
       </Link>
     );
   };
@@ -181,6 +184,7 @@ export default function ProjectGrid({ projects }: Props) {
           <button
             onClick={() => setCategoryFilter('all')}
             aria-pressed={categoryFilter === 'all'}
+            aria-label="Show all project categories"
             className={`px-6 py-3 rounded-full text-base font-semibold transition-all duration-300 flex items-center gap-2 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 ${
               categoryFilter === 'all'
                 ? 'bg-blue-600 text-white shadow-lg scale-105'
@@ -192,6 +196,7 @@ export default function ProjectGrid({ projects }: Props) {
           <button
             onClick={() => setCategoryFilter('commercial')}
             aria-pressed={categoryFilter === 'commercial'}
+            aria-label="Filter projects by commercial category"
             className={`px-6 py-3 rounded-full text-base font-semibold transition-all duration-300 flex items-center gap-2 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 ${
               categoryFilter === 'commercial'
                 ? 'bg-blue-600 text-white shadow-lg scale-105'
@@ -204,6 +209,7 @@ export default function ProjectGrid({ projects }: Props) {
           <button
             onClick={() => setCategoryFilter('residential')}
             aria-pressed={categoryFilter === 'residential'}
+            aria-label="Filter projects by residential category"
             className={`px-6 py-3 rounded-full text-base font-semibold transition-all duration-300 flex items-center gap-2 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 ${
               categoryFilter === 'residential'
                 ? 'bg-blue-600 text-white shadow-lg scale-105'

@@ -168,7 +168,7 @@ export default function Introduction() {
                 {/* Image */}
                 <div className="relative mb-4 md:mb-6 aspect-[4/3] overflow-hidden rounded-2xl border border-gray-100">
                   <Image
-                    alt={service.title}
+                    alt={`${service.title} - ${service.subtitle}`}
                     src={service.image}
                     fill
                     className="object-cover transition-transform duration-500 group-hover:scale-105"
@@ -225,7 +225,7 @@ export default function Introduction() {
                 {/* Image */}
                 <div className="relative mb-4 md:mb-6 aspect-[4/3] overflow-hidden rounded-2xl border border-gray-100">
                   <Image
-                    alt={service.title}
+                    alt={`${service.title} - ${service.subtitle}`}
                     src={service.image}
                     fill
                     className="object-cover transition-transform duration-500 group-hover:scale-105"

@@ -92,6 +92,29 @@ export default function ProjectDetailPage() {
     setCurrentDetailImageIndex((prev) => (prev - 1 + allImages.length) % allImages.length);
   };
 
+  // Keyboard navigation for image gallery
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      // Only handle arrow keys when focus is on the image container or buttons
+      const target = e.target as HTMLElement;
+      const isInGallery = target.closest('[role="group"][aria-label*="Image"]') || 
+                          target.closest('.relative.overflow-hidden.rounded-2xl');
+      
+      if (!isInGallery) return;
+      
+      if (e.key === 'ArrowLeft') {
+        e.preventDefault();
+        setCurrentDetailImageIndex((prev) => (prev - 1 + allImages.length) % allImages.length);
+      } else if (e.key === 'ArrowRight') {
+        e.preventDefault();
+        setCurrentDetailImageIndex((prev) => (prev + 1) % allImages.length);
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [allImages.length]);
+
   if (!project) {
     return (
       <div className="min-h-screen bg-gray-50 flex items-center justify-center">
@@ -160,12 +183,13 @@ export default function ProjectDetailPage() {
             <Image
               key={index}
               src={image}
-              alt={`${project.title} - Image ${index + 1}`}
+              alt={`${project.title} - Image ${index + 1} of ${allImages.length}${index === currentImageIndex ? ' (currently displayed)' : ''}`}
               fill
               className={`object-cover transition-opacity duration-1000 ${
                 index === currentImageIndex ? 'opacity-100' : 'opacity-0'
               }`}
               priority={index === 0}
+              aria-hidden={index !== currentImageIndex}
             />
           ))}
           <div className="absolute inset-0 bg-black/40"></div>
@@ -234,7 +258,7 @@ export default function ProjectDetailPage() {
                     <Image
                       key={index}
                       src={image}
-                      alt={`${project.title} - Image ${index + 1}`}
+                      alt={`${project.title} - Image ${index + 1} of ${allImages.length}${index === currentDetailImageIndex ? ' (currently displayed)' : ''}`}
                       width={600}
                       height={400}
                       className={`w-full h-auto object-cover transition-opacity duration-500 ${
@@ -246,6 +270,7 @@ export default function ProjectDetailPage() {
                       priority={index === 0}
                       placeholder="blur"
                       blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCdABmX/9k="
+                      aria-hidden={index !== currentDetailImageIndex}
                     />
                   ))}
                   
@@ -254,8 +279,14 @@ export default function ProjectDetailPage() {
                     <>
                       <button
                         onClick={prevDetailImage}
+                        onKeyDown={(e) => {
+                          if (e.key === 'ArrowLeft') {
+                            e.preventDefault();
+                            prevDetailImage();
+                          }
+                        }}
                         className="absolute left-4 top-1/2 transform -translate-y-1/2 z-20 bg-white/20 hover:bg-white/40 text-white p-3 rounded-full transition-all duration-300 backdrop-blur-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-transparent"
-                        aria-label={`Previous image (${currentDetailImageIndex + 1} of ${allImages.length})`}
+                        aria-label={`Previous image. Currently viewing image ${currentDetailImageIndex + 1} of ${allImages.length}`}
                       >
                         <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
@@ -263,8 +294,14 @@ export default function ProjectDetailPage() {
                       </button>
                       <button
                         onClick={nextDetailImage}
+                        onKeyDown={(e) => {
+                          if (e.key === 'ArrowRight') {
+                            e.preventDefault();
+                            nextDetailImage();
+                          }
+                        }}
                         className="absolute right-4 top-1/2 transform -translate-y-1/2 z-20 bg-white/20 hover:bg-white/40 text-white p-3 rounded-full transition-all duration-300 backdrop-blur-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-transparent"
-                        aria-label={`Next image (${currentDetailImageIndex + 1} of ${allImages.length})`}
+                        aria-label={`Next image. Currently viewing image ${currentDetailImageIndex + 1} of ${allImages.length}`}
                       >
                         <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
@@ -292,11 +329,11 @@ export default function ProjectDetailPage() {
                             ? 'ring-2 ring-blue-500 scale-105' 
                             : 'opacity-70 hover:opacity-100 hover:scale-105'
                         }`}
-                        aria-label={`View image ${index + 1} of ${allImages.length}`}
+                        aria-label={`View image ${index + 1} of ${allImages.length}${index === currentDetailImageIndex ? ' (currently displayed)' : ''}`}
                       >
                         <Image
                           src={image}
-                          alt={`Thumbnail ${index + 1}`}
+                          alt={`Thumbnail ${index + 1} of ${project.title}`}
                           width={100}
                           height={75}
                           className="w-24 h-18 object-cover"

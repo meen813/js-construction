@@ -30,7 +30,8 @@ export default function ProjectsPage() {
       </section>
 
       {/* Projects Grid Section */}
-      <section className="py-20">
+      <section className="py-20" aria-labelledby="projects-grid-heading">
+        <h2 id="projects-grid-heading" className="sr-only">Projects Grid</h2>
         <ProjectGrid projects={projects} />
       </section>
     </div>

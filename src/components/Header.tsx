@@ -13,12 +13,45 @@ export default function Header() {
   const mobileMenuRef = useRef<HTMLDivElement>(null);
   const menuButtonRef = useRef<HTMLButtonElement>(null);
 
-  // Focus management for mobile menu
+  // Focus management and trap for mobile menu
   useEffect(() => {
     if (isMobileMenuOpen && mobileMenuRef.current) {
       // Focus first link when menu opens
       const firstLink = mobileMenuRef.current.querySelector('a') as HTMLElement;
       firstLink?.focus();
+      
+      // Trap focus within mobile menu
+      const handleTabKey = (e: KeyboardEvent) => {
+        if (e.key !== 'Tab') return;
+        
+        const focusableElements = mobileMenuRef.current?.querySelectorAll(
+          'a, button, [tabindex]:not([tabindex="-1"])'
+        ) as NodeListOf<HTMLElement>;
+        
+        if (!focusableElements || focusableElements.length === 0) return;
+        
+        const firstElement = focusableElements[0];
+        const lastElement = focusableElements[focusableElements.length - 1];
+        
+        if (e.shiftKey) {
+          // Shift + Tab
+          if (document.activeElement === firstElement) {
+            e.preventDefault();
+            lastElement.focus();
+          }
+        } else {
+          // Tab
+          if (document.activeElement === lastElement) {
+            e.preventDefault();
+            firstElement.focus();
+          }
+        }
+      };
+      
+      document.addEventListener('keydown', handleTabKey);
+      return () => {
+        document.removeEventListener('keydown', handleTabKey);
+      };
     } else if (!isMobileMenuOpen && menuButtonRef.current) {
       // Return focus to menu button when menu closes
       menuButtonRef.current.focus();
@@ -107,11 +140,11 @@ export default function Header() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 md:h-20">
                  {/* Logo */}
-                 <Link href="/" className="group">
+                 <Link href="/" className="group" aria-label="Hwang J&S Construction - Home">
                    <div className={`transition-all duration-300 ${
                      isScrolled ? 'text-gray-900' : 'text-white'
                    }`}>
-                     <h1 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold group-hover:scale-105 transition-transform duration-300">
+                     <span className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold group-hover:scale-105 transition-transform duration-300 block">
                        <span className={`font-extrabold ${
                          isScrolled 
                            ? 'text-gray-900' 
@@ -119,7 +152,7 @@ export default function Header() {
                        }`}>
                          Hwang J&S Construction
                        </span>
-                     </h1>
+                     </span>
                    </div>
                  </Link>
 
@@ -216,8 +249,12 @@ export default function Header() {
           <div 
             ref={mobileMenuRef}
             id="mobile-menu" 
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="mobile-menu-title"
             className="md:hidden absolute top-full left-0 w-full bg-white/95 backdrop-blur-md shadow-lg border-b border-gray-200"
           >
+            <h2 id="mobile-menu-title" className="sr-only">Mobile Navigation Menu</h2>
             <nav aria-label="Mobile navigation" className="flex flex-col space-y-2 p-4">
               <Link
                 href="/"

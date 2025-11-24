@@ -75,7 +75,7 @@ export default function Home() {
       <StructuredData data={servicesSchema} />
       
       {/* Hero Section */}
-      <section className="h-screen relative overflow-hidden">
+      <section className="h-screen relative overflow-hidden" aria-label="Hero section">
         <div className="absolute inset-0" aria-hidden="true">
           <video
             ref={videoRef}
@@ -84,13 +84,15 @@ export default function Home() {
             muted
             playsInline
             className="w-full h-full object-cover"
-            aria-label="Background construction video"
+            aria-label="Background construction video showing construction site activity"
+            aria-describedby="video-description"
             onPlay={() => setIsVideoPlaying(true)}
             onPause={() => setIsVideoPlaying(false)}
           >
             <source src="/video/5501.mp4" type="video/mp4" />
             Your browser does not support the video tag.
           </video>
+          <span id="video-description" className="sr-only">Background video showing construction site activity and building work</span>
           {/* Fallback static image for reduced motion */}
           {prefersReducedMotion && (
             <div 
@@ -134,9 +136,9 @@ export default function Home() {
                    <h1 className='text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-bold tracking-wide text-shadow mb-4 sm:mb-6'>
                      <span className="text-white">Hwang J&S Construction</span>
                    </h1>
-                   <h2 className='text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-4 sm:mb-6 tracking-wide'>
+                   <p className='text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-4 sm:mb-6 tracking-wide'>
                      Commercial Renovation Done Right.
-                   </h2>
+                   </p>
                    <div className="w-16 sm:w-24 h-1 bg-gradient-to-r from-blue-500 to-emerald-500 mx-auto mb-6 sm:mb-8 rounded-full"></div>
                    <p className='text-base sm:text-lg md:text-xl lg:text-2xl font-medium tracking-wide leading-relaxed max-w-3xl mx-auto'>
                      We deliver commercial and residential renovations, ADA upgrades, and site improvements across Orange & Los Angeles County.
@@ -175,17 +177,20 @@ export default function Home() {
       </section>
 
       {/* Enhanced sections with better spacing */}
-      <div className="bg-gradient-to-b from-gray-50 to-white">
+      <section className="bg-gradient-to-b from-gray-50 to-white" aria-labelledby="featured-projects-heading">
+        <h2 id="featured-projects-heading" className="sr-only">Featured Projects</h2>
         <ProjectPreview />
-      </div>
+      </section>
       
-      <div className="bg-white">
+      <section className="bg-white" aria-labelledby="introduction-heading">
+        <h2 id="introduction-heading" className="sr-only">About Us</h2>
         <Introduction />
-      </div>
+      </section>
       
-      <div className="bg-gradient-to-br from-blue-50 via-white to-emerald-50">
+      <section className="bg-gradient-to-br from-blue-50 via-white to-emerald-50" aria-labelledby="contact-form-heading">
+        <h2 id="contact-form-heading" className="sr-only">Contact Form</h2>
         <ContactForm />
-      </div>
+      </section>
     </>
   );
 }

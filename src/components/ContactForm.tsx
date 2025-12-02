@@ -47,15 +47,10 @@ export default function ContactForm() {
     // Client-side validation
     if (!validateForm()) {
       setStatus('error');
-      // Focus on error summary after state update
+      // Focus on first error field after state update
       setTimeout(() => {
-        const errorSummary = formRef.current?.querySelector('[role="alert"]') as HTMLElement;
-        if (errorSummary) {
-          errorSummary.focus();
-          errorSummary.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-        } else {
-          // Fallback: focus on first error field
-          const firstErrorField = formRef.current?.querySelector('[aria-invalid="true"]') as HTMLElement;
+        if (formRef.current) {
+          const firstErrorField = formRef.current.querySelector('[aria-invalid="true"]') as HTMLElement;
           firstErrorField?.focus();
         }
       }, 0);
@@ -142,26 +137,12 @@ export default function ContactForm() {
               <div 
                 role="alert" 
                 aria-live="assertive"
-                aria-atomic="true"
-                tabIndex={-1}
-                className="bg-red-50 border-l-4 border-red-500 p-4 rounded-lg mb-6 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2"
+                className="bg-red-50 border-l-4 border-red-500 p-4 rounded-lg mb-6"
               >
-                <h3 className="text-sm font-semibold text-red-800 mb-2" id="error-summary-heading">Please fix the following errors:</h3>
-                <ul className="list-disc list-inside text-sm text-red-700 space-y-1" aria-labelledby="error-summary-heading">
+                <h3 className="text-sm font-semibold text-red-800 mb-2">Please fix the following errors:</h3>
+                <ul className="list-disc list-inside text-sm text-red-700 space-y-1">
                   {Object.entries(errors).map(([field, message]) => (
-                    <li key={field}>
-                      <a 
-                        href={`#${field}`}
-                        onClick={(e) => {
-                          e.preventDefault();
-                          const fieldElement = formRef.current?.querySelector(`#${field}`) as HTMLElement;
-                          fieldElement?.focus();
-                        }}
-                        className="underline focus:outline-none focus:ring-2 focus:ring-red-500 rounded"
-                      >
-                        {message}
-                      </a>
-                    </li>
+                    <li key={field}>{message}</li>
                   ))}
                 </ul>
               </div>
@@ -171,7 +152,7 @@ export default function ContactForm() {
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
               <div>
                 <label htmlFor="name" className="block text-sm font-semibold text-gray-700 mb-2">
-                  Full Name <span className="text-red-500" aria-label="required field">*</span>
+                  Full Name <span className="text-red-500" aria-label="required">*</span>
                 </label>
                 <input 
                   id="name"
@@ -194,7 +175,7 @@ export default function ContactForm() {
               </div>
               <div>
                 <label htmlFor="email" className="block text-sm font-semibold text-gray-700 mb-2">
-                  Email Address <span className="text-red-500" aria-label="required field">*</span>
+                  Email Address <span className="text-red-500" aria-label="required">*</span>
                 </label>
                 <input 
                   id="email"
@@ -254,7 +235,7 @@ export default function ContactForm() {
             {/* Project Type */}
             <div>
               <label htmlFor="purpose" className="block text-sm font-semibold text-gray-700 mb-2">
-                Project Type <span className="text-red-500" aria-label="required field">*</span>
+                Project Type <span className="text-red-500" aria-label="required">*</span>
               </label>
               <select 
                 id="purpose"
@@ -283,7 +264,7 @@ export default function ContactForm() {
             {/* Message */}
             <div>
               <label htmlFor="message" className="block text-sm font-semibold text-gray-700 mb-2">
-                Project Details <span className="text-red-500" aria-label="required field">*</span>
+                Project Details <span className="text-red-500" aria-label="required">*</span>
               </label>
               <textarea 
                 id="message"

@@ -49,8 +49,29 @@ export default function ProjectGrid({ projects }: Props) {
   };
 
   const formatLabel = (category: Project['category'], projectType: Project['projectType']) => {
-    const categoryName = category === 'commercial' ? 'Commercial' : 'Residential';
-    const typeName = formatProjectType(projectType);
+    const categoryName = category === 'commercial' ? 'COMMERCIAL' : 'RESIDENTIAL';
+    let typeName = '';
+    
+    switch(projectType) {
+      case 'renovation':
+        typeName = 'RENOVATION';
+        break;
+      case 'remodel':
+        typeName = 'REMODEL';
+        break;
+      case 'ada-upgrade':
+        typeName = 'ADA UPGRADE';
+        break;
+      case 'addition':
+        typeName = 'ADDITION';
+        break;
+      case 'new-build':
+        typeName = 'NEW BUILD';
+        break;
+      default:
+        typeName = formatProjectType(projectType).toUpperCase();
+    }
+    
     return `${categoryName} ${typeName}`;
   };
 
@@ -68,15 +89,19 @@ export default function ProjectGrid({ projects }: Props) {
     const cleanedTitle = cleanTitle(project.title);
     
     return (
-      <Link 
-        href={`/projects/${project.id}`}
-        aria-label={`View ${cleanedTitle} project details`}
-      >
-        <article className="group cursor-pointer">
+      <Link href={`/projects/${project.id}`}>
+        <div className="group cursor-pointer">
           {/* Card Container with Modern Styling */}
           <div className="relative w-full overflow-hidden rounded-2xl border border-gray-200/60 bg-white shadow-sm transition-all duration-500 ease-out group-hover:scale-[1.02] group-hover:-translate-y-1 group-hover:shadow-xl group-hover:border-gray-300/80">
             {/* Image Container with 16:9 Aspect Ratio */}
             <div className="relative w-full aspect-[16/9] overflow-hidden rounded-t-2xl bg-gray-100">
+              {/* Project Type Label - Top Left (Above Images) */}
+              <div className="absolute top-4 left-4 z-10">
+                <span className={`inline-flex items-center px-3 py-1.5 ${typeColor.bg} ${typeColor.text} text-xs font-bold rounded-full shadow-lg backdrop-blur-sm uppercase tracking-wide`}>
+                  {formatLabel(project.category, project.projectType)}
+                </span>
+              </div>
+
               {/* Multiple Images Grid (if available) */}
               {project.additionalImages && project.additionalImages.length >= 2 ? (
                 <div className="grid grid-cols-3 gap-0.5 h-full">
@@ -84,12 +109,9 @@ export default function ProjectGrid({ projects }: Props) {
                   <div className="col-span-2 relative">
                     <Image
                       src={project.image}
-                      alt={`${cleanedTitle} - Main project image showing ${project.shortDescription || 'construction work'}`}
+                      alt={project.title}
                       fill
                       className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
-                      style={{
-                        filter: 'brightness(1.05) contrast(1.1) saturate(1.1)',
-                      }}
                       sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                       quality={90}
                       loading="lazy"
@@ -103,12 +125,9 @@ export default function ProjectGrid({ projects }: Props) {
                       <div key={idx} className="relative flex-1">
                         <Image
                           src={img}
-                          alt={`${cleanedTitle} - Additional detail image ${idx + 1} of ${project.shortDescription || 'project'}`}
+                          alt={`${project.title} - Detail ${idx + 1}`}
                           fill
                           className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
-                          style={{
-                            filter: 'brightness(1.05) contrast(1.1) saturate(1.1)',
-                          }}
                           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                           quality={90}
                           loading="lazy"
@@ -123,12 +142,9 @@ export default function ProjectGrid({ projects }: Props) {
                 /* Single Image with Enhanced Styling */
                 <Image
                   src={project.image}
-                  alt={`${cleanedTitle} - Main project image showing ${project.shortDescription || 'construction work'}`}
+                  alt={project.title}
                   fill
                   className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
-                  style={{
-                    filter: 'brightness(1.05) contrast(1.1) saturate(1.1)',
-                  }}
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                   quality={90}
                   loading="lazy"
@@ -137,41 +153,31 @@ export default function ProjectGrid({ projects }: Props) {
                 />
               )}
               
-              {/* Light overlay for consistent tone */}
-              <div className="absolute inset-0 bg-gradient-to-br from-white/5 via-transparent to-transparent pointer-events-none"></div>
-              
               {/* Subtle Hover Overlay */}
               <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
-
-              {/* Project Type Label - Top Left */}
-              <div className="absolute top-4 left-4 z-10">
-                <span className={`inline-flex items-center px-3 py-1.5 ${typeColor.bg} ${typeColor.text} text-xs font-semibold rounded-lg shadow-md backdrop-blur-sm uppercase tracking-wider`}>
-                  {formatLabel(project.category, project.projectType)}
-                </span>
-              </div>
             </div>
 
-            {/* Project Info - Minimalist Style */}
+            {/* Project Info - Matching Image Style */}
             <div className="p-6 space-y-3">
-              <div className="flex items-start justify-between gap-2">
-                <h3 className="text-xl font-bold text-gray-900 group-hover:text-blue-600 transition-colors duration-300 leading-tight flex-1 min-w-0">
+              <div className="flex items-start justify-between gap-3">
+                <h2 className="text-xl font-bold text-gray-900 group-hover:text-blue-600 transition-colors duration-300 leading-tight flex-1">
                   {cleanedTitle}
-                </h3>
-                <span className="inline-flex items-center px-2 py-0.5 bg-gray-100 text-gray-600 text-xs font-medium rounded-md whitespace-nowrap flex-shrink-0 ml-2">
+                </h2>
+                <span className="inline-flex items-center justify-center px-3 py-1 bg-gray-100 text-gray-700 text-sm font-semibold rounded-md whitespace-nowrap flex-shrink-0 min-w-[60px]">
                   {project.year}
                 </span>
               </div>
               
-              <p className="text-sm text-gray-600 leading-relaxed line-clamp-2">
+              <p className="text-base text-gray-700 leading-relaxed">
                 {project.shortDescription}
               </p>
               
-              <p className="text-xs text-gray-500 italic">
+              <p className="text-sm text-gray-500 leading-relaxed">
                 {project.tagline}
               </p>
             </div>
           </div>
-        </article>
+        </div>
       </Link>
     );
   };
@@ -184,7 +190,6 @@ export default function ProjectGrid({ projects }: Props) {
           <button
             onClick={() => setCategoryFilter('all')}
             aria-pressed={categoryFilter === 'all'}
-            aria-label="Show all project categories"
             className={`px-6 py-3 rounded-full text-base font-semibold transition-all duration-300 flex items-center gap-2 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 ${
               categoryFilter === 'all'
                 ? 'bg-blue-600 text-white shadow-lg scale-105'
@@ -196,7 +201,6 @@ export default function ProjectGrid({ projects }: Props) {
           <button
             onClick={() => setCategoryFilter('commercial')}
             aria-pressed={categoryFilter === 'commercial'}
-            aria-label="Filter projects by commercial category"
             className={`px-6 py-3 rounded-full text-base font-semibold transition-all duration-300 flex items-center gap-2 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 ${
               categoryFilter === 'commercial'
                 ? 'bg-blue-600 text-white shadow-lg scale-105'
@@ -209,7 +213,6 @@ export default function ProjectGrid({ projects }: Props) {
           <button
             onClick={() => setCategoryFilter('residential')}
             aria-pressed={categoryFilter === 'residential'}
-            aria-label="Filter projects by residential category"
             className={`px-6 py-3 rounded-full text-base font-semibold transition-all duration-300 flex items-center gap-2 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 ${
               categoryFilter === 'residential'
                 ? 'bg-blue-600 text-white shadow-lg scale-105'

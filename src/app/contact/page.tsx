@@ -4,8 +4,8 @@ export default function Page() {
   
   return (
     <div className="bg-gray-100">
-      <div className="pt-12" aria-hidden="true"/>
-      <main id="main-content">
+      <div className="pt-12"/>
+      <main>
         <ContactForm/>
       </main>
     </div>

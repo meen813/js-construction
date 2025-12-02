@@ -53,9 +53,9 @@ export default function Footer() {
             <nav aria-label="Legal links">
               <div className="flex flex-wrap gap-4 md:gap-6 mt-4 md:mt-0">
                 <Link href="/accessibility" className="text-gray-400 hover:text-white text-sm transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-gray-900 rounded">Accessibility</Link>
-                <a href="#" className="text-gray-400 hover:text-white text-sm transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-gray-900 rounded" aria-disabled="true" tabIndex={-1}>Privacy Policy</a>
-                <a href="#" className="text-gray-400 hover:text-white text-sm transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-gray-900 rounded" aria-disabled="true" tabIndex={-1}>Terms of Service</a>
-                <a href="#" className="text-gray-400 hover:text-white text-sm transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-gray-900 rounded" aria-disabled="true" tabIndex={-1}>Licenses</a>
+                <Link href="/privacy-policy" className="text-gray-400 hover:text-white text-sm transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-gray-900 rounded">Privacy Policy</Link>
+                <Link href="/terms-of-service" className="text-gray-400 hover:text-white text-sm transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-gray-900 rounded">Terms of Service</Link>
+                <Link href="/licenses" className="text-gray-400 hover:text-white text-sm transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-gray-900 rounded">Licenses</Link>
               </div>
             </nav>
           </div>

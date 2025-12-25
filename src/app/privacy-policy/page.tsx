@@ -52,7 +52,7 @@ export default function PrivacyPolicyPage() {
             </h2>
             <div className="bg-white rounded-lg shadow-lg p-6 md:p-8 border border-gray-200">
               <p className="text-lg text-gray-700 mb-4">
-                Hwang J&S Construction ("we," "our," or "us") is committed to protecting your privacy. 
+                Hwang J&S Construction (&quot;we,&quot; &quot;our,&quot; or &quot;us&quot;) is committed to protecting your privacy. 
                 This Privacy Policy explains how we collect, use, disclose, and safeguard your information 
                 when you visit our website or use our construction services.
               </p>
@@ -184,7 +184,7 @@ export default function PrivacyPolicyPage() {
                 <li><strong className="font-semibold text-gray-900">Data Portability:</strong> Request a copy of your data in a portable format</li>
               </ul>
               <p className="text-lg text-gray-700">
-                To exercise these rights, please contact us using the information provided in the "Contact Us" section below.
+                To exercise these rights, please contact us using the information provided in the &quot;Contact Us&quot; section below.
               </p>
             </div>
           </section>
@@ -255,7 +255,7 @@ export default function PrivacyPolicyPage() {
             <div className="bg-white rounded-lg shadow-lg p-6 md:p-8 border border-gray-200">
               <p className="text-lg text-gray-700">
                 We may update this Privacy Policy from time to time. We will notify you of any changes by posting 
-                the new Privacy Policy on this page and updating the "Effective Date" at the top. You are advised 
+                the new Privacy Policy on this page and updating the &quot;Effective Date&quot; at the top. You are advised 
                 to review this Privacy Policy periodically for any changes.
               </p>
             </div>

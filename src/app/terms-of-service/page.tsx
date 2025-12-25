@@ -51,7 +51,7 @@ export default function TermsOfServicePage() {
             </h2>
             <div className="bg-white rounded-lg shadow-lg p-6 md:p-8 border border-gray-200">
               <p className="text-lg text-gray-700 mb-4">
-                By accessing or using the website of Hwang J&S Construction ("we," "our," or "us") or by engaging 
+                By accessing or using the website of Hwang J&S Construction (&quot;we,&quot; &quot;our,&quot; or &quot;us&quot;) or by engaging 
                 our construction services, you agree to be bound by these Terms of Service and all applicable laws 
                 and regulations. If you do not agree with any of these terms, you are prohibited from using or 
                 accessing this site or our services.
@@ -181,7 +181,7 @@ export default function TermsOfServicePage() {
                 Website Disclaimer
               </h3>
               <p className="text-lg text-gray-700 mb-4">
-                THE INFORMATION ON THIS WEBSITE IS PROVIDED ON AN "AS IS" BASIS. TO THE FULLEST EXTENT PERMITTED BY LAW, 
+                THE INFORMATION ON THIS WEBSITE IS PROVIDED ON AN &quot;AS IS&quot; BASIS. TO THE FULLEST EXTENT PERMITTED BY LAW, 
                 WE DISCLAIM ALL WARRANTIES, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO WARRANTIES OF MERCHANTABILITY, 
                 FITNESS FOR A PARTICULAR PURPOSE, AND NON-INFRINGEMENT.
               </p>
@@ -241,7 +241,7 @@ export default function TermsOfServicePage() {
             </h2>
             <div className="bg-white rounded-lg shadow-lg p-6 md:p-8 border border-gray-200">
               <p className="text-lg text-gray-700 mb-4">
-                Hwang J&S Construction maintains appropriate general liability insurance and workers' compensation 
+                Hwang J&S Construction maintains appropriate general liability insurance and workers&apos; compensation 
                 insurance as required by law. Details of our insurance coverage can be provided upon request.
               </p>
               <p className="text-lg text-gray-700">
@@ -279,7 +279,7 @@ export default function TermsOfServicePage() {
             <div className="bg-white rounded-lg shadow-lg p-6 md:p-8 border border-gray-200">
               <p className="text-lg text-gray-700">
                 We reserve the right to modify these Terms of Service at any time. We will notify users of any material 
-                changes by posting the updated terms on this page and updating the "Effective Date" at the top. 
+                changes by posting the updated terms on this page and updating the &quot;Effective Date&quot; at the top. 
                 Your continued use of our website or services after such modifications constitutes acceptance of the updated terms.
               </p>
             </div>

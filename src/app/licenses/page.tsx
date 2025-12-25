@@ -122,10 +122,10 @@ export default function LicensesPage() {
 
                 <div className="border-l-4 border-emerald-500 pl-4">
                   <h3 className="text-xl font-semibold text-gray-900 mb-2">
-                    Workers' Compensation Insurance
+                    Workers&apos; Compensation Insurance
                   </h3>
                   <p className="text-gray-700">
-                    As required by California law, we maintain workers' compensation insurance to cover our 
+                    As required by California law, we maintain workers&apos; compensation insurance to cover our 
                     employees in case of work-related injuries or illnesses.
                   </p>
                 </div>

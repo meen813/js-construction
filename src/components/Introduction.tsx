@@ -174,7 +174,7 @@ export default function Introduction() {
           />
         </div>
         {/* Overlay to ensure text readability */}
-        <div className="absolute inset-0 bg-white/40 z-10" />
+        <div className="absolute inset-0 bg-white/20 z-10" />
       </div>
 
       <div className="max-w-7xl mx-auto relative z-10">

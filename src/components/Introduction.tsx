@@ -9,6 +9,7 @@ import mallImage19 from '../../public/Mall Renovation Project/20250724_101856.jp
 import lobbyImage from '../../public/Mall Office Lobby/20250715_130946.jpg';
 import adaImage1 from '../../public/ada project/20250520_092908.jpg';
 import aduImage1 from '../../public/adu/adu.jpg';
+import bgImage from '../../public/Mall Renovation Project/20251104_155045558.jpg';
 
 // Service Icon Component
 const ServiceIcon = ({ icon }: { icon: string }) => {
@@ -59,6 +60,24 @@ const ServiceIcon = ({ icon }: { icon: string }) => {
 
 export default function Introduction() {
   const [activeTab, setActiveTab] = useState<'commercial' | 'residential'>('commercial');
+  const sectionRef = React.useRef<HTMLElement>(null);
+  const [parallaxOffset, setParallaxOffset] = useState(0);
+
+  React.useEffect(() => {
+    const handleScroll = () => {
+      if (sectionRef.current) {
+        const rect = sectionRef.current.getBoundingClientRect();
+        const scrollSpeed = 0.15;
+        // Calculate offset based on section's position relative to viewport center
+        const offset = (rect.top - window.innerHeight / 2) * scrollSpeed;
+        setParallaxOffset(offset);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    handleScroll(); // Initial calculation
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const commercialServices = [
     {
@@ -131,8 +150,34 @@ export default function Introduction() {
   ];
 
   return (
-    <section id="services" className="py-20 px-4 sm:px-6 lg:px-8 bg-gray-50/50">
-      <div className="max-w-7xl mx-auto">
+    <section 
+      ref={sectionRef}
+      id="services" 
+      className="py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden"
+    >
+      {/* Parallax Background */}
+      <div className="absolute inset-0 z-0">
+        <div 
+          className="absolute inset-0 w-[140%] -left-[20%] h-full"
+          style={{ 
+            transform: `translateX(${parallaxOffset}px)`,
+            willChange: 'transform'
+          }}
+        >
+          <Image
+            src={bgImage}
+            alt="Background"
+            fill
+            className="object-cover"
+            priority
+            sizes="100vw"
+          />
+        </div>
+        {/* Overlay to ensure text readability */}
+        <div className="absolute inset-0 bg-white/40 z-10" />
+      </div>
+
+      <div className="max-w-7xl mx-auto relative z-10">
         {/* Header */}
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
@@ -144,19 +189,19 @@ export default function Introduction() {
           
           {/* Stats Bar */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-12 mb-12 max-w-5xl mx-auto">
-             <div className="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 flex flex-col items-center hover:shadow-md transition-shadow">
+             <div className="bg-white/80 backdrop-blur-sm p-6 rounded-2xl shadow-sm border border-gray-100 flex flex-col items-center hover:shadow-md transition-shadow">
                <span className="text-4xl md:text-5xl font-extrabold text-blue-600 mb-2">2011</span>
                <span className="text-gray-600 font-medium text-sm md:text-base">Established</span>
              </div>
-             <div className="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 flex flex-col items-center hover:shadow-md transition-shadow">
+             <div className="bg-white/80 backdrop-blur-sm p-6 rounded-2xl shadow-sm border border-gray-100 flex flex-col items-center hover:shadow-md transition-shadow">
                <span className="text-4xl md:text-5xl font-extrabold text-emerald-600 mb-2">50+</span>
                <span className="text-gray-600 font-medium text-sm md:text-base">Projects Completed</span>
              </div>
-             <div className="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 flex flex-col items-center hover:shadow-md transition-shadow">
+             <div className="bg-white/80 backdrop-blur-sm p-6 rounded-2xl shadow-sm border border-gray-100 flex flex-col items-center hover:shadow-md transition-shadow">
                <span className="text-4xl md:text-5xl font-extrabold text-blue-600 mb-2">100%</span>
                <span className="text-gray-600 font-medium text-sm md:text-base">Client Satisfaction</span>
              </div>
-             <div className="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 flex flex-col items-center hover:shadow-md transition-shadow">
+             <div className="bg-white/80 backdrop-blur-sm p-6 rounded-2xl shadow-sm border border-gray-100 flex flex-col items-center hover:shadow-md transition-shadow">
                <span className="text-4xl md:text-5xl font-extrabold text-emerald-600 mb-2">A+</span>
                <span className="text-gray-600 font-medium text-sm md:text-base">Grade Quality</span>
              </div>
@@ -165,7 +210,7 @@ export default function Introduction() {
 
         {/* Tab Controls */}
         <div className="flex justify-center mb-12">
-          <div className="inline-flex p-1 bg-gray-200 rounded-full">
+          <div className="inline-flex p-1 bg-gray-200/80 backdrop-blur-sm rounded-full">
             <button
               onClick={() => setActiveTab('commercial')}
               className={`px-8 py-3 rounded-full text-lg font-bold transition-all duration-300 ${
@@ -194,7 +239,7 @@ export default function Introduction() {
           {activeTab === 'commercial' ? (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 animate-fadeIn">
               {commercialServices.map((service, index) => (
-                <div key={`comm-${index}`} className="card p-4 md:p-6 lg:p-8 group h-full flex flex-col">
+                <div key={`comm-${index}`} className="card bg-white/90 backdrop-blur-sm p-4 md:p-6 lg:p-8 group h-full flex flex-col hover:bg-white transition-colors duration-300">
                   {/* Icon */}
                   <div className="flex justify-center mb-4">
                     <div className="p-2 md:p-3 rounded-2xl bg-blue-50 text-blue-600 group-hover:bg-blue-100 transition-colors duration-300">
@@ -241,7 +286,7 @@ export default function Introduction() {
           ) : (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 animate-fadeIn">
               {residentialServices.map((service, index) => (
-                <div key={`res-${index}`} className="card p-4 md:p-6 lg:p-8 group h-full flex flex-col">
+                <div key={`res-${index}`} className="card bg-white/90 backdrop-blur-sm p-4 md:p-6 lg:p-8 group h-full flex flex-col hover:bg-white transition-colors duration-300">
                   {/* Icon */}
                   <div className="flex justify-center mb-4">
                     <div className="p-2 md:p-3 rounded-2xl bg-emerald-50 text-emerald-600 group-hover:bg-emerald-100 transition-colors duration-300">

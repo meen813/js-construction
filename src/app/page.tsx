@@ -118,7 +118,7 @@ export default function Home() {
             Your browser does not support the video tag.
           </video>
           <span id="video-description" className="sr-only">
-            Background video displaying construction projects including modern retail buildings and architectural exteriors showcasing HJS Construction's work
+            Background video displaying construction projects including modern retail buildings and architectural exteriors showcasing HJS Construction&apos;s work
           </span>
           {/* Fallback static image for reduced motion */}
           {prefersReducedMotion && (

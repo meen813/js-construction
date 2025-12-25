@@ -9,7 +9,7 @@ import mallImage19 from '../../public/Mall Renovation Project/20250724_101856.jp
 import lobbyImage from '../../public/Mall Office Lobby/20250715_130946.jpg';
 import adaImage1 from '../../public/ada project/20250520_092908.jpg';
 import aduImage1 from '../../public/adu/adu.jpg';
-import bgImage from '../../public/Mall Renovation Project/20251225_011023293.jpg';
+import bgImage from '../../public/architectural-bg.png';
 
 // Service Icon Component
 const ServiceIcon = ({ icon }: { icon: string }) => {
@@ -174,7 +174,7 @@ export default function Introduction() {
           />
         </div>
         {/* Overlay to ensure text readability */}
-        <div className="absolute inset-0 bg-white/20 z-10" />
+        <div className="absolute inset-0 bg-white/60 z-10" />
       </div>
 
       <div className="max-w-7xl mx-auto relative z-10">

@@ -230,7 +230,7 @@ export default function ProjectDetailPage() {
           </div>
         )}
         
-        <div className="relative z-20 text-center text-white max-w-4xl mx-auto px-4 py-8 md:px-6 md:py-12 pointer-events-none bg-black/40 backdrop-blur-md rounded-2xl md:rounded-3xl border border-white/10 shadow-2xl mx-4 md:mx-auto">
+        <div className="relative z-20 text-center text-white max-w-4xl mx-auto px-4 py-8 md:px-6 md:py-12 pointer-events-none bg-black/20 backdrop-blur-[5px] rounded-2xl md:rounded-3xl border border-white/10 shadow-2xl mx-4 md:mx-auto">
           <div className="mb-4 md:mb-8 pointer-events-auto" onClick={(e) => e.stopPropagation()}>
             <Link 
               href="/projects" 

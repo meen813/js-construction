@@ -11,5 +11,9 @@ export type Project = {
   projectType: 'new-build' | 'remodel' | 'renovation' | 'ada-upgrade' | 'addition';
   image: StaticImageData;
   additionalImages?: StaticImageData[];
+  comparisonImages?: {
+    before: StaticImageData;
+    after: StaticImageData;
+  };
 };
 

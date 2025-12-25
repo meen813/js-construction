@@ -6,6 +6,7 @@ import Link from 'next/link';
 import { useState, useEffect, useRef } from 'react';
 import { projects } from '@/projects/data';
 import StructuredData, { generateProjectSchema, generateBreadcrumbSchema } from '@/components/StructuredData';
+import ImageModal from '@/components/ImageModal';
 
 export default function ProjectDetailPage() {
   const params = useParams();
@@ -14,10 +15,17 @@ export default function ProjectDetailPage() {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [currentDetailImageIndex, setCurrentDetailImageIndex] = useState(0);
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [modalInitialIndex, setModalInitialIndex] = useState(0);
   const thumbnailContainerRef = useRef<HTMLDivElement>(null);
   
   // 모든 이미지를 하나의 배열로 결합
   const allImages = project ? [project.image, ...(project.additionalImages || [])] : [];
+
+  const openModal = (index: number) => {
+    setModalInitialIndex(index);
+    setIsModalOpen(true);
+  };
   
   // Check for prefers-reduced-motion preference
   useEffect(() => {
@@ -45,14 +53,14 @@ export default function ProjectDetailPage() {
   
   // 자동 전환을 위한 useEffect (reduced motion일 때는 비활성화)
   useEffect(() => {
-    if (allImages.length > 1 && !prefersReducedMotion) {
+    if (allImages.length > 1 && !prefersReducedMotion && !isModalOpen) {
       const interval = setInterval(() => {
         setCurrentImageIndex((prev) => (prev + 1) % allImages.length);
       }, 4000); // 4초마다 전환
       
       return () => clearInterval(interval);
     }
-  }, [allImages.length, prefersReducedMotion]);
+  }, [allImages.length, prefersReducedMotion, isModalOpen]);
   
   // 썸네일 자동 스크롤
   useEffect(() => {
@@ -121,7 +129,7 @@ export default function ProjectDetailPage() {
     project.id === 11 ? 'Santa Ana, California' : 'California';
 
   const projectCompletionDate =
-    project.id === 1 ? '2025-11' :
+    project.id === 1 ? '2025-12' :
     project.id === 2 ? '2024' :
     project.id === 3 ? '2024' :
     project.id === 4 ? '2025' :
@@ -157,16 +165,49 @@ export default function ProjectDetailPage() {
       <section className="relative h-screen flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0">
           {allImages.map((image, index) => (
-            <Image
+            <div
               key={index}
-              src={image}
-              alt={`${project.title} - Image ${index + 1}`}
-              fill
-              className={`object-cover transition-opacity duration-1000 ${
-                index === currentImageIndex ? 'opacity-100' : 'opacity-0'
+              className={`absolute inset-0 transition-opacity duration-1000 ${
+                index === currentImageIndex ? 'opacity-100 z-10' : 'opacity-0 z-0'
               }`}
-              priority={index === 0}
-            />
+            >
+              {index === 0 && project.comparisonImages ? (
+                <div className="relative w-full h-full flex flex-col md:flex-row">
+                  <div className="relative w-full md:w-1/2 h-1/2 md:h-full border-b md:border-b-0 md:border-r border-white/20">
+                    <Image
+                      src={project.comparisonImages.before}
+                      alt={`${project.title} - Before`}
+                      fill
+                      className="object-cover"
+                      priority={true}
+                    />
+                    <div className="absolute top-8 left-8 bg-black/60 px-4 py-1.5 rounded text-white text-sm font-bold tracking-wider backdrop-blur-sm uppercase">
+                      Before
+                    </div>
+                  </div>
+                  <div className="relative w-full md:w-1/2 h-1/2 md:h-full bg-black/90">
+                    <Image
+                      src={project.comparisonImages.after}
+                      alt={`${project.title} - After`}
+                      fill
+                      className="object-contain"
+                      priority={true}
+                    />
+                    <div className="absolute top-8 right-8 bg-blue-600/80 px-4 py-1.5 rounded text-white text-sm font-bold tracking-wider backdrop-blur-sm uppercase">
+                      After
+                    </div>
+                  </div>
+                </div>
+              ) : (
+                <Image
+                  src={image}
+                  alt={`${project.title} - Image ${index + 1}`}
+                  fill
+                  className="object-cover"
+                  priority={index === 0}
+                />
+              )}
+            </div>
           ))}
           <div className="absolute inset-0 bg-black/40"></div>
         </div>
@@ -174,7 +215,7 @@ export default function ProjectDetailPage() {
         
         {/* Image Indicators */}
         {allImages.length > 1 && (
-          <div className="absolute bottom-20 left-1/2 transform -translate-x-1/2 z-20 flex space-x-2" role="group" aria-label="Image indicators">
+          <div className="absolute bottom-20 left-1/2 transform -translate-x-1/2 z-30 flex space-x-2" role="group" aria-label="Image indicators" onClick={(e) => e.stopPropagation()}>
             {allImages.map((_, index) => (
               <button
                 key={index}
@@ -189,8 +230,8 @@ export default function ProjectDetailPage() {
           </div>
         )}
         
-        <div className="relative z-10 text-center text-white max-w-4xl mx-auto px-4">
-          <div className="mb-8">
+        <div className="relative z-20 text-center text-white max-w-4xl mx-auto px-4 pointer-events-none">
+          <div className="mb-8 pointer-events-auto" onClick={(e) => e.stopPropagation()}>
             <Link 
               href="/projects" 
               className="inline-flex items-center text-white/80 hover:text-white transition-colors duration-300 mb-6 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-transparent rounded"
@@ -202,19 +243,19 @@ export default function ProjectDetailPage() {
             </Link>
           </div>
           
-          <h1 className="text-5xl md:text-7xl font-bold mb-6 tracking-tight">
+          <h1 className="text-5xl md:text-7xl font-bold mb-6 tracking-tight drop-shadow-lg">
             {project.title}
           </h1>
           
-          <div className="w-24 h-1 bg-white mx-auto mb-8"></div>
+          <div className="w-24 h-1 bg-white mx-auto mb-8 shadow-sm"></div>
           
-          <p className="text-xl md:text-2xl font-light leading-relaxed max-w-3xl mx-auto">
+          <p className="text-xl md:text-2xl font-light leading-relaxed max-w-3xl mx-auto drop-shadow-md">
             {project.description}
           </p>
         </div>
 
         {/* Scroll indicator */}
-        <div className={`absolute bottom-8 left-1/2 transform -translate-x-1/2 text-white ${prefersReducedMotion ? '' : 'animate-bounce'}`} aria-hidden="true">
+        <div className={`absolute bottom-8 left-1/2 transform -translate-x-1/2 text-white z-20 ${prefersReducedMotion ? '' : 'animate-bounce'}`} aria-hidden="true">
           <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
           </svg>
@@ -229,32 +270,78 @@ export default function ProjectDetailPage() {
             <div className="order-2 lg:order-1">
               <div className="space-y-4">
                 {/* Main Image Container */}
-                <div className="relative overflow-hidden rounded-2xl shadow-2xl">
+                <div 
+                  className="relative overflow-hidden rounded-2xl shadow-2xl aspect-[3/2] bg-gray-100 cursor-pointer group"
+                  onClick={() => openModal(currentDetailImageIndex)}
+                >
                   {allImages.map((image, index) => (
-                    <Image
+                    <div
                       key={index}
-                      src={image}
-                      alt={`${project.title} - Image ${index + 1}`}
-                      width={600}
-                      height={400}
-                      className={`w-full h-auto object-cover transition-opacity duration-500 ${
-                        index === currentDetailImageIndex ? 'opacity-100' : 'opacity-0 absolute inset-0'
+                      className={`absolute inset-0 transition-opacity duration-500 ${
+                        index === currentDetailImageIndex ? 'opacity-100 z-10' : 'opacity-0 z-0'
                       }`}
-                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 600px"
-                      quality={85}
-                      loading={index === 0 ? "eager" : "lazy"}
-                      priority={index === 0}
-                      placeholder="blur"
-                      blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCdABmX/9k="
-                    />
+                    >
+                      {index === 0 && project.comparisonImages ? (
+                        <div className="relative w-full h-full flex">
+                          <div className="relative w-1/2 h-full border-r border-white/20">
+                            <Image
+                              src={project.comparisonImages.before}
+                              alt={`${project.title} - Before`}
+                              fill
+                              className="object-cover"
+                              sizes="(max-width: 768px) 50vw, (max-width: 1200px) 25vw, 300px"
+                              priority={true}
+                            />
+                            <div className="absolute top-4 left-4 bg-black/60 px-3 py-1 rounded text-white text-xs font-bold tracking-wider backdrop-blur-sm uppercase">
+                              Before
+                            </div>
+                          </div>
+                          <div className="relative w-1/2 h-full bg-black/5">
+                            <Image
+                              src={project.comparisonImages.after}
+                              alt={`${project.title} - After`}
+                              fill
+                              className="object-contain"
+                              sizes="(max-width: 768px) 50vw, (max-width: 1200px) 25vw, 300px"
+                              priority={true}
+                            />
+                            <div className="absolute top-4 right-4 bg-blue-600/80 px-3 py-1 rounded text-white text-xs font-bold tracking-wider backdrop-blur-sm uppercase">
+                              After
+                            </div>
+                          </div>
+                        </div>
+                      ) : (
+                        <Image
+                          src={image}
+                          alt={`${project.title} - Image ${index + 1}`}
+                          fill
+                          className="object-cover"
+                          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 600px"
+                          quality={85}
+                          loading={index === 0 ? "eager" : "lazy"}
+                          priority={index === 0}
+                          placeholder="blur"
+                          blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCdABmX/9k="
+                        />
+                      )}
+                    </div>
                   ))}
                   
-                  {/* Manual Navigation Buttons */}
+                  {/* Zoom Overlay */}
+                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300 z-20 flex items-center justify-center opacity-0 group-hover:opacity-100">
+                    <div className="bg-white/90 backdrop-blur p-3 rounded-full shadow-lg transform scale-75 group-hover:scale-100 transition-all duration-300">
+                      <svg className="w-6 h-6 text-gray-800" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7" />
+                      </svg>
+                    </div>
+                  </div>
+                  
+                  {/* Manual Navigation Buttons - Stop Propagation */}
                   {allImages.length > 1 && (
                     <>
                       <button
-                        onClick={prevDetailImage}
-                        className="absolute left-4 top-1/2 transform -translate-y-1/2 z-20 bg-white/20 hover:bg-white/40 text-white p-3 rounded-full transition-all duration-300 backdrop-blur-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-transparent"
+                        onClick={(e) => { e.stopPropagation(); prevDetailImage(); }}
+                        className="absolute left-4 top-1/2 transform -translate-y-1/2 z-30 bg-white/20 hover:bg-white/40 text-white p-3 rounded-full transition-all duration-300 backdrop-blur-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-transparent"
                         aria-label={`Previous image (${currentDetailImageIndex + 1} of ${allImages.length})`}
                       >
                         <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -262,8 +349,8 @@ export default function ProjectDetailPage() {
                         </svg>
                       </button>
                       <button
-                        onClick={nextDetailImage}
-                        className="absolute right-4 top-1/2 transform -translate-y-1/2 z-20 bg-white/20 hover:bg-white/40 text-white p-3 rounded-full transition-all duration-300 backdrop-blur-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-transparent"
+                        onClick={(e) => { e.stopPropagation(); nextDetailImage(); }}
+                        className="absolute right-4 top-1/2 transform -translate-y-1/2 z-30 bg-white/20 hover:bg-white/40 text-white p-3 rounded-full transition-all duration-300 backdrop-blur-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-transparent"
                         aria-label={`Next image (${currentDetailImageIndex + 1} of ${allImages.length})`}
                       >
                         <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -351,7 +438,7 @@ export default function ProjectDetailPage() {
                   
                   <div>
                     <h3 className="text-lg font-semibold text-gray-900 mb-2">Timeline</h3>
-                    <p className="text-gray-600">{project.id === 1 ? 'Will be Completed in November 2025' :
+                    <p className="text-gray-600">{project.id === 1 ? 'Completed in December 2025' :
                       project.id === 2 ? 'Completed 2024-2025' :
                       project.id === 3 ? 'Completed 2024' :
                       project.id === 4 ? 'Completed 2025' :
@@ -448,6 +535,16 @@ export default function ProjectDetailPage() {
           </div>
         </div>
       </section>
+
+      {/* Full Screen Image Modal */}
+      <ImageModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        images={allImages}
+        initialIndex={modalInitialIndex}
+        comparisonImages={project.comparisonImages}
+        title={project.title}
+      />
     </div>
   );
 }

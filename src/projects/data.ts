@@ -23,6 +23,7 @@ import mallImage19 from '../../public/Mall Renovation Project/20250724_101856.jp
 import mallImage20 from '../../public/Mall Renovation Project/20251104_155045558.jpg';
 import mallImage21 from '../../public/Mall Renovation Project/20251104_155045558_03.jpg';
 import mallImage22 from '../../public/Mall Renovation Project/20251221_132850865_07.jpg';
+import mallImage23 from '../../public/Mall Renovation Project/20251225_011023293.jpg';
 
 // Project 2 Images
 import aduImage1 from '../../public/adu/adu.jpg';
@@ -126,14 +127,18 @@ export const projects: Project[] = [
     year: 2025,
     category: 'commercial',
     projectType: 'renovation',
-    description: "A comprehensive commercial mall renovation project in La Palma, California. This project involves expanding from 2 to 3 retail spaces and completely modernizing the exterior facade. The renovation includes contemporary design elements, improved accessibility, and enhanced customer experience. Project started in May 2025 and is currently ongoing with completion expected in November 2025.",
+    description: "A comprehensive commercial mall renovation project in La Palma, California. This project involved expanding from 2 to 3 retail spaces and completely modernizing the exterior facade. The renovation includes contemporary design elements, improved accessibility, and enhanced customer experience. Project started in May 2025 and was completed in December 2025.",
     image: mallImage19,
     additionalImages: [
       mallImage1, mallImage2, mallImage3, mallImage4, mallImage5, mallImage6, 
       mallImage7, mallImage8, mallImage9, mallImage10, mallImage11, 
       mallImage12, mallImage13, mallImage14, mallImage15, mallImage16, 
-      mallImage17, mallImage18, mallImage20, mallImage21, mallImage22
+      mallImage17, mallImage18, mallImage20, mallImage21, mallImage22, mallImage23
     ],
+    comparisonImages: {
+      before: mallImage3,
+      after: mallImage23
+    },
   },
   
   // Project 4 - Manhattan Beach Mall Entrance Renovation (2025)

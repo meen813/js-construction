@@ -3,9 +3,9 @@ import Link from 'next/link';
 
 export default function WhyUsPage() {
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
+    <div className="min-h-screen bg-white bg-[linear-gradient(to_right,#00000008_1px,transparent_1px),linear-gradient(to_bottom,#00000008_1px,transparent_1px)] bg-[size:24px_24px]">
       {/* Hero Section */}
-      <section className="pt-28 md:pt-32 pb-16 bg-gradient-to-br from-blue-50 via-white to-emerald-50">
+      <section className="pt-28 md:pt-32 pb-16 relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-4xl mx-auto">
             {/* Trusted Since Badge */}
@@ -41,7 +41,7 @@ export default function WhyUsPage() {
       </section>
 
       {/* Key Trust Points - 3 Column Stats */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-white" aria-labelledby="trust-points-heading">
+      <section className="py-20 px-4 sm:px-6 lg:px-8 relative" aria-labelledby="trust-points-heading">
         <div className="max-w-7xl mx-auto">
           <h2 id="trust-points-heading" className="sr-only">Key Trust Points</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12">
@@ -71,7 +71,7 @@ export default function WhyUsPage() {
               </div>
               <h3 className="text-2xl font-bold text-gray-900 mb-4">Zero Safety Incidents</h3>
               <p className="text-gray-600 leading-relaxed">
-                We maintain clean, organized job sites and strict safety protocols. Our record: 11+ years with zero safety incidents.
+                We maintain clean, organized job sites and strict safety protocols. Our record: 15+ years with zero safety incidents.
               </p>
             </div>
 
@@ -94,7 +94,7 @@ export default function WhyUsPage() {
       </section>
 
       {/* Why Clients Choose Us - Strengths Grid */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-white to-gray-50" aria-labelledby="strengths-heading">
+      <section className="py-20 px-4 sm:px-6 lg:px-8 relative" aria-labelledby="strengths-heading">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <h2 id="strengths-heading" className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
@@ -211,7 +211,7 @@ export default function WhyUsPage() {
       </section>
 
       {/* Safety & Compliance Highlight Block */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-blue-50 via-emerald-50 to-blue-50" aria-labelledby="safety-heading">
+      <section className="py-20 px-4 sm:px-6 lg:px-8 relative" aria-labelledby="safety-heading">
         <div className="max-w-7xl mx-auto">
           <div className="card-gradient p-8 lg:p-12 max-w-5xl mx-auto">
             <div className="inline-flex items-center px-4 py-2 rounded-full bg-blue-100 text-blue-800 text-sm font-semibold mb-6">
@@ -251,7 +251,7 @@ export default function WhyUsPage() {
       </section>
 
       {/* After-Service & Long-Term Support */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-white" aria-labelledby="after-service-heading">
+      <section className="py-20 px-4 sm:px-6 lg:px-8 relative" aria-labelledby="after-service-heading">
         <div className="max-w-7xl mx-auto">
           <div className="max-w-4xl mx-auto text-center">
             <h2 id="after-service-heading" className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
@@ -289,7 +289,7 @@ export default function WhyUsPage() {
       </section>
 
       {/* Call To Action Footer Section */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-blue-50 via-white to-emerald-50" aria-labelledby="cta-heading">
+      <section className="py-20 px-4 sm:px-6 lg:px-8 relative" aria-labelledby="cta-heading">
         <div className="max-w-7xl mx-auto">
           <div className="card-gradient p-8 lg:p-12 max-w-4xl mx-auto text-center">
             <h2 id="cta-heading" className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">

@@ -10,6 +10,12 @@ export default function Home() {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
   const [isVideoPlaying, setIsVideoPlaying] = useState(true);
+  const [currentVideoIndex, setCurrentVideoIndex] = useState(0);
+  
+  const videos = [
+    '/video/5501.mp4',
+    '/video/Modern_Retail_Building_Cinematic_Ending.mp4'
+  ];
 
   useEffect(() => {
     // Check for prefers-reduced-motion preference
@@ -52,7 +58,24 @@ export default function Home() {
         });
       }
     }
-  }, [prefersReducedMotion]);
+  }, [prefersReducedMotion, currentVideoIndex]);
+
+  const handleVideoEnd = () => {
+    // Move to next video in sequence
+    setCurrentVideoIndex((prevIndex) => {
+      const nextIndex = (prevIndex + 1) % videos.length;
+      // Load and play next video
+      if (videoRef.current) {
+        videoRef.current.load();
+        if (!prefersReducedMotion) {
+          videoRef.current.play().catch(() => {
+            setIsVideoPlaying(false);
+          });
+        }
+      }
+      return nextIndex;
+    });
+  };
 
   const toggleVideoPlay = () => {
     if (videoRef.current) {
@@ -79,16 +102,17 @@ export default function Home() {
         <div className="absolute inset-0" aria-hidden="true">
           <video
             ref={videoRef}
+            key={currentVideoIndex}
             autoPlay={!prefersReducedMotion}
-            loop
             muted
             playsInline
             className="w-full h-full object-cover"
             aria-label="Background construction video"
             onPlay={() => setIsVideoPlaying(true)}
             onPause={() => setIsVideoPlaying(false)}
+            onEnded={handleVideoEnd}
           >
-            <source src="/video/5501.mp4" type="video/mp4" />
+            <source src={videos[currentVideoIndex]} type="video/mp4" />
             Your browser does not support the video tag.
           </video>
           {/* Fallback static image for reduced motion */}
@@ -134,7 +158,7 @@ export default function Home() {
                    <h1 className='text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight text-shadow-xl mb-4 sm:mb-6'>
                      <span className="text-white">Building Your Vision</span>
                    </h1>
-                   <h2 className='text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-gray-100 mb-6 sm:mb-8 tracking-wider uppercase'>
+                   <h2 className='text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-gray-100 mb-6 sm:mb-8 tracking-wider uppercase whitespace-nowrap'>
                      Commercial • Residential • New Build • ADU
                    </h2>
                    <div className="w-24 sm:w-32 h-1.5 bg-gradient-to-r from-blue-500 to-emerald-500 mx-auto mb-8 rounded-full shadow-lg"></div>
@@ -142,11 +166,11 @@ export default function Home() {
                    {/* Trust Badge */}
                    <div className="inline-block bg-black/40 backdrop-blur-md px-6 py-2 rounded-full border border-white/20 mb-6">
                      <p className="text-sm md:text-base text-gray-100 font-semibold tracking-wide">
-                       ⭐ Serving LA & Orange County Since 2011
+                       Serving LA & Orange County Since 2011
                      </p>
                    </div>
 
-                   <p className='text-base sm:text-lg md:text-xl font-medium text-gray-100 tracking-wide leading-relaxed max-w-3xl mx-auto drop-shadow-md'>
+                   <p className='text-base sm:text-lg md:text-xl font-medium text-gray-100 tracking-wide leading-relaxed max-w-5xl mx-auto drop-shadow-md'>
                      Your trusted partner for Commercial Renovations, Custom New Builds, and Home Additions.
                    </p>
                    <div className="mt-8 sm:mt-12 flex flex-col sm:flex-row gap-4 sm:gap-5 justify-center">
@@ -183,15 +207,10 @@ export default function Home() {
       </section>
 
       {/* Enhanced sections with better spacing */}
-      <div className="bg-gradient-to-b from-gray-50 to-white">
+      {/* Enhanced sections with better spacing - Grid Background Applied */}
+      <div className="bg-white bg-[linear-gradient(to_right,#00000008_1px,transparent_1px),linear-gradient(to_bottom,#00000008_1px,transparent_1px)] bg-[size:24px_24px]">
         <ProjectPreview />
-      </div>
-      
-      <div className="bg-white">
         <Introduction />
-      </div>
-      
-      <div className="bg-gradient-to-br from-blue-50 via-white to-emerald-50">
         <ContactForm />
       </div>
     </>

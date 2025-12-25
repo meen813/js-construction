@@ -236,7 +236,7 @@ export default function PrivacyPolicyPage() {
           {/* Children's Privacy */}
           <section aria-labelledby="children-heading">
             <h2 id="children-heading" className="text-3xl font-bold text-gray-900 mb-6">
-              Children's Privacy
+              Children&apos;s Privacy
             </h2>
             <div className="bg-white rounded-lg shadow-lg p-6 md:p-8 border border-gray-200">
               <p className="text-lg text-gray-700">

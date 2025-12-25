@@ -163,14 +163,16 @@ export default function Introduction() {
             transform: `translateX(${parallaxOffset}px)`,
             willChange: 'transform'
           }}
+          aria-hidden="true"
         >
           <Image
             src={bgImage}
-            alt="Background"
+            alt=""
             fill
             className="object-cover"
             priority
             sizes="100vw"
+            aria-hidden="true"
           />
         </div>
         {/* Overlay to ensure text readability */}

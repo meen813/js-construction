@@ -18,8 +18,46 @@ export default function Header() {
       const firstLink = mobileMenuRef.current.querySelector('a') as HTMLElement;
       firstLink?.focus();
     } else if (!isMobileMenuOpen && menuButtonRef.current) {
-      menuButtonRef.current.focus();
+      // Return focus to menu button when menu closes
+      setTimeout(() => {
+        menuButtonRef.current?.focus();
+      }, 100);
     }
+  }, [isMobileMenuOpen]);
+
+  // Focus trap for mobile menu
+  useEffect(() => {
+    if (!isMobileMenuOpen || !mobileMenuRef.current) return;
+
+    const handleTabKey = (e: KeyboardEvent) => {
+      if (e.key !== 'Tab') return;
+
+      const focusableElements = mobileMenuRef.current?.querySelectorAll(
+        'a, button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+      ) as NodeListOf<HTMLElement>;
+
+      if (focusableElements.length === 0) return;
+
+      const firstElement = focusableElements[0];
+      const lastElement = focusableElements[focusableElements.length - 1];
+
+      if (e.shiftKey) {
+        // Shift + Tab
+        if (document.activeElement === firstElement) {
+          e.preventDefault();
+          lastElement.focus();
+        }
+      } else {
+        // Tab
+        if (document.activeElement === lastElement) {
+          e.preventDefault();
+          firstElement.focus();
+        }
+      }
+    };
+
+    document.addEventListener('keydown', handleTabKey);
+    return () => document.removeEventListener('keydown', handleTabKey);
   }, [isMobileMenuOpen]);
 
   useEffect(() => {
@@ -104,7 +142,7 @@ export default function Header() {
                 <span className={`font-extrabold transition-all duration-500 ${
                   isScrolled ? 'text-gray-900' : 'text-white drop-shadow-xl'
                 }`}>
-                  Hwang J&S Construction
+                  HJS Construction
                 </span>
               </h1>
             </div>
@@ -160,11 +198,6 @@ export default function Header() {
 
           {/* Mobile menu button */}
           <div className="md:hidden flex items-center gap-4">
-            {/* Click to Call for Mobile */}
-            <a href="tel:5551234567" className={`flex items-center gap-2 font-bold ${isScrolled ? 'text-blue-600' : 'text-white'} transition-colors`}>
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
-            </a>
-            
             <button 
               ref={menuButtonRef}
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
@@ -190,40 +223,48 @@ export default function Header() {
             ref={mobileMenuRef}
             id="mobile-menu" 
             className="md:hidden absolute top-full left-0 w-full bg-white/95 backdrop-blur-md shadow-lg border-b border-gray-200"
+            role="dialog"
+            aria-modal="true"
+            aria-label="Mobile navigation menu"
           >
             <nav aria-label="Mobile navigation" className="flex flex-col space-y-2 p-4">
               <Link
                 href="/"
-                className="px-4 py-3 rounded-lg font-medium text-gray-800 hover:text-blue-600 hover:bg-blue-50 transition-colors"
+                className="px-4 py-3 rounded-lg font-medium text-gray-800 hover:text-blue-600 hover:bg-blue-50 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
                 onClick={() => setIsMobileMenuOpen(false)}
+                aria-current={pathname === '/' ? 'page' : undefined}
               >
                 Home
               </Link>
               <Link
                 href="/projects"
-                className="px-4 py-3 rounded-lg font-medium text-gray-800 hover:text-blue-600 hover:bg-blue-50 transition-colors"
+                className="px-4 py-3 rounded-lg font-medium text-gray-800 hover:text-blue-600 hover:bg-blue-50 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
                 onClick={() => setIsMobileMenuOpen(false)}
+                aria-current={pathname === '/projects' ? 'page' : undefined}
               >
                 Projects
               </Link>
               <Link
                 href="/services"
-                className="px-4 py-3 rounded-lg font-medium text-gray-800 hover:text-blue-600 hover:bg-blue-50 transition-colors"
+                className="px-4 py-3 rounded-lg font-medium text-gray-800 hover:text-blue-600 hover:bg-blue-50 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
                 onClick={() => setIsMobileMenuOpen(false)}
+                aria-current={pathname === '/services' ? 'page' : undefined}
               >
                 Services
               </Link>
               <Link
                 href="/why-us"
-                className="px-4 py-3 rounded-lg font-medium text-gray-800 hover:text-blue-600 hover:bg-blue-50 transition-colors"
+                className="px-4 py-3 rounded-lg font-medium text-gray-800 hover:text-blue-600 hover:bg-blue-50 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
                 onClick={() => setIsMobileMenuOpen(false)}
+                aria-current={pathname === '/why-us' ? 'page' : undefined}
               >
                 Why Us
               </Link>
               <Link
                 href="/contact"
-                className="px-4 py-3 rounded-xl font-semibold bg-gradient-to-r from-blue-600 via-blue-700 to-blue-800 text-white hover:shadow-lg hover:shadow-blue-500/30 transition-all text-center flex items-center justify-center gap-2"
+                className="px-4 py-3 rounded-xl font-semibold bg-gradient-to-r from-blue-600 via-blue-700 to-blue-800 text-white hover:shadow-lg hover:shadow-blue-500/30 transition-all text-center flex items-center justify-center gap-2 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
                 onClick={() => setIsMobileMenuOpen(false)}
+                aria-current={pathname === '/contact' ? 'page' : undefined}
               >
                 <span>Contact Us</span>
               </Link>

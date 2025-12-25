@@ -31,7 +31,7 @@ export default function PrivacyPolicyPage() {
 
       {/* Main Content */}
       <main id="main-content" className="py-20 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-4xl mx-auto space-y-12">
+        <div className="max-w-4xl mx-auto space-y-8 sm:space-y-12">
           
           {/* Effective Date */}
           <section aria-labelledby="effective-date-heading">
@@ -51,7 +51,7 @@ export default function PrivacyPolicyPage() {
               Introduction
             </h2>
             <div className="bg-white rounded-lg shadow-lg p-6 md:p-8 border border-gray-200">
-              <p className="text-lg text-gray-700 mb-4">
+              <p className="text-base sm:text-lg text-gray-700 mb-4">
                 Hwang J&S Construction (&quot;we,&quot; &quot;our,&quot; or &quot;us&quot;) is committed to protecting your privacy. 
                 This Privacy Policy explains how we collect, use, disclose, and safeguard your information 
                 when you visit our website or use our construction services.
@@ -76,7 +76,7 @@ export default function PrivacyPolicyPage() {
               <p className="text-lg text-gray-700 mb-4">
                 We may collect personal information that you voluntarily provide to us when you:
               </p>
-              <ul className="list-disc list-inside space-y-2 text-gray-700 mb-6">
+              <ul className="list-disc list-inside space-y-3 sm:space-y-2 text-gray-700 mb-6">
                 <li>Contact us through our website contact form</li>
                 <li>Request a quote or consultation for construction services</li>
                 <li>Subscribe to our newsletter or marketing communications</li>
@@ -86,7 +86,7 @@ export default function PrivacyPolicyPage() {
               <p className="text-lg text-gray-700 mb-4">
                 This information may include:
               </p>
-              <ul className="list-disc list-inside space-y-2 text-gray-700 mb-6">
+              <ul className="list-disc list-inside space-y-3 sm:space-y-2 text-gray-700 mb-6">
                 <li>Name and contact information (email address, phone number, mailing address)</li>
                 <li>Project details and requirements</li>
                 <li>Property information and location</li>
@@ -115,7 +115,7 @@ export default function PrivacyPolicyPage() {
               How We Use Your Information
             </h2>
             <div className="bg-white rounded-lg shadow-lg p-6 md:p-8 border border-gray-200">
-              <p className="text-lg text-gray-700 mb-4">
+              <p className="text-base sm:text-lg text-gray-700 mb-4">
                 We use the information we collect for the following purposes:
               </p>
               <ul className="list-disc list-inside space-y-2 text-gray-700">
@@ -137,7 +137,7 @@ export default function PrivacyPolicyPage() {
               Information Sharing and Disclosure
             </h2>
             <div className="bg-white rounded-lg shadow-lg p-6 md:p-8 border border-gray-200">
-              <p className="text-lg text-gray-700 mb-4">
+              <p className="text-base sm:text-lg text-gray-700 mb-4">
                 We do not sell your personal information. We may share your information only in the following circumstances:
               </p>
               <ul className="list-disc list-inside space-y-2 text-gray-700">
@@ -155,7 +155,7 @@ export default function PrivacyPolicyPage() {
               Data Security
             </h2>
             <div className="bg-white rounded-lg shadow-lg p-6 md:p-8 border border-gray-200">
-              <p className="text-lg text-gray-700 mb-4">
+              <p className="text-base sm:text-lg text-gray-700 mb-4">
                 We implement appropriate technical and organizational security measures to protect your personal information. 
                 However, no method of transmission over the Internet or electronic storage is 100% secure. 
                 While we strive to use commercially acceptable means to protect your information, we cannot guarantee absolute security.
@@ -173,7 +173,7 @@ export default function PrivacyPolicyPage() {
               Your Privacy Rights
             </h2>
             <div className="bg-white rounded-lg shadow-lg p-6 md:p-8 border border-gray-200">
-              <p className="text-lg text-gray-700 mb-4">
+              <p className="text-base sm:text-lg text-gray-700 mb-4">
                 Depending on your location, you may have certain rights regarding your personal information, including:
               </p>
               <ul className="list-disc list-inside space-y-2 text-gray-700 mb-4">
@@ -195,7 +195,7 @@ export default function PrivacyPolicyPage() {
               California Privacy Rights
             </h2>
             <div className="bg-white rounded-lg shadow-lg p-6 md:p-8 border border-gray-200">
-              <p className="text-lg text-gray-700 mb-4">
+              <p className="text-base sm:text-lg text-gray-700 mb-4">
                 If you are a California resident, you have additional rights under the California Consumer Privacy Act (CCPA), including:
               </p>
               <ul className="list-disc list-inside space-y-2 text-gray-700 mb-4">
@@ -218,7 +218,7 @@ export default function PrivacyPolicyPage() {
               Cookies and Tracking Technologies
             </h2>
             <div className="bg-white rounded-lg shadow-lg p-6 md:p-8 border border-gray-200">
-              <p className="text-lg text-gray-700 mb-4">
+              <p className="text-base sm:text-lg text-gray-700 mb-4">
                 Our website may use cookies and similar tracking technologies to enhance your experience. 
                 Cookies are small data files stored on your device. You can control cookies through your browser settings.
               </p>
@@ -267,7 +267,7 @@ export default function PrivacyPolicyPage() {
               Contact Us
             </h2>
             <div className="bg-white rounded-lg shadow-lg p-6 md:p-8 border border-gray-200">
-              <p className="text-lg text-gray-700 mb-4">
+              <p className="text-base sm:text-lg text-gray-700 mb-4">
                 If you have questions about this Privacy Policy or wish to exercise your privacy rights, please contact us:
               </p>
               <div className="space-y-4">

@@ -6,36 +6,44 @@ import Footer from "@/components/Footer";
 
 const sans = Open_Sans({ subsets: ["latin"] });
 
+export const viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 5,
+  userScalable: true,
+  viewportFit: 'cover',
+} as const;
+
 export const metadata: Metadata = {
   metadataBase: new URL('https://www.hjsconstruction.com'),
   title: {
-    default: "Hwang J&S Construction - Professional Construction & Renovation Services",
-    template: "%s | Hwang J&S Construction"
+    default: "HJS Construction - Professional Construction & Renovation Services",
+    template: "%s | HJS Construction"
   },
   description: "Expert construction and renovation services in Southern California. Specializing in ADU, commercial renovations, kitchen remodeling, and more. Licensed and insured contractors.",
   keywords: ["construction", "renovation", "ADU", "commercial construction", "kitchen remodeling", "home addition", "Southern California", "general contractor", "HJS Construction", "Hwang J&S", "Hwang JS Construction"],
-  authors: [{ name: "Hwang J&S Construction" }],
-  creator: "Hwang J&S Construction",
-  publisher: "Hwang J&S Construction",
+  authors: [{ name: "HJS Construction" }],
+  creator: "HJS Construction",
+  publisher: "HJS Construction",
   openGraph: {
     type: 'website',
     locale: 'en_US',
     url: 'https://www.hjsconstruction.com',
-    siteName: 'Hwang J&S Construction',
-    title: 'Hwang J&S Construction - Professional Construction & Renovation Services',
+    siteName: 'HJS Construction',
+    title: 'HJS Construction - Professional Construction & Renovation Services',
     description: 'Expert construction and renovation services in Southern California. Specializing in ADU, commercial renovations, kitchen remodeling, and more.',
     images: [
       {
         url: '/logo/logo.png',
         width: 1200,
         height: 630,
-        alt: 'Hwang J&S Construction Logo',
+        alt: 'HJS Construction Logo',
       }
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Hwang J&S Construction - Professional Construction & Renovation Services',
+    title: 'HJS Construction - Professional Construction & Renovation Services',
     description: 'Expert construction and renovation services in Southern California.',
     images: ['/logo/logo.png'],
   },

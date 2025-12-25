@@ -17,8 +17,8 @@ export default function StructuredData({ data }: StructuredDataProps) {
 export const organizationSchema = {
   "@context": "https://schema.org",
   "@type": "GeneralContractor",
-  "name": "Hwang J&S Construction",
-  "alternateName": ["HJS Construction", "Hwang JS Construction"],
+  "name": "HJS Construction",
+  "alternateName": ["Hwang J&S Construction", "Hwang JS Construction"],
   "url": "https://www.hjsconstruction.com",
   "logo": "https://www.hjsconstruction.com/logo/logo.png",
   "description": "Expert construction and renovation services in Southern California. Specializing in ADU, commercial renovations, kitchen remodeling, and more.",
@@ -56,7 +56,7 @@ export const servicesSchema = {
   "serviceType": "Construction & Renovation Services",
   "provider": {
     "@type": "GeneralContractor",
-    "name": "Hwang J&S Construction"
+    "name": "HJS Construction"
   },
   "areaServed": {
     "@type": "State",
@@ -122,7 +122,7 @@ export function generateProjectSchema(project: {
     "image": `https://www.hjsconstruction.com${project.image}`,
     "creator": {
       "@type": "Organization",
-      "name": "Hwang J&S Construction"
+      "name": "HJS Construction"
     },
     "locationCreated": project.location || "California",
     "datePublished": project.completionDate,

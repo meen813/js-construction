@@ -1,4 +1,4 @@
-import { useEffect, useState, useCallback } from 'react';
+import { useEffect, useState, useCallback, useRef } from 'react';
 import Image, { StaticImageData } from 'next/image';
 
 interface ComparisonImages {
@@ -25,15 +25,28 @@ export default function ImageModal({
 }: ImageModalProps) {
   const [currentIndex, setCurrentIndex] = useState(initialIndex);
   const [isTransitioning, setIsTransitioning] = useState(false);
+  const modalRef = useRef<HTMLDivElement>(null);
+  const closeButtonRef = useRef<HTMLButtonElement>(null);
+  const previousFocusRef = useRef<HTMLElement | null>(null);
 
   // Sync internal state with prop when modal opens
   useEffect(() => {
     if (isOpen) {
+      // Store the previously focused element
+      previousFocusRef.current = document.activeElement as HTMLElement;
       setCurrentIndex(initialIndex);
       // Disable body scroll when modal is open
       document.body.style.overflow = 'hidden';
+      // Focus the close button when modal opens
+      setTimeout(() => {
+        closeButtonRef.current?.focus();
+      }, 100);
     } else {
       document.body.style.overflow = 'unset';
+      // Return focus to the previously focused element
+      if (previousFocusRef.current) {
+        previousFocusRef.current.focus();
+      }
     }
     return () => {
       document.body.style.overflow = 'unset';
@@ -79,15 +92,62 @@ export default function ImageModal({
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [isOpen, nextImage, prevImage, onClose]);
 
+  // Focus trap: Keep focus within modal
+  useEffect(() => {
+    if (!isOpen || !modalRef.current) return;
+
+    const handleTabKey = (e: KeyboardEvent) => {
+      if (e.key !== 'Tab') return;
+
+      const focusableElements = modalRef.current?.querySelectorAll(
+        'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+      ) as NodeListOf<HTMLElement>;
+
+      if (focusableElements.length === 0) return;
+
+      const firstElement = focusableElements[0];
+      const lastElement = focusableElements[focusableElements.length - 1];
+
+      if (e.shiftKey) {
+        // Shift + Tab
+        if (document.activeElement === firstElement) {
+          e.preventDefault();
+          lastElement.focus();
+        }
+      } else {
+        // Tab
+        if (document.activeElement === lastElement) {
+          e.preventDefault();
+          firstElement.focus();
+        }
+      }
+    };
+
+    document.addEventListener('keydown', handleTabKey);
+    return () => document.removeEventListener('keydown', handleTabKey);
+  }, [isOpen]);
+
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/95 backdrop-blur-sm transition-opacity duration-300">
+    <div 
+      ref={modalRef}
+      className="fixed inset-0 z-50 flex items-center justify-center bg-black/95 backdrop-blur-sm transition-opacity duration-300"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="modal-title"
+      aria-describedby="modal-description"
+    >
+      <h2 id="modal-title" className="sr-only">Image Gallery: {title}</h2>
+      <p id="modal-description" className="sr-only">
+        Viewing image {currentIndex + 1} of {images.length}. Use arrow keys to navigate, Escape to close.
+      </p>
       {/* Close Button */}
       <button
+        ref={closeButtonRef}
         onClick={onClose}
-        className="absolute top-4 right-4 z-50 p-2 text-white/70 hover:text-white bg-black/20 hover:bg-black/40 rounded-full transition-colors"
-        aria-label="Close modal"
+        className="absolute top-4 right-4 z-50 p-2 text-white/70 hover:text-white bg-black/20 hover:bg-black/40 rounded-full transition-colors focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-black/50"
+        aria-label="Close image gallery modal"
       >
         <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
@@ -99,8 +159,8 @@ export default function ImageModal({
         <>
           <button
             onClick={prevImage}
-            className="absolute left-4 top-1/2 transform -translate-y-1/2 z-50 p-3 text-white/70 hover:text-white bg-black/20 hover:bg-black/40 rounded-full transition-colors hidden md:block"
-            aria-label="Previous image"
+            className="absolute left-4 top-1/2 transform -translate-y-1/2 z-50 p-3 text-white/70 hover:text-white bg-black/20 hover:bg-black/40 rounded-full transition-colors focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-black/50"
+            aria-label={`Previous image (${currentIndex === 0 ? images.length : currentIndex} of ${images.length})`}
           >
             <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
@@ -108,8 +168,8 @@ export default function ImageModal({
           </button>
           <button
             onClick={nextImage}
-            className="absolute right-4 top-1/2 transform -translate-y-1/2 z-50 p-3 text-white/70 hover:text-white bg-black/20 hover:bg-black/40 rounded-full transition-colors hidden md:block"
-            aria-label="Next image"
+            className="absolute right-4 top-1/2 transform -translate-y-1/2 z-50 p-3 text-white/70 hover:text-white bg-black/20 hover:bg-black/40 rounded-full transition-colors focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-black/50"
+            aria-label={`Next image (${currentIndex + 2 > images.length ? 1 : currentIndex + 2} of ${images.length})`}
           >
             <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />

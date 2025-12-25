@@ -181,7 +181,7 @@ export default function ProjectDetailPage() {
                       className="object-cover"
                       priority={true}
                     />
-                    <div className="absolute top-8 left-8 bg-black/60 px-4 py-1.5 rounded text-white text-sm font-bold tracking-wider backdrop-blur-sm uppercase">
+                    <div className="absolute top-4 left-4 md:top-8 md:left-8 bg-black/60 px-3 py-1 md:px-4 md:py-1.5 rounded text-white text-xs md:text-sm font-bold tracking-wider backdrop-blur-sm uppercase">
                       Before
                     </div>
                   </div>
@@ -193,7 +193,7 @@ export default function ProjectDetailPage() {
                       className="object-contain"
                       priority={true}
                     />
-                    <div className="absolute top-8 right-8 bg-blue-600/80 px-4 py-1.5 rounded text-white text-sm font-bold tracking-wider backdrop-blur-sm uppercase">
+                    <div className="absolute top-4 right-4 md:top-8 md:right-8 bg-blue-600/80 px-3 py-1 md:px-4 md:py-1.5 rounded text-white text-xs md:text-sm font-bold tracking-wider backdrop-blur-sm uppercase">
                       After
                     </div>
                   </div>
@@ -209,7 +209,7 @@ export default function ProjectDetailPage() {
               )}
             </div>
           ))}
-          <div className="absolute inset-0 bg-black/40"></div>
+          <div className="absolute inset-0 bg-black/30"></div>
         </div>
         
         
@@ -222,7 +222,7 @@ export default function ProjectDetailPage() {
                 onClick={() => setCurrentImageIndex(index)}
                 aria-label={`Go to image ${index + 1} of ${allImages.length}`}
                 aria-pressed={index === currentImageIndex}
-                className={`w-3 h-3 rounded-full transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-transparent ${
+                className={`w-2 h-2 md:w-3 md:h-3 rounded-full transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-transparent ${
                   index === currentImageIndex ? 'bg-white' : 'bg-white/50'
                 }`}
               />
@@ -230,26 +230,26 @@ export default function ProjectDetailPage() {
           </div>
         )}
         
-        <div className="relative z-20 text-center text-white max-w-4xl mx-auto px-4 pointer-events-none">
-          <div className="mb-8 pointer-events-auto" onClick={(e) => e.stopPropagation()}>
+        <div className="relative z-20 text-center text-white max-w-4xl mx-auto px-4 py-8 md:px-6 md:py-12 pointer-events-none bg-black/40 backdrop-blur-md rounded-2xl md:rounded-3xl border border-white/10 shadow-2xl mx-4 md:mx-auto">
+          <div className="mb-4 md:mb-8 pointer-events-auto" onClick={(e) => e.stopPropagation()}>
             <Link 
               href="/projects" 
-              className="inline-flex items-center text-white/80 hover:text-white transition-colors duration-300 mb-6 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-transparent rounded"
+              className="inline-flex items-center text-white/80 hover:text-white transition-colors duration-300 mb-4 md:mb-6 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-transparent rounded text-sm md:text-base"
             >
-              <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <svg className="w-4 h-4 md:w-5 md:h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
               </svg>
               Back to Projects
             </Link>
           </div>
           
-          <h1 className="text-5xl md:text-7xl font-bold mb-6 tracking-tight drop-shadow-lg">
+          <h1 className="text-3xl sm:text-4xl md:text-7xl font-bold mb-4 md:mb-6 tracking-tight drop-shadow-xl">
             {project.title}
           </h1>
           
-          <div className="w-24 h-1 bg-white mx-auto mb-8 shadow-sm"></div>
+          <div className="w-16 h-1 md:w-24 md:h-1 bg-white mx-auto mb-6 md:mb-8 shadow-sm"></div>
           
-          <p className="text-xl md:text-2xl font-light leading-relaxed max-w-3xl mx-auto drop-shadow-md">
+          <p className="text-base sm:text-lg md:text-2xl font-light leading-relaxed max-w-3xl mx-auto drop-shadow-lg px-2">
             {project.description}
           </p>
         </div>
@@ -263,15 +263,15 @@ export default function ProjectDetailPage() {
       </section>
 
       {/* Project Details */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8">
+      <section className="py-12 md:py-20 px-4 sm:px-6 lg:px-8">
         <div className="max-w-6xl mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
             {/* Project Image */}
             <div className="order-2 lg:order-1">
               <div className="space-y-4">
                 {/* Main Image Container */}
                 <div 
-                  className="relative overflow-hidden rounded-2xl shadow-2xl aspect-[3/2] bg-gray-100 cursor-pointer group"
+                  className="relative overflow-hidden rounded-xl md:rounded-2xl shadow-2xl aspect-[3/2] bg-gray-100 cursor-pointer group"
                   onClick={() => openModal(currentDetailImageIndex)}
                 >
                   {allImages.map((image, index) => (
@@ -292,7 +292,7 @@ export default function ProjectDetailPage() {
                               sizes="(max-width: 768px) 50vw, (max-width: 1200px) 25vw, 300px"
                               priority={true}
                             />
-                            <div className="absolute top-4 left-4 bg-black/60 px-3 py-1 rounded text-white text-xs font-bold tracking-wider backdrop-blur-sm uppercase">
+                            <div className="absolute top-2 left-2 md:top-4 md:left-4 bg-black/60 px-2 py-0.5 md:px-3 md:py-1 rounded text-white text-[10px] md:text-xs font-bold tracking-wider backdrop-blur-sm uppercase">
                               Before
                             </div>
                           </div>
@@ -305,7 +305,7 @@ export default function ProjectDetailPage() {
                               sizes="(max-width: 768px) 50vw, (max-width: 1200px) 25vw, 300px"
                               priority={true}
                             />
-                            <div className="absolute top-4 right-4 bg-blue-600/80 px-3 py-1 rounded text-white text-xs font-bold tracking-wider backdrop-blur-sm uppercase">
+                            <div className="absolute top-2 right-2 md:top-4 md:right-4 bg-blue-600/80 px-2 py-0.5 md:px-3 md:py-1 rounded text-white text-[10px] md:text-xs font-bold tracking-wider backdrop-blur-sm uppercase">
                               After
                             </div>
                           </div>
@@ -341,19 +341,19 @@ export default function ProjectDetailPage() {
                     <>
                       <button
                         onClick={(e) => { e.stopPropagation(); prevDetailImage(); }}
-                        className="absolute left-4 top-1/2 transform -translate-y-1/2 z-30 bg-white/20 hover:bg-white/40 text-white p-3 rounded-full transition-all duration-300 backdrop-blur-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-transparent"
+                        className="absolute left-2 md:left-4 top-1/2 transform -translate-y-1/2 z-30 bg-white/20 hover:bg-white/40 text-white p-2 md:p-3 rounded-full transition-all duration-300 backdrop-blur-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-transparent"
                         aria-label={`Previous image (${currentDetailImageIndex + 1} of ${allImages.length})`}
                       >
-                        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                        <svg className="w-4 h-4 md:w-5 md:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
                         </svg>
                       </button>
                       <button
                         onClick={(e) => { e.stopPropagation(); nextDetailImage(); }}
-                        className="absolute right-4 top-1/2 transform -translate-y-1/2 z-30 bg-white/20 hover:bg-white/40 text-white p-3 rounded-full transition-all duration-300 backdrop-blur-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-transparent"
+                        className="absolute right-2 md:right-4 top-1/2 transform -translate-y-1/2 z-30 bg-white/20 hover:bg-white/40 text-white p-2 md:p-3 rounded-full transition-all duration-300 backdrop-blur-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-transparent"
                         aria-label={`Next image (${currentDetailImageIndex + 1} of ${allImages.length})`}
                       >
-                        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                        <svg className="w-4 h-4 md:w-5 md:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                         </svg>
                       </button>
@@ -365,7 +365,7 @@ export default function ProjectDetailPage() {
                 {allImages.length > 1 && (
                   <div 
                     ref={thumbnailContainerRef}
-                    className={`flex gap-2 overflow-x-auto pb-2 px-1 ${prefersReducedMotion ? '' : 'scroll-smooth'}`}
+                    className={`flex gap-2 overflow-x-auto pb-2 px-1 ${prefersReducedMotion ? '' : 'scroll-smooth'} scrollbar-hide`}
                     role="group"
                     aria-label="Image thumbnails"
                   >
@@ -386,7 +386,7 @@ export default function ProjectDetailPage() {
                           alt={`Thumbnail ${index + 1}`}
                           width={100}
                           height={75}
-                          className="w-24 h-18 object-cover"
+                          className="w-20 h-14 md:w-24 md:h-18 object-cover"
                           sizes="100px"
                           quality={75}
                           loading="lazy"
@@ -401,13 +401,13 @@ export default function ProjectDetailPage() {
             {/* Project Info */}
             <div className="order-1 lg:order-2">
               <div className="max-w-lg">
-                <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
+                <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4 md:mb-6">
                   Project Overview
                 </h2>
                 
-                <div className="space-y-6 mb-8">
+                <div className="space-y-4 md:space-y-6 mb-6 md:mb-8">
                   <div>
-                    <h3 className="text-lg font-semibold text-gray-900 mb-2">Project Type</h3>
+                    <h3 className="text-lg font-semibold text-gray-900 mb-1 md:mb-2">Project Type</h3>
                     <p className="text-gray-600">{project.id === 1 ? 'Commercial Mall Renovation' : 
                       project.id === 2 ? 'Accessory Dwelling Unit (ADU)' :
                       project.id === 3 ? 'Custom Staircase Design' :
@@ -422,7 +422,7 @@ export default function ProjectDetailPage() {
                   </div>
                   
                   <div>
-                    <h3 className="text-lg font-semibold text-gray-900 mb-2">Location</h3>
+                    <h3 className="text-lg font-semibold text-gray-900 mb-1 md:mb-2">Location</h3>
                     <p className="text-gray-600">{project.id === 1 ? 'La Palma, California' :
                       project.id === 2 ? 'Fountain Valley, California' :
                       project.id === 3 ? 'Orange County, California' :
@@ -437,7 +437,7 @@ export default function ProjectDetailPage() {
                   </div>
                   
                   <div>
-                    <h3 className="text-lg font-semibold text-gray-900 mb-2">Timeline</h3>
+                    <h3 className="text-lg font-semibold text-gray-900 mb-1 md:mb-2">Timeline</h3>
                     <p className="text-gray-600">{project.id === 1 ? 'Completed in December 2025' :
                       project.id === 2 ? 'Completed 2024-2025' :
                       project.id === 3 ? 'Completed 2024' :
@@ -458,10 +458,10 @@ export default function ProjectDetailPage() {
                   </p>
                   
                   <div className="flex flex-col sm:flex-row gap-4">
-                    <Link href="/contact" className="btn-primary">
+                    <Link href="/contact" className="btn-primary text-center">
                       Start Your Project
                     </Link>
-                    <Link href="/projects" className="btn-secondary">
+                    <Link href="/projects" className="btn-secondary text-center">
                       View More Projects
                     </Link>
                   </div>
@@ -473,16 +473,16 @@ export default function ProjectDetailPage() {
       </section>
 
       {/* Features Section */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gray-50">
+      <section className="py-12 md:py-20 px-4 sm:px-6 lg:px-8 bg-gray-50">
         <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+          <div className="text-center mb-10 md:mb-16">
+            <h2 className="text-3xl md:text-5xl font-bold text-gray-900 mb-4 md:mb-6">
               <span className="text-gradient">Project Features</span>
             </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto">
               Every detail was carefully considered to create a space that perfectly balances form and function.
             </p>
-            <div className="w-24 h-1 bg-gradient-to-r from-blue-500 to-emerald-500 mx-auto mt-6 rounded-full"></div>
+            <div className="w-16 h-1 md:w-24 bg-gradient-to-r from-blue-500 to-emerald-500 mx-auto mt-4 md:mt-6 rounded-full"></div>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -501,13 +501,13 @@ export default function ProjectDetailPage() {
               }
             ].map((feature, index) => (
               <div key={index} className="text-center">
-                <div className="w-16 h-16 bg-gradient-to-r from-blue-600 to-emerald-600 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div className="w-12 h-12 md:w-16 md:h-16 bg-gradient-to-r from-blue-600 to-emerald-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <svg className="w-6 h-6 md:w-8 md:h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                   </svg>
                 </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-3">{feature.title}</h3>
-                <p className="text-gray-600 leading-relaxed">{feature.description}</p>
+                <h3 className="text-lg md:text-xl font-bold text-gray-900 mb-2 md:mb-3">{feature.title}</h3>
+                <p className="text-gray-600 leading-relaxed text-sm md:text-base">{feature.description}</p>
               </div>
             ))}
           </div>
@@ -515,20 +515,20 @@ export default function ProjectDetailPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8">
+      <section className="py-12 md:py-20 px-4 sm:px-6 lg:px-8">
         <div className="max-w-4xl mx-auto text-center">
-          <div className="card-gradient p-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
+          <div className="card-gradient p-8 md:p-12">
+            <h2 className="text-2xl md:text-4xl font-bold text-gray-900 mb-4 md:mb-6">
               Ready to Create Something Amazing?
             </h2>
-            <p className="text-xl text-gray-600 mb-8 leading-relaxed">
+            <p className="text-lg md:text-xl text-gray-600 mb-6 md:mb-8 leading-relaxed">
               Let&apos;s discuss your vision and bring it to life with our expert construction services.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link href="/contact" className="btn-primary text-lg px-8 py-4">
+              <Link href="/contact" className="btn-primary text-base md:text-lg px-6 py-3 md:px-8 md:py-4">
                 Get Free Consultation
               </Link>
-              <Link href="/projects" className="btn-secondary text-lg px-8 py-4">
+              <Link href="/projects" className="btn-secondary text-base md:text-lg px-6 py-3 md:px-8 md:py-4">
                 View All Projects
               </Link>
             </div>
@@ -545,6 +545,19 @@ export default function ProjectDetailPage() {
         comparisonImages={project.comparisonImages}
         title={project.title}
       />
+
+      {/* Sticky Mobile CTA */}
+      <div className="fixed bottom-4 left-4 right-4 z-40 md:hidden animate-fade-in-up">
+        <Link 
+          href="/contact" 
+          className="block w-full bg-blue-600 text-white font-bold text-center py-4 rounded-xl shadow-lg hover:bg-blue-700 transition-colors duration-300 flex items-center justify-center space-x-2"
+        >
+          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+          </svg>
+          <span>Free Consultation</span>
+        </Link>
+      </div>
     </div>
   );
 }

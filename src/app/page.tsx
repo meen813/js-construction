@@ -107,14 +107,19 @@ export default function Home() {
             muted
             playsInline
             className="w-full h-full object-cover"
-            aria-label="Background construction video"
+            aria-label="Background video showing construction projects and building exteriors"
+            aria-describedby="video-description"
             onPlay={() => setIsVideoPlaying(true)}
             onPause={() => setIsVideoPlaying(false)}
             onEnded={handleVideoEnd}
+            poster="/architectural-bg.png"
           >
             <source src={videos[currentVideoIndex]} type="video/mp4" />
             Your browser does not support the video tag.
           </video>
+          <span id="video-description" className="sr-only">
+            Background video displaying construction projects including modern retail buildings and architectural exteriors showcasing HJS Construction's work
+          </span>
           {/* Fallback static image for reduced motion */}
           {prefersReducedMotion && (
             <div 
@@ -158,7 +163,7 @@ export default function Home() {
                    <h1 className='text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight text-shadow-xl mb-4 sm:mb-6'>
                      <span className="text-white">Building Your Vision</span>
                    </h1>
-                   <h2 className='text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-gray-100 mb-6 sm:mb-8 tracking-wider uppercase whitespace-nowrap'>
+                   <h2 className='text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-gray-100 mb-6 sm:mb-8 tracking-wider uppercase sm:whitespace-nowrap'>
                      Commercial • Residential • New Build • ADU
                    </h2>
                    <div className="w-24 sm:w-32 h-1.5 bg-gradient-to-r from-blue-500 to-emerald-500 mx-auto mb-8 rounded-full shadow-lg"></div>

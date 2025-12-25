@@ -1,5 +1,16 @@
-'use client';
+
 import Link from 'next/link';
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Why Choose Us | HJS Construction',
+  description: 'Trusted since 2011. 100% project completion, zero safety incidents, and expert commercial & residential construction services in Los Angeles.',
+  openGraph: {
+    title: 'Why Choose HJS Construction?',
+    description: 'Reliable, code-compliant construction with a focus on safety and completion.',
+    images: ['/logo/logo.png'],
+  },
+};
 
 export default function WhyUsPage() {
   return (
@@ -16,19 +27,20 @@ export default function WhyUsPage() {
               Trusted Since 2011
             </div>
             
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-6">
-              Why Choose<br /> Hwang J&S Construction?
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-6 fade-in" style={{ animationDelay: '0.1s' }}>
+              Why Choose<br /> HJS Construction?
             </h1>
             
-            <p className="text-xl md:text-2xl text-gray-600 leading-relaxed mb-8 max-w-3xl mx-auto">
+            <p className="text-xl md:text-2xl text-gray-600 leading-relaxed mb-8 max-w-3xl mx-auto fade-in" style={{ animationDelay: '0.2s' }}>
               We deliver reliable, code-compliant construction with a focus on safety, completion, and long-term client relationships.
             </p>
             
-            <div className="w-24 h-1 bg-gradient-to-r from-blue-500 to-emerald-500 mx-auto mb-8 rounded-full"></div>
+            <div className="w-24 h-1 bg-gradient-to-r from-blue-500 to-emerald-500 mx-auto mb-8 rounded-full fade-in" style={{ animationDelay: '0.3s' }}></div>
             
             <Link 
               href="/contact" 
-              className="btn-primary text-lg px-8 py-4 inline-flex items-center gap-2 group focus:outline-none focus:ring-4 focus:ring-blue-300/50"
+              className="btn-primary text-lg px-8 py-4 inline-flex items-center gap-2 group focus:outline-none focus:ring-4 focus:ring-blue-300/50 fade-in"
+              style={{ animationDelay: '0.4s' }}
               aria-label="Request a consultation"
             >
               <span>Request a Consultation</span>

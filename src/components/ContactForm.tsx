@@ -160,6 +160,7 @@ export default function ContactForm() {
                   name="name" 
                   required 
                   autoComplete="name"
+                  aria-required="true"
                   aria-invalid={errors.name ? 'true' : 'false'}
                   aria-describedby={errors.name ? 'name-error' : undefined}
                   className={`form-input w-full ${errors.name ? 'border-red-500 focus:ring-red-500' : ''}`}
@@ -183,6 +184,7 @@ export default function ContactForm() {
                   name="email" 
                   required 
                   autoComplete="email"
+                  aria-required="true"
                   aria-invalid={errors.email ? 'true' : 'false'}
                   aria-describedby={errors.email ? 'email-error' : undefined}
                   className={`form-input w-full ${errors.email ? 'border-red-500 focus:ring-red-500' : ''}`}
@@ -241,6 +243,7 @@ export default function ContactForm() {
                 id="purpose"
                 name="purpose" 
                 required 
+                aria-required="true"
                 aria-invalid={errors.purpose ? 'true' : 'false'}
                 aria-describedby={errors.purpose ? 'purpose-error' : undefined}
                 className={`form-select ${errors.purpose ? 'border-red-500 focus:ring-red-500' : ''}`}
@@ -270,6 +273,7 @@ export default function ContactForm() {
                 id="message"
                 name="message" 
                 required 
+                aria-required="true"
                 aria-invalid={errors.message ? 'true' : 'false'}
                 aria-describedby={errors.message ? 'message-error' : undefined}
                 className={`form-textarea h-32 ${errors.message ? 'border-red-500 focus:ring-red-500' : ''}`}

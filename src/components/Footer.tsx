@@ -8,10 +8,13 @@ export default function Footer() {
           {/* Company Info */}
           <div className="lg:col-span-2">
             <h3 className="text-2xl font-bold mb-4 text-white">
-              Hwang J&S Construction
+              HJS Construction
             </h3>
-            <p className="text-gray-300 mb-6 leading-relaxed">
+            <p className="text-gray-300 mb-4 leading-relaxed">
             Trusted general contractor serving Orange County and Los Angeles County since 2011. We specialize in commercial renovation, tenant improvement, ADA upgrades, and residential construction — delivering every project with safety, quality, and reliability.
+            </p>
+            <p className="text-gray-400 text-sm">
+              HJS Construction is a trade name of Hwang J&S Construction.
             </p>
           </div>
 
@@ -44,10 +47,10 @@ export default function Footer() {
           <div className="flex flex-col md:flex-row justify-between items-center">
             <div className="text-center md:text-left">
               <p className="text-gray-400 text-sm">
-                ©2025 Hwang J&S Construction | All Rights Reserved
+                ©2025 HJS Construction | All Rights Reserved
               </p>
               <p className="text-gray-400 text-sm mt-1">
-                License #960757
+                HJS Construction is a trade name of Hwang J&S Construction | CA CSLB License #960757
               </p>
             </div>
             <nav aria-label="Legal links">

@@ -123,7 +123,7 @@ export default function ServicesPage() {
     {
       image: renovationImage,
       icon: "site",
-      title: "Site Work / Utility / Exterior Improvements",
+      title: "Site Work / Utility / Comprehensive Improvements",
       subtitle: "Building from the ground up.",
       description: "Comprehensive site work including utility installations, exterior improvements, parking lot upgrades, and landscaping. Complete site development and infrastructure management.",
       features: ["Utility Installation", "Exterior Improvements", "Site Infrastructure"],

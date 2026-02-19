@@ -3,6 +3,7 @@ import { Open_Sans } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import { Analytics } from "@vercel/analytics/react";
 
 const sans = Open_Sans({ subsets: ["latin"] });
 
@@ -89,6 +90,7 @@ export default function RootLayout({
         <Header/>
         <main id="main-content" className="flex-grow bg-white" role="main">{children}</main>
         <Footer/>
+        <Analytics />
       </body>
     </html>
   );

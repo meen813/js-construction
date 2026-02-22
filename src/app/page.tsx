@@ -10,16 +10,16 @@ import { useEffect, useRef, useState } from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight, LayoutTemplate, Play, Pause, ChevronDown } from 'lucide-react';
 
+const VIDEOS = [
+  '/video/5501.mp4',
+  '/video/Modern_Retail_Building_Cinematic_Ending.mp4'
+];
+
 export default function Home() {
-  const videoRef = useRef<HTMLVideoElement>(null);
+  const videoRefs = useRef<(HTMLVideoElement | null)[]>([]);
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
   const [isVideoPlaying, setIsVideoPlaying] = useState(true);
   const [currentVideoIndex, setCurrentVideoIndex] = useState(0);
-  
-  const videos = [
-    '/video/5501.mp4',
-    '/video/Modern_Retail_Building_Cinematic_Ending.mp4'
-  ];
 
   useEffect(() => {
     // Check for prefers-reduced-motion preference
@@ -49,45 +49,43 @@ export default function Home() {
   }, []);
 
   useEffect(() => {
-    if (videoRef.current) {
-      if (prefersReducedMotion) {
-        // Pause video when reduced motion is preferred
-        videoRef.current.pause();
-        setIsVideoPlaying(false);
-      } else {
-        // Play video when motion is allowed
-        videoRef.current.play().catch(() => {
-          // Handle autoplay restrictions
+    VIDEOS.forEach((_, index) => {
+      const video = videoRefs.current[index];
+      if (!video) return;
+
+      if (index === currentVideoIndex) {
+        if (prefersReducedMotion) {
+          video.pause();
           setIsVideoPlaying(false);
-        });
+        } else {
+          // Play video when motion is allowed
+          if (video.paused) {
+            video.currentTime = 0;
+            video.play().catch(() => {
+              setIsVideoPlaying(false);
+            });
+            setIsVideoPlaying(true);
+          }
+        }
+      } else {
+        video.pause();
       }
-    }
+    });
   }, [prefersReducedMotion, currentVideoIndex]);
 
   const handleVideoEnd = () => {
     // Move to next video in sequence
-    setCurrentVideoIndex((prevIndex) => {
-      const nextIndex = (prevIndex + 1) % videos.length;
-      // Load and play next video
-      if (videoRef.current) {
-        videoRef.current.load();
-        if (!prefersReducedMotion) {
-          videoRef.current.play().catch(() => {
-            setIsVideoPlaying(false);
-          });
-        }
-      }
-      return nextIndex;
-    });
+    setCurrentVideoIndex((prevIndex) => (prevIndex + 1) % VIDEOS.length);
   };
 
   const toggleVideoPlay = () => {
-    if (videoRef.current) {
+    const currentVideo = videoRefs.current[currentVideoIndex];
+    if (currentVideo) {
       if (isVideoPlaying) {
-        videoRef.current.pause();
+        currentVideo.pause();
         setIsVideoPlaying(false);
       } else {
-        videoRef.current.play().catch(() => {
+        currentVideo.play().catch(() => {
           // Handle play restrictions
         });
         setIsVideoPlaying(true);
@@ -102,25 +100,38 @@ export default function Home() {
       <StructuredData data={servicesSchema} />
       
       {/* Hero Section */}
-      <section className="h-screen relative overflow-hidden">
+      <section className="h-screen relative overflow-hidden bg-black">
         <div className="absolute inset-0" aria-hidden="true">
-          <video
-            ref={videoRef}
-            key={currentVideoIndex}
-            autoPlay={!prefersReducedMotion}
-            muted
-            playsInline
-            className="w-full h-full object-cover"
-            aria-label="Background video showing construction projects and building exteriors"
-            aria-describedby="video-description"
-            onPlay={() => setIsVideoPlaying(true)}
-            onPause={() => setIsVideoPlaying(false)}
-            onEnded={handleVideoEnd}
-            poster="/architectural-bg.png"
-          >
-            <source src={videos[currentVideoIndex]} type="video/mp4" />
-            Your browser does not support the video tag.
-          </video>
+          {VIDEOS.map((videoSrc, index) => (
+            <video
+              key={videoSrc}
+              ref={(el) => {
+                videoRefs.current[index] = el;
+              }}
+              autoPlay={index === 0 && !prefersReducedMotion}
+              muted
+              playsInline
+              preload="auto"
+              className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${
+                index === currentVideoIndex ? 'opacity-100' : 'opacity-0'
+              }`}
+              aria-label="Background video showing construction projects and building exteriors"
+              aria-describedby="video-description"
+              onPlay={() => {
+                if (index === currentVideoIndex) setIsVideoPlaying(true);
+              }}
+              onPause={() => {
+                if (index === currentVideoIndex) setIsVideoPlaying(false);
+              }}
+              onEnded={() => {
+                if (index === currentVideoIndex) handleVideoEnd();
+              }}
+              poster={index === 0 ? "/architectural-bg.png" : undefined}
+            >
+              <source src={videoSrc} type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+          ))}
           <span id="video-description" className="sr-only">
             Background video displaying construction projects including modern retail buildings and architectural exteriors showcasing HJS Construction&apos;s work
           </span>

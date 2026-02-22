@@ -19,8 +19,8 @@ type ScrollableBarProps = {
 export default function ScrollableBar({ children, ariaLabel }: ScrollableBarProps) {
   return (
     <Carousel
-      containerClass="w-full flex gap-2"
-      itemClass="flex justify-center item-center"
+      containerClass="w-full pb-12 px-8 md:px-16 relative"
+      itemClass="px-2 sm:px-4 mb-4"
       draggable
       swipeable
       focusOnSelect

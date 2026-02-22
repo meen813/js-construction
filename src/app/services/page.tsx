@@ -270,7 +270,7 @@ export default function ServicesPage() {
                     {service.subtitle}
                   </p>
                   
-                  <p className="text-sm text-gray-600 mb-6 leading-relaxed text-center line-clamp-3">
+                  <p className="text-sm text-gray-600 mb-6 leading-relaxed text-center">
                     {service.description}
                   </p>
                   
@@ -371,7 +371,7 @@ export default function ServicesPage() {
                     {service.subtitle}
                   </p>
                   
-                  <p className="text-sm text-gray-600 mb-6 leading-relaxed text-center line-clamp-3">
+                  <p className="text-sm text-gray-600 mb-6 leading-relaxed text-center">
                     {service.description}
                   </p>
                   

@@ -252,7 +252,7 @@ export default function ProjectDetailPage() {
           <div className="w-16 h-1 md:w-24 md:h-1 bg-white mx-auto mb-6 md:mb-8 shadow-sm"></div>
           
           <p className="text-base sm:text-lg md:text-2xl font-light leading-relaxed max-w-3xl mx-auto drop-shadow-lg px-2">
-            {project.description}
+            {project.tagline}
           </p>
         </div>
 

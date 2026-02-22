@@ -75,7 +75,7 @@ export default function ProjectPreview() {
             {filteredProjects.length > 0 ? (
                <ScrollableBar>
               {filteredProjects.map((project) => (
-                <div key={project.id} className="p-4 h-full">
+                <div key={project.id}>
                   <ProjectCard project={project} />
                 </div>
               ))}
@@ -100,7 +100,7 @@ export default function ProjectPreview() {
                  itemClass="px-2 pb-8"
                >
                  {filteredProjects.map((project) => (
-                   <div key={project.id} className="h-full">
+                   <div key={project.id}>
                      <ProjectCard project={project} />
                    </div>
                  ))}

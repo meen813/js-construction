@@ -366,6 +366,38 @@ select:focus-visible {
   }
 }
 
+/* React Multi Carousel Enhancements */
+.react-multiple-carousel__arrow {
+  background: rgba(255, 255, 255, 0.15) !important;
+  backdrop-filter: blur(4px) !important;
+  -webkit-backdrop-filter: blur(4px) !important;
+  min-width: 48px !important;
+  min-height: 48px !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05) !important;
+  transition: all 0.3s ease !important;
+  z-index: 50 !important;
+}
+
+.react-multiple-carousel__arrow:hover {
+  background: rgba(255, 255, 255, 0.4) !important;
+  transform: scale(1.1);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1) !important;
+}
+
+.react-multiple-carousel__arrow::before {
+  color: #1f2937 !important;
+  font-weight: 600;
+}
+
+.react-multiple-carousel__arrow--left {
+  left: 0 !important;
+}
+
+.react-multiple-carousel__arrow--right {
+  right: 0 !important;
+}
+
 @layer base {
   :root {
     --background: 0 0% 100%;

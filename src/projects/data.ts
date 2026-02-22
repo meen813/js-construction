@@ -117,6 +117,20 @@ import santaAna5 from '../../public/Santa Ana Motel renovation 2016/20160502_113
 import santaAna6 from '../../public/Santa Ana Motel renovation 2016/20160502_113643.jpg';
 import santaAna7 from '../../public/Santa Ana Motel renovation 2016/20160818_164040.jpg';
 
+// Project 12 Images
+import sdAsphalt1 from '../../public/san-diego-university-ave-parking-lot-asphalt-replacement/1.jpg';
+import sdAsphalt2 from '../../public/san-diego-university-ave-parking-lot-asphalt-replacement/2.jpg';
+import sdAsphalt3 from '../../public/san-diego-university-ave-parking-lot-asphalt-replacement/3.jpg';
+import sdAsphalt4 from '../../public/san-diego-university-ave-parking-lot-asphalt-replacement/4.jpg';
+import sdAsphalt5 from '../../public/san-diego-university-ave-parking-lot-asphalt-replacement/5.jpg';
+import sdAsphalt6 from '../../public/san-diego-university-ave-parking-lot-asphalt-replacement/6.jpg';
+import sdAsphalt7 from '../../public/san-diego-university-ave-parking-lot-asphalt-replacement/7.jpg';
+import sdAsphalt8 from '../../public/san-diego-university-ave-parking-lot-asphalt-replacement/8.jpg';
+import sdAsphalt9 from '../../public/san-diego-university-ave-parking-lot-asphalt-replacement/9.jpg';
+import sdAsphalt10 from '../../public/san-diego-university-ave-parking-lot-asphalt-replacement/10.jpg';
+import sdAsphalt11 from '../../public/san-diego-university-ave-parking-lot-asphalt-replacement/11.jpg';
+import sdAsphalt12 from '../../public/san-diego-university-ave-parking-lot-asphalt-replacement/12.jpg';
+
 export const projects: Project[] = [
   // Project 1 - La Palma Commercial Mall Remodel (2025)
   {
@@ -283,6 +297,23 @@ export const projects: Project[] = [
     additionalImages: [
       santaAna2, santaAna3, santaAna4, 
       santaAna5, santaAna6, santaAna7
+    ],
+  },
+  
+  // Project 12 - San Diego University Ave Parking Lot Asphalt Replacement
+  {
+    id: 12,
+    title: 'San Diego University Ave Parking Lot Asphalt Replacement (2026)',
+    shortDescription: 'Complete asphalt replacement and restriping for a commercial mall parking lot in San Diego.',
+    tagline: 'Durable, high-quality parking lot surfacing',
+    year: 2026,
+    category: 'commercial',
+    projectType: 'renovation',
+    description: "A comprehensive parking lot asphalt replacement project for a commercial mall located on University Ave in San Diego, California. Completed efficiently over a 2-week period, this project involved the complete removal of old, deteriorated asphalt, proper grading and base preparation, and the installation of a new, durable asphalt surface. The renovation was finished with clear, compliant restriping to ensure optimal traffic flow, enhanced safety, and a fresh, professional aesthetic for the commercial property.",
+    image: sdAsphalt1,
+    additionalImages: [
+      sdAsphalt2, sdAsphalt3, sdAsphalt4, sdAsphalt5, sdAsphalt6,
+      sdAsphalt7, sdAsphalt8, sdAsphalt9, sdAsphalt10, sdAsphalt11, sdAsphalt12
     ],
   },
 ];

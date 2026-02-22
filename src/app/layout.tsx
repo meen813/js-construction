@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
-import { Open_Sans } from "next/font/google";
+import { Outfit } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Analytics } from "@vercel/analytics/react";
 
-const sans = Open_Sans({ subsets: ["latin"] });
+const outfit = Outfit({ subsets: ["latin"] });
 
 export const viewport = {
   width: 'device-width',
@@ -78,7 +78,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={sans.className}>
+    <html lang="en" className={outfit.className}>
       <body className="flex flex-col ">
         {/* Skip to main content link for accessibility */}
         <a 

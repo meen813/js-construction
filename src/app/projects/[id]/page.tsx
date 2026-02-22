@@ -126,7 +126,8 @@ export default function ProjectDetailPage() {
     project.id === 8 ? 'Buena Park, California' :
     project.id === 9 ? 'Pomona, California' :
     project.id === 10 ? 'Lynwood, California' :
-    project.id === 11 ? 'Santa Ana, California' : 'California';
+    project.id === 11 ? 'Santa Ana, California' : 
+    project.id === 12 ? 'San Diego, California' : 'California';
 
   const projectCompletionDate =
     project.id === 1 ? '2025-12' :
@@ -139,7 +140,8 @@ export default function ProjectDetailPage() {
     project.id === 8 ? '2016' :
     project.id === 9 ? '2017' :
     project.id === 10 ? '2017' :
-    project.id === 11 ? '2016' : undefined;
+    project.id === 11 ? '2016' : 
+    project.id === 12 ? '2026' : undefined;
 
   const projectSchema = generateProjectSchema({
     id: project.id,
@@ -418,7 +420,8 @@ export default function ProjectDetailPage() {
                       project.id === 8 ? 'Commercial Interior Renovation' :
                       project.id === 9 ? 'Commercial Roof Renovation' :
                       project.id === 10 ? 'Residential Renovation & Conversion' :
-                      project.id === 11 ? 'Commercial Renovation' : 'Construction Project'}</p>
+                      project.id === 11 ? 'Commercial Renovation' : 
+                      project.id === 12 ? 'Commercial Asphalt Replacement' : 'Construction Project'}</p>
                   </div>
                   
                   <div>
@@ -433,7 +436,8 @@ export default function ProjectDetailPage() {
                       project.id === 8 ? 'Buena Park, California' :
                       project.id === 9 ? 'Pomona, California' :
                       project.id === 10 ? 'Lynwood, California' :
-                      project.id === 11 ? 'Santa Ana, California' : 'California'}</p>
+                      project.id === 11 ? 'Santa Ana, California' : 
+                      project.id === 12 ? 'San Diego, California' : 'California'}</p>
                   </div>
                   
                   <div>
@@ -448,7 +452,8 @@ export default function ProjectDetailPage() {
                       project.id === 8 ? 'Completed 2016' :
                       project.id === 9 ? 'Completed 2017' :
                       project.id === 10 ? 'Completed 2017' :
-                      project.id === 11 ? 'Completed 2016' : 'Completed'}</p>
+                      project.id === 11 ? 'Completed 2016' : 
+                      project.id === 12 ? 'Completed in 2 Weeks (2026)' : 'Completed'}</p>
                   </div>
                 </div>
 

@@ -3,6 +3,13 @@ import ScrollableBar from "./ScrollableBar";
 import { projects } from "@/projects/data";
 import { useState } from "react";
 import ProjectCard from "./ProjectCard";
+import Carousel from "react-multi-carousel";
+import "react-multi-carousel/lib/styles.css";
+
+const responsive = {
+  mobile: { breakpoint: { max: 768, min: 0 }, items: 1, partialVisibilityGutter: 30 }
+};
+
 
 export default function ProjectPreview() {
   const [filter, setFilter] = useState<'all' | 'commercial' | 'residential'>('all');
@@ -10,7 +17,7 @@ export default function ProjectPreview() {
   const filteredProjects = projects.filter(project => {
     if (filter === 'all') return true;
     return project.category === filter;
-  });
+  }).sort((a, b) => b.year - a.year);
 
   return (
     <section className="py-20 px-4 sm:px-6 lg:px-8">
@@ -79,13 +86,28 @@ export default function ProjectPreview() {
            
           </div>
 
-          {/* Mobile: Vertical Stack */}
-          <div className="md:hidden space-y-6">
-            {filteredProjects.slice(0, 3).map((project) => (
-              <div key={project.id} className="block">
-                <ProjectCard project={project} />
-              </div>
-            ))}
+          {/* Mobile: Horizontal Carousel */}
+          <div className="md:hidden pb-12">
+            {filteredProjects.length > 0 ? (
+               <Carousel 
+                 responsive={responsive}
+                 infinite={false}
+                 swipeable={true}
+                 draggable={true}
+                 showDots={true}
+                 arrows={false}
+                 partialVisible={true}
+                 itemClass="px-2 pb-8"
+               >
+                 {filteredProjects.map((project) => (
+                   <div key={project.id} className="h-full">
+                     <ProjectCard project={project} />
+                   </div>
+                 ))}
+               </Carousel>
+            ) : (
+                <div className="text-center py-10 text-gray-500">No projects found.</div>
+            )}
           </div>
         </div>
 

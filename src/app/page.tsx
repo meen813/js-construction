@@ -1,10 +1,14 @@
 'use client';
-import ContactForm from '../components/ContactForm';
+import dynamic from 'next/dynamic';
 import Link from 'next/link';
-import ProjectPreview from '@/components/ProjectPreview';
-import Introduction from '@/components/Introduction';
 import StructuredData, { organizationSchema, servicesSchema } from '@/components/StructuredData';
+
+const ContactForm = dynamic(() => import('../components/ContactForm'));
+const ProjectPreview = dynamic(() => import('@/components/ProjectPreview'));
+const Introduction = dynamic(() => import('@/components/Introduction'));
 import { useEffect, useRef, useState } from 'react';
+import { motion } from 'framer-motion';
+import { ArrowRight, LayoutTemplate, Play, Pause, ChevronDown } from 'lucide-react';
 
 export default function Home() {
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -142,13 +146,9 @@ export default function Home() {
             title={isVideoPlaying ? 'Pause video' : 'Play video'}
           >
             {isVideoPlaying ? (
-              <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
-                <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zM7 8a1 1 0 012 0v4a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v4a1 1 0 102 0V8a1 1 0 00-1-1z" clipRule="evenodd" />
-              </svg>
+              <Pause className="w-5 h-5" aria-hidden="true" />
             ) : (
-              <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
-                <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clipRule="evenodd" />
-              </svg>
+              <Play className="w-5 h-5 ml-0.5" aria-hidden="true" />
             )}
           </button>
         </div>
@@ -158,41 +158,80 @@ export default function Home() {
         
         {/* Hero content with enhanced styling */}
         <div className='absolute inset-0 flex items-center justify-center' style={{ zIndex: 2 }}>
-               <div className='text-white text-center max-w-4xl mx-auto px-4'>
-                 <div className={prefersReducedMotion ? '' : 'fade-in'}>
-                   <h1 className='text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight text-shadow-xl mb-4 sm:mb-6'>
+               <div className='text-white text-center max-w-4xl mx-auto px-4 pt-16'>
+                 <motion.div 
+                   initial={{ opacity: 0, y: 30 }}
+                   animate={{ opacity: 1, y: 0 }}
+                   transition={{ duration: 0.8, ease: "easeOut", staggerChildren: 0.2 }}
+                 >
+                   <motion.h1 
+                     initial={{ opacity: 0, y: 20 }}
+                     animate={{ opacity: 1, y: 0 }}
+                     transition={{ duration: 0.6, delay: 0.2 }}
+                     className='text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight text-shadow-xl mb-6'
+                   >
                      <span className="text-white">Building Your Vision</span>
-                   </h1>
-                   <h2 className='text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-gray-100 mb-6 sm:mb-8 tracking-wider uppercase sm:whitespace-nowrap'>
-                     Commercial • Residential • New Build • ADU
-                   </h2>
-                   <div className="w-24 sm:w-32 h-1.5 bg-gradient-to-r from-blue-500 to-emerald-500 mx-auto mb-8 rounded-full shadow-lg"></div>
+                   </motion.h1>
+                   
+                   <motion.div 
+                     initial={{ opacity: 0, scale: 0.9 }}
+                     animate={{ opacity: 1, scale: 1 }}
+                     transition={{ duration: 0.5, delay: 0.4 }}
+                     className='flex flex-wrap justify-center gap-2 sm:gap-3 mb-8 max-w-3xl mx-auto'
+                   >
+                      {['Commercial', 'Residential', 'New Build', 'ADU'].map((keyword) => (
+                        <span key={keyword} className="bg-white/10 backdrop-blur-md border border-white/20 text-white px-4 py-1.5 sm:px-5 sm:py-2 rounded-full text-sm sm:text-base font-semibold tracking-wider shadow-lg">
+                          {keyword}
+                        </span>
+                      ))}
+                   </motion.div>
+
+                   <motion.div 
+                     initial={{ opacity: 0, width: 0 }}
+                     animate={{ opacity: 1, width: "var(--target-width)" }}
+                     transition={{ duration: 0.8, delay: 0.5 }}
+                     style={{ '--target-width': '8rem' } as React.CSSProperties}
+                     className="h-1.5 bg-gradient-to-r from-blue-500 to-emerald-500 mx-auto mb-8 rounded-full shadow-lg"
+                   />
                    
                    {/* Trust Badge */}
-                   <div className="inline-block bg-black/40 backdrop-blur-md px-6 py-2 rounded-full border border-white/20 mb-6">
-                     <p className="text-sm md:text-base text-gray-100 font-semibold tracking-wide">
+                   <motion.div 
+                     initial={{ opacity: 0, y: 10 }}
+                     animate={{ opacity: 1, y: 0 }}
+                     transition={{ duration: 0.6, delay: 0.6 }}
+                     className="inline-block bg-black/40 backdrop-blur-md px-6 py-2.5 rounded-full border border-white/20 mb-8"
+                   >
+                     <p className="text-sm md:text-base text-gray-100 font-semibold tracking-wide flex items-center justify-center gap-2">
+                       <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
                        Serving LA & Orange County Since 2011
                      </p>
-                   </div>
+                   </motion.div>
 
-                   <p className='text-base sm:text-lg md:text-xl font-medium text-gray-100 tracking-wide leading-relaxed max-w-5xl mx-auto drop-shadow-md'>
-                     Your trusted partner for Commercial Renovations, Custom New Builds, and Home Additions.
-                   </p>
-                   <div className="mt-8 sm:mt-12 flex flex-col sm:flex-row gap-4 sm:gap-5 justify-center">
+                   <motion.p 
+                     initial={{ opacity: 0 }}
+                     animate={{ opacity: 1 }}
+                     transition={{ duration: 0.8, delay: 0.8 }}
+                     className='text-base sm:text-lg md:text-xl font-medium text-gray-100 tracking-wide leading-relaxed max-w-3xl mx-auto drop-shadow-md px-4'
+                   >
+                     Your trusted partner for modern Commercial Renovations, Custom New Builds, and Home Additions.
+                   </motion.p>
+                   
+                   <motion.div 
+                     initial={{ opacity: 0, y: 20 }}
+                     animate={{ opacity: 1, y: 0 }}
+                     transition={{ duration: 0.6, delay: 1.0 }}
+                     className="mt-10 sm:mt-12 flex flex-col sm:flex-row gap-4 sm:gap-5 justify-center"
+                   >
                      <Link href="/contact" className="btn-primary text-base sm:text-lg px-8 sm:px-10 py-4 sm:py-5 group focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
                        <span>Get Free Quote</span>
-                       <svg className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                       </svg>
+                       <ArrowRight className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" />
                      </Link>
                      <Link href="/projects" className="btn-secondary text-base sm:text-lg px-8 sm:px-10 py-4 sm:py-5 group focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2">
-                       <svg className="w-5 h-5 transition-transform duration-300 group-hover:rotate-12" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
-                       </svg>
+                       <LayoutTemplate className="w-5 h-5 transition-transform duration-300 group-hover:scale-110" />
                        <span>View Projects</span>
                      </Link>
-                   </div>
-                 </div>
+                   </motion.div>
+                 </motion.div>
                </div>
         </div>
 
@@ -205,9 +244,7 @@ export default function Home() {
           style={{ zIndex: 3 }} 
           aria-hidden="true"
         >
-          <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-          </svg>
+          <ChevronDown className="w-8 h-8 opacity-80" aria-hidden="true" />
         </div>
       </section>
 

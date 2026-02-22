@@ -1,6 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
+import { Building2, Store, Accessibility, Trees, Hammer, Home, PenTool, LayoutTemplate, CheckCircle2, ArrowRight } from "lucide-react";
 import image1 from '../../public/new building.webp'
 import image2 from '../../public/Home addition.webp';
 import renovationImage from '../../public/renovation.png';
@@ -14,70 +16,28 @@ import bgImage from '../../public/architectural-bg.png';
 // Service Icon Component
 const ServiceIcon = ({ icon }: { icon: string }) => {
   const icons: Record<string, React.ReactElement> = {
-    commercial: (
-      <svg className="w-6 h-6 md:w-8 md:h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
-      </svg>
-    ),
-    tenant: (
-      <svg className="w-6 h-6 md:w-8 md:h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
-      </svg>
-    ),
-    ada: (
-      <svg className="w-6 h-6 md:w-8 md:h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
-      </svg>
-    ),
-    site: (
-      <svg className="w-6 h-6 md:w-8 md:h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
-      </svg>
-    ),
-    remodel: (
-      <svg className="w-6 h-6 md:w-8 md:h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
-      </svg>
-    ),
-    addition: (
-      <svg className="w-6 h-6 md:w-8 md:h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
-      </svg>
-    ),
-    custom: (
-      <svg className="w-6 h-6 md:w-8 md:h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
-      </svg>
-    ),
-    adu: (
-      <svg className="w-6 h-6 md:w-8 md:h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
-      </svg>
-    ),
+    commercial: <Building2 className="w-6 h-6 md:w-8 md:h-8" />,
+    tenant: <Store className="w-6 h-6 md:w-8 md:h-8" />,
+    ada: <Accessibility className="w-6 h-6 md:w-8 md:h-8" />,
+    site: <Trees className="w-6 h-6 md:w-8 md:h-8" />,
+    remodel: <Hammer className="w-6 h-6 md:w-8 md:h-8" />,
+    addition: <LayoutTemplate className="w-6 h-6 md:w-8 md:h-8" />,
+    custom: <PenTool className="w-6 h-6 md:w-8 md:h-8" />,
+    adu: <Home className="w-6 h-6 md:w-8 md:h-8" />,
   };
-  return icons[icon] || icons.commercial;
+  return icons[icon] || <Building2 className="w-6 h-6 md:w-8 md:h-8" />;
 };
 
 export default function Introduction() {
   const [activeTab, setActiveTab] = useState<'commercial' | 'residential'>('commercial');
-  const sectionRef = React.useRef<HTMLElement>(null);
-  const [parallaxOffset, setParallaxOffset] = useState(0);
-
-  React.useEffect(() => {
-    const handleScroll = () => {
-      if (sectionRef.current) {
-        const rect = sectionRef.current.getBoundingClientRect();
-        const scrollSpeed = 0.15;
-        // Calculate offset based on section's position relative to viewport center
-        const offset = (rect.top - window.innerHeight / 2) * scrollSpeed;
-        setParallaxOffset(offset);
-      }
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    handleScroll(); // Initial calculation
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  const sectionRef = useRef<HTMLElement>(null);
+  
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start end", "end start"]
+  });
+  
+  const backgroundY = useTransform(scrollYProgress, [0, 1], ["0%", "20%"]);
 
   const commercialServices = [
     {
@@ -156,13 +116,10 @@ export default function Introduction() {
       className="py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden"
     >
       {/* Parallax Background */}
-      <div className="absolute inset-0 z-0">
-        <div 
-          className="absolute inset-0 w-[140%] -left-[20%] h-full"
-          style={{ 
-            transform: `translateX(${parallaxOffset}px)`,
-            willChange: 'transform'
-          }}
+      <div className="absolute inset-0 z-0 overflow-hidden">
+        <motion.div 
+          className="absolute inset-0 w-[120%] -left-[10%] h-[130%] -top-[15%]"
+          style={{ y: backgroundY }}
           aria-hidden="true"
         >
           <Image
@@ -170,13 +127,11 @@ export default function Introduction() {
             alt=""
             fill
             className="object-cover"
-            priority
             sizes="100vw"
-            aria-hidden="true"
           />
-        </div>
+        </motion.div>
         {/* Overlay to ensure text readability */}
-        <div className="absolute inset-0 bg-white/60 z-10" />
+        <div className="absolute inset-0 bg-white/70 backdrop-blur-[2px] z-10" />
       </div>
 
       <div className="max-w-7xl mx-auto relative z-10">

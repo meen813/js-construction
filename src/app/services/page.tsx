@@ -210,7 +210,7 @@ export default function ServicesPage() {
       <section className="pt-28 md:pt-32 pb-16 relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
-            <h1 className="text-4xl md:text-6xl font-bold text-gray-900 mb-6">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-semibold tracking-tight text-gray-900 mb-6">
               <span className="text-gradient">Our Services</span>
             </h1>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed mb-8">
@@ -227,7 +227,7 @@ export default function ServicesPage() {
           {/* Commercial Services Section */}
           <div className="mb-20">
             <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold mb-4">
+              <h2 className="text-3xl md:text-4xl font-semibold tracking-tight mb-4">
                 <span className="bg-gradient-to-r from-blue-600 to-blue-800 bg-clip-text text-transparent">
                   Commercial Construction Services
                 </span>
@@ -262,7 +262,7 @@ export default function ServicesPage() {
                     />
                   </div>
                   
-                  <h3 className="text-xl lg:text-2xl font-bold text-gray-900 mb-2 text-center group-hover:text-blue-600 transition-colors duration-300">
+                  <h3 className="text-xl lg:text-2xl font-semibold tracking-tight text-gray-900 mb-2 text-center group-hover:text-blue-600 transition-colors duration-300">
                     {service.title}
                   </h3>
                   
@@ -291,7 +291,7 @@ export default function ServicesPage() {
                       onClick={() => toggleCard(cardId)}
                       aria-expanded={isExpanded}
                       aria-controls={`details-${cardId}`}
-                      className="w-full flex items-center justify-between text-left group/btn focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 rounded"
+                      className="w-full flex items-center justify-between text-left group/btn min-h-[44px] focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 rounded"
                     >
                       <h4 className="font-semibold text-gray-900 group-hover/btn:text-blue-600 transition-colors">
                         What&apos;s Included
@@ -330,7 +330,7 @@ export default function ServicesPage() {
           {/* Residential Services Section */}
           <div className="mb-16">
             <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-700 mb-4">
+              <h2 className="text-3xl md:text-4xl font-semibold tracking-tight text-gray-700 mb-4">
                 Residential Construction Services
               </h2>
               <div className="w-32 h-1 bg-gradient-to-r from-gray-300 to-gray-400 mx-auto rounded-full"></div>
@@ -363,7 +363,7 @@ export default function ServicesPage() {
                     />
                   </div>
                   
-                  <h3 className="text-xl lg:text-2xl font-bold text-gray-900 mb-2 text-center group-hover:text-gray-700 transition-colors duration-300">
+                  <h3 className="text-xl lg:text-2xl font-semibold tracking-tight text-gray-900 mb-2 text-center group-hover:text-gray-700 transition-colors duration-300">
                     {service.title}
                   </h3>
                   
@@ -392,7 +392,7 @@ export default function ServicesPage() {
                       onClick={() => toggleCard(cardId)}
                       aria-expanded={isExpanded}
                       aria-controls={`details-residential-${cardId}`}
-                      className="w-full flex items-center justify-between text-left group/btn focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 rounded"
+                      className="w-full flex items-center justify-between text-left group/btn min-h-[44px] focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 rounded"
                     >
                       <h4 className="font-semibold text-gray-900 group-hover/btn:text-gray-700 transition-colors">
                         What&apos;s Included
@@ -431,7 +431,7 @@ export default function ServicesPage() {
           {/* Call to Action */}
           <div className="text-center">
             <div className="card-gradient p-8 max-w-4xl mx-auto">
-              <h3 className="text-3xl font-bold text-gray-900 mb-4">
+              <h3 className="text-3xl font-semibold tracking-tight text-gray-900 mb-4">
                 Ready to Start Your Project?
               </h3>
               <p className="text-xl text-gray-600 mb-8">
@@ -455,7 +455,7 @@ export default function ServicesPage() {
       <section className="py-20 px-4 sm:px-6 lg:px-8 relative">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+            <h2 className="text-4xl md:text-5xl font-semibold tracking-tight text-gray-900 mb-6">
               <span className="text-gradient">Our Process</span>
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">

@@ -24,7 +24,7 @@ export default function ProjectPreview() {
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="text-center mb-12">
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+          <h2 className="text-4xl md:text-5xl font-semibold tracking-tight text-gray-900 mb-6">
             <span className="text-gradient">Our Featured Projects</span>
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed mb-8">
@@ -35,7 +35,7 @@ export default function ProjectPreview() {
           <div className="inline-flex p-1 bg-gray-100 rounded-full mb-8">
             <button
               onClick={() => setFilter('all')}
-              className={`px-6 py-2 rounded-full text-base font-medium transition-all duration-300 ${
+              className={`px-6 py-2 min-h-[44px] rounded-full text-base font-medium transition-all duration-300 ${
                 filter === 'all'
                   ? 'bg-white text-gray-900 shadow-sm'
                   : 'text-gray-500 hover:text-gray-900'
@@ -45,7 +45,7 @@ export default function ProjectPreview() {
             </button>
             <button
               onClick={() => setFilter('commercial')}
-              className={`px-6 py-2 rounded-full text-base font-medium transition-all duration-300 ${
+              className={`px-6 py-2 min-h-[44px] rounded-full text-base font-medium transition-all duration-300 ${
                 filter === 'commercial'
                   ? 'bg-white text-blue-600 shadow-sm'
                   : 'text-gray-500 hover:text-gray-900'
@@ -55,7 +55,7 @@ export default function ProjectPreview() {
             </button>
             <button
               onClick={() => setFilter('residential')}
-              className={`px-6 py-2 rounded-full text-base font-medium transition-all duration-300 ${
+              className={`px-6 py-2 min-h-[44px] rounded-full text-base font-medium transition-all duration-300 ${
                 filter === 'residential'
                   ? 'bg-white text-emerald-600 shadow-sm'
                   : 'text-gray-500 hover:text-gray-900'
@@ -114,7 +114,7 @@ export default function ProjectPreview() {
         {/* Call to Action */}
         <div className="text-center">
           <div className="card-gradient p-8 max-w-2xl mx-auto">
-            <h3 className="text-2xl font-bold text-gray-900 mb-4">
+            <h3 className="text-2xl font-semibold tracking-tight text-gray-900 mb-4">
               See More of Our Work
             </h3>
             <p className="text-gray-600 mb-6">

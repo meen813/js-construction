@@ -245,7 +245,7 @@ export default function ProjectDetailPage() {
             </Link>
           </div>
           
-          <h1 className="text-3xl sm:text-4xl md:text-7xl font-bold mb-4 md:mb-6 tracking-tight drop-shadow-xl">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-semibold tracking-tight mb-4 md:mb-6 drop-shadow-xl">
             {project.title}
           </h1>
           
@@ -403,7 +403,7 @@ export default function ProjectDetailPage() {
             {/* Project Info */}
             <div className="order-1 lg:order-2">
               <div className="max-w-lg">
-                <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4 md:mb-6">
+                <h2 className="text-3xl md:text-4xl font-semibold tracking-tight text-gray-900 mb-4 md:mb-6">
                   Project Overview
                 </h2>
                 
@@ -481,7 +481,7 @@ export default function ProjectDetailPage() {
       <section className="py-12 md:py-20 px-4 sm:px-6 lg:px-8 bg-gray-50">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-10 md:mb-16">
-            <h2 className="text-3xl md:text-5xl font-bold text-gray-900 mb-4 md:mb-6">
+            <h2 className="text-3xl md:text-5xl font-semibold tracking-tight text-gray-900 mb-4 md:mb-6">
               <span className="text-gradient">Project Features</span>
             </h2>
             <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto">
@@ -523,7 +523,7 @@ export default function ProjectDetailPage() {
       <section className="py-12 md:py-20 px-4 sm:px-6 lg:px-8">
         <div className="max-w-4xl mx-auto text-center">
           <div className="card-gradient p-8 md:p-12">
-            <h2 className="text-2xl md:text-4xl font-bold text-gray-900 mb-4 md:mb-6">
+            <h2 className="text-2xl md:text-4xl font-semibold tracking-tight text-gray-900 mb-4 md:mb-6">
               Ready to Create Something Amazing?
             </h2>
             <p className="text-lg md:text-xl text-gray-600 mb-6 md:mb-8 leading-relaxed">

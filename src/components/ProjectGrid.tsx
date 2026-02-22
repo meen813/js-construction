@@ -64,7 +64,7 @@ export default function ProjectGrid({ projects }: Props) {
                 setCategoryFilter(cat.id as CategoryFilterType);
                 setProjectTypeFilter('all'); // Reset sub-filter when main changes
               }}
-              className={`text-base md:text-xl font-semibold tracking-widest uppercase transition-all duration-300 focus:outline-none relative py-2 ${
+              className={`text-base md:text-xl font-medium tracking-widest uppercase transition-all duration-300 focus:outline-none relative py-2 min-h-[44px] ${
                 categoryFilter === cat.id
                   ? 'text-gray-900'
                   : 'text-gray-400 hover:text-gray-600'
@@ -101,7 +101,7 @@ export default function ProjectGrid({ projects }: Props) {
               <button
                 key={type.id}
                 onClick={() => setProjectTypeFilter(type.id as ProjectFilterType)}
-                className={`px-5 py-2 rounded-full text-xs md:text-sm font-semibold tracking-wider uppercase transition-all duration-300 focus:outline-none border ${
+                className={`px-5 py-2 min-h-[44px] flex items-center justify-center rounded-full text-xs md:text-sm font-medium tracking-wider uppercase transition-all duration-300 focus:outline-none border ${
                   projectTypeFilter === type.id
                     ? 'bg-gray-900 text-white border-gray-900 shadow-lg scale-105'
                     : 'bg-transparent text-gray-500 border-gray-200 hover:border-gray-400 hover:text-gray-900'

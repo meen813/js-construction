@@ -3,14 +3,14 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
 import { Building2, Store, Accessibility, Trees, Hammer, Home, PenTool, LayoutTemplate, CheckCircle2, ArrowRight } from "lucide-react";
-import image1 from '../../public/new building.webp'
-import image2 from '../../public/Home addition.webp';
+import image1 from '../../public/custom_build_la.png'
+import image2 from '../../public/home_addition_la.png';
 import renovationImage from '../../public/renovation.png';
 import remodelImage from '../../public/remodel.webp';
 import mallImage19 from '../../public/Mall Renovation Project/20250724_101856.jpg';
 import lobbyImage from '../../public/Mall Office Lobby/20250715_130946.jpg';
 import adaImage1 from '../../public/ada project/20250520_092908.jpg';
-import aduImage1 from '../../public/adu/adu.jpg';
+import aduImage1 from '../../public/adu_la.png';
 import bgImage from '../../public/architectural-bg.png';
 
 // Service Icon Component

@@ -2,14 +2,14 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import newBuilding from '../../../public/new building.webp';
-import homeAddition from '../../../public/Home addition.webp';
+import newBuilding from '../../../public/custom_build_la.png';
+import homeAddition from '../../../public/home_addition_la.png';
 import renovationImage from '../../../public/renovation.png';
 import remodelImage from '../../../public/remodel.webp';
 import mallImage19 from '../../../public/Mall Renovation Project/20250724_101856.jpg';
 import lobbyImage from '../../../public/Mall Office Lobby/20250715_130946.jpg';
 import adaImage1 from '../../../public/ada project/20250520_092908.jpg';
-import aduImage1 from '../../../public/adu/adu.jpg';
+import aduImage1 from '../../../public/adu_la.png';
 
 // Service Icon Component
 const ServiceIcon = ({ icon }: { icon: string }) => {

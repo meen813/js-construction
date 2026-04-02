@@ -87,7 +87,7 @@ export default function ProjectPreview() {
           </div>
 
           {/* Mobile: Horizontal Carousel */}
-          <div className="md:hidden pb-12">
+          <div className="md:hidden pb-12 overflow-hidden touch-pan-y">
             {filteredProjects.length > 0 ? (
                <Carousel 
                  responsive={responsive}

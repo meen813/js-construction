@@ -391,11 +391,11 @@ select:focus-visible {
 }
 
 .react-multiple-carousel__arrow--left {
-  left: 0 !important;
+  left: 4px !important;
 }
 
 .react-multiple-carousel__arrow--right {
-  right: 0 !important;
+  right: 4px !important;
 }
 
 @layer base {

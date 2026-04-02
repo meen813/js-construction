@@ -89,11 +89,23 @@ export async function POST(req: NextRequest) {
     
     // Parse and validate request body
     const body = await req.json();
+
+    // Bot detection: honeypot field
+    if (body.website) {
+      // Silently accept to not reveal detection to bots
+      return NextResponse.json({ message: 'Email sent successfully', success: true });
+    }
+
+    // Bot detection: submission time check (< 2 seconds = likely bot)
+    if (body._loadedAt && Date.now() - body._loadedAt < 2000) {
+      return NextResponse.json({ message: 'Email sent successfully', success: true });
+    }
+
     const { errors, sanitized } = validateInput(body);
-    
+
     if (errors.length > 0) {
       return NextResponse.json(
-        { message: 'Validation failed', errors }, 
+        { message: 'Validation failed', errors },
         { status: 400 }
       );
     }

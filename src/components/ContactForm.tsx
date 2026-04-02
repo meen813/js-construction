@@ -1,5 +1,5 @@
 'use client'
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 
 export default function ContactForm() {
   const [formData, setFormData] = useState({
@@ -9,12 +9,18 @@ export default function ContactForm() {
     address: '',
     purpose: '',
     message: '',
+    website: '', // honeypot field
   });
   const [status, setStatus] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [errors, setErrors] = useState<Record<string, string>>({});
   const statusRef = useRef<HTMLDivElement>(null);
   const formRef = useRef<HTMLFormElement>(null);
+  const formLoadedAt = useRef<number>(0);
+
+  useEffect(() => {
+    formLoadedAt.current = Date.now();
+  }, []);
 
 
   const validateForm = () => {
@@ -66,7 +72,10 @@ export default function ContactForm() {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({
+          ...formData,
+          _loadedAt: formLoadedAt.current,
+        }),
       });
 
       const result = await response.json();
@@ -83,6 +92,7 @@ export default function ContactForm() {
         address: '',
         purpose: '',
         message: '',
+        website: '',
       });
       setErrors({});
       // Focus on status message for screen readers
@@ -147,6 +157,20 @@ export default function ContactForm() {
                 </ul>
               </div>
             )}
+
+            {/* Honeypot - hidden from real users */}
+            <div aria-hidden="true" style={{ position: 'absolute', left: '-9999px', top: '-9999px' }}>
+              <label htmlFor="website">Website</label>
+              <input
+                id="website"
+                type="text"
+                name="website"
+                autoComplete="off"
+                tabIndex={-1}
+                value={formData.website}
+                onChange={handleChange}
+              />
+            </div>
 
             {/* Name and Email Row */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">

@@ -18,11 +18,16 @@ export const viewport = {
 export const metadata: Metadata = {
   metadataBase: new URL('https://www.hjsconstruction.com'),
   title: {
-    default: "HJS Construction - Professional Construction & Renovation Services",
+    default: "HJS Construction - Commercial Renovation & Tenant Improvement Specialists",
     template: "%s | HJS Construction"
   },
-  description: "Expert construction and renovation services in Southern California. Specializing in ADU, commercial renovations, kitchen remodeling, and more. Licensed and insured contractors.",
-  keywords: ["construction", "renovation", "ADU", "commercial construction", "kitchen remodeling", "home addition", "Southern California", "general contractor", "HJS Construction", "Hwang J&S", "Hwang JS Construction"],
+  description: "Licensed commercial construction and renovation specialists in Southern California. Expert Tenant Improvement (TI), ADA updates, and office/restaurant remodeling in Orange County & LA.",
+  keywords: [
+    "commercial construction", "tenant improvement", "TI specialist", "restaurant renovation", 
+    "office remodeling", "ADA upgrades", "Southern California", "Orange County", "Los Angeles", 
+    "JS 건설", "황제이에스 건축", "상업공사 전문가", "오렌지카운티 건축", "LA 한인 건축", 
+    "ADU construction", "kitchen renovation"
+  ],
   authors: [{ name: "HJS Construction" }],
   creator: "HJS Construction",
   publisher: "HJS Construction",
@@ -31,8 +36,8 @@ export const metadata: Metadata = {
     locale: 'en_US',
     url: 'https://www.hjsconstruction.com',
     siteName: 'HJS Construction',
-    title: 'HJS Construction - Professional Construction & Renovation Services',
-    description: 'Expert construction and renovation services in Southern California. Specializing in ADU, commercial renovations, kitchen remodeling, and more.',
+    title: 'HJS Construction - Commercial Renovation & TI Specialists',
+    description: 'Expert commercial construction and tenant improvements in Southern California. Licensed & Insured.',
     images: [
       {
         url: '/logo/logo.png',
@@ -44,8 +49,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'HJS Construction - Professional Construction & Renovation Services',
-    description: 'Expert construction and renovation services in Southern California.',
+    title: 'HJS Construction - Commercial Renovation & TI Specialists',
+    description: 'Expert commercial construction and tenant improvements in Southern California.',
     images: ['/logo/logo.png'],
   },
   robots: {
@@ -77,8 +82,69 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "name": "HJS Construction (Hwang J&S Construction)",
+    "image": "https://www.hjsconstruction.com/logo/logo.png",
+    "@id": "https://www.hjsconstruction.com",
+    "url": "https://www.hjsconstruction.com",
+    "telephone": "", // 추가 시 반영 예정
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "16431 Fitzpatrick Ct #277",
+      "addressLocality": "La Mirada",
+      "addressRegion": "CA",
+      "postalCode": "90638",
+      "addressCountry": "US"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 33.8824, // La Mirada approx
+      "longitude": -118.0197
+    },
+    "openingHoursSpecification": {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": [
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday"
+      ],
+      "opens": "08:00",
+      "closes": "18:00"
+    },
+    "sameAs": [
+      "https://www.hjsconstruction.com"
+    ],
+    "priceRange": "$$",
+    "description": "Commercial Renovation & Tenant Improvement Specialists in Southern California. Licensed & Insured (CA License #960757).",
+    "areaServed": [
+      {
+        "@type": "AdministrativeArea",
+        "name": "Orange County"
+      },
+      {
+        "@type": "AdministrativeArea",
+        "name": "Los Angeles County"
+      }
+    ],
+    "hasCredential": {
+      "@type": "EducationalOccupationalCredential",
+      "credentialCategory": "license",
+      "name": "CA CSLB License #960757"
+    }
+  };
+
   return (
     <html lang="en" className={outfit.className}>
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+      </head>
       <body className="flex flex-col ">
         {/* Skip to main content link for accessibility */}
         <a 

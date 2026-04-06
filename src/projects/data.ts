@@ -69,33 +69,6 @@ import adaImage12 from '../../public/ada project/KakaoTalk_20251006_093035406_15
 import adaImage13 from '../../public/ada project/KakaoTalk_20251006_093035406_17.jpg';
 import adaImage14 from '../../public/ada project/KakaoTalk_20251006_093035406.jpg';
 
-// Project 7 Images
-import gardenGrove1 from '../../public/Garden Grove backyard 2019/20191008_091110.jpg';
-import gardenGrove2 from '../../public/Garden Grove backyard 2019/20191008_091120.jpg';
-import gardenGrove3 from '../../public/Garden Grove backyard 2019/20191012_160302.jpg';
-import gardenGrove4 from '../../public/Garden Grove backyard 2019/20191012_160311.jpg';
-import gardenGrove5 from '../../public/Garden Grove backyard 2019/20191012_160319.jpg';
-import gardenGrove6 from '../../public/Garden Grove backyard 2019/20191012_160331.jpg';
-import gardenGrove7 from '../../public/Garden Grove backyard 2019/IMG950462.jpg';
-
-// Project 8 Images
-import acupuncture1 from '../../public/Accupunture reception area 2016/20161231_152329.jpg';
-import acupuncture2 from '../../public/Accupunture reception area 2016/20161231_152347.jpg';
-import acupuncture3 from '../../public/Accupunture reception area 2016/20161231_152356.jpg';
-
-// Project 9 Images
-import pomona1 from '../../public/Pomona Commercial mall Roof renovation 2017/20170420_094611.jpg';
-import pomona2 from '../../public/Pomona Commercial mall Roof renovation 2017/20170420_094813.jpg';
-import pomona3 from '../../public/Pomona Commercial mall Roof renovation 2017/20170426_100821.jpg';
-import pomona4 from '../../public/Pomona Commercial mall Roof renovation 2017/20170426_100836.jpg';
-import pomona5 from '../../public/Pomona Commercial mall Roof renovation 2017/20170426_100841.jpg';
-import pomona6 from '../../public/Pomona Commercial mall Roof renovation 2017/20170426_100902.jpg';
-import pomona7 from '../../public/Pomona Commercial mall Roof renovation 2017/20170426_100950.jpg';
-import pomona8 from '../../public/Pomona Commercial mall Roof renovation 2017/20170426_101015.jpg';
-import pomona9 from '../../public/Pomona Commercial mall Roof renovation 2017/20170426_101020.jpg';
-import pomona10 from '../../public/Pomona Commercial mall Roof renovation 2017/20170505_084438.jpg';
-import pomona11 from '../../public/Pomona Commercial mall Roof renovation 2017/20170505_084447.jpg';
-
 // Project 10 Images
 import lynwood1 from '../../public/Lynwood adu renovation 2017/20161123_161901.jpg';
 import lynwood2 from '../../public/Lynwood adu renovation 2017/20161123_161925.jpg';
@@ -218,40 +191,6 @@ export const projects: Project[] = [
     additionalImages: [kitchenImage2, kitchenImage3, kitchenImage4, kitchenImage5],
   },
   
-  // Project 7 - Garden Grove Backyard Patio Project (2019)
-  {
-    id: 7,
-    title: 'Garden Grove Backyard Patio Project (2019)',
-    shortDescription: 'Custom wooden patio structure with pitched roof and pergola restoration.',
-    tagline: 'Enhancing outdoor living with custom woodwork',
-    year: 2019,
-    category: 'residential',
-    projectType: 'new-build',
-    description: "A custom backyard patio project in Garden Grove, California featuring a freestanding wooden structure with pitched roof and pergola restoration. This residential project enhanced the homeowner's outdoor living space with custom wood framing, tongue-and-groove ceiling panels, and decorative support braces for a clean, modern aesthetic. Completed in 2019.",
-    image: gardenGrove1,
-    additionalImages: [
-      gardenGrove2, gardenGrove3, gardenGrove4, 
-      gardenGrove5, gardenGrove6, gardenGrove7
-    ],
-  },
-  
-  // Project 9 - Pomona Commercial Mall Roof Renovation (2017)
-  {
-    id: 9,
-    title: 'Pomona Commercial Mall Roof Remodel (2017)',
-    shortDescription: 'Complete flat roof system remodel with multi-layer torch-down roofing.',
-    tagline: 'Enhanced waterproofing and long-term durability',
-    year: 2017,
-    category: 'commercial',
-    projectType: 'remodel',
-    description: "A comprehensive roof remodel project for a large commercial mall complex in Pomona, California. This project involved complete removal of deteriorated roofing membrane, replacement of damaged plywood substrate, and installation of a new multi-layer torch-down roofing system. The remodel improved water drainage, enhanced waterproofing performance, and extended the roof's service life while maintaining tenant operations throughout construction.",
-    image: pomona1,
-    additionalImages: [
-      pomona2, pomona3, pomona4, pomona5, pomona6, 
-      pomona7, pomona8, pomona9, pomona10, pomona11
-    ],
-  },
-  
   // Project 10 - Lynwood ADU Remodel Project (2017)
   {
     id: 10,
@@ -267,20 +206,6 @@ export const projects: Project[] = [
       lynwood2, lynwood3, lynwood4, lynwood5, lynwood6, 
       lynwood7, lynwood8, lynwood9, lynwood10
     ],
-  },
-  
-  // Project 8 - Acupuncture Clinic Lobby Reception Installation (2016)
-  {
-    id: 8,
-    title: 'Acupuncture Clinic Lobby Reception Installation (2016)',
-    shortDescription: 'Custom reception counter design and installation for acupuncture clinic.',
-    tagline: 'Professional lobby area with modern design and functionality',
-    year: 2016,
-    category: 'commercial',
-    projectType: 'new-build',
-    description: "A custom reception counter installation project for an acupuncture clinic in Buena Park, California. This commercial interior build created a welcoming, professional lobby area with a two-tier countertop design, high-gloss stone surface, and tile-faced front panels. The project enhanced workspace functionality while maintaining the clinic's calm and healing atmosphere.",
-    image: acupuncture1,
-    additionalImages: [acupuncture2, acupuncture3],
   },
   
   // Project 11 - Santa Ana Motel Structural Remodel (2016)

@@ -44,8 +44,6 @@ export const organizationSchema = {
     }
   ],
   "priceRange": "$$",
-  "telephone": "+1-714-555-0101",
-  "email": "contact@hjsconstruction.com",
   "sameAs": []
 };
 

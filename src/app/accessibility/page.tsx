@@ -231,12 +231,6 @@ export default function AccessibilityPage() {
                   </p>
                 </div>
                 <div>
-                  <h3 className="font-semibold text-gray-900 mb-2">Phone</h3>
-                  <p className="text-gray-700">
-                    Please refer to our <Link href="/contact" className="text-blue-600 hover:text-blue-800 underline focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 rounded">contact page</Link> for phone contact information.
-                  </p>
-                </div>
-                <div>
                   <h3 className="font-semibold text-gray-900 mb-2">Postal Address</h3>
                   <p className="text-gray-700">
                     Hwang J&S Construction<br />

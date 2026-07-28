@@ -89,7 +89,6 @@ export default function RootLayout({
     "image": "https://www.hjsconstruction.com/logo/logo.png",
     "@id": "https://www.hjsconstruction.com",
     "url": "https://www.hjsconstruction.com",
-    "telephone": "", // 추가 시 반영 예정
     "address": {
       "@type": "PostalAddress",
       "streetAddress": "16431 Fitzpatrick Ct #277",

@@ -385,7 +385,18 @@ export default function ProjectDetailView({ project }: Props) {
                   <p className="text-gray-600 leading-relaxed mb-6">
                     {project.description}
                   </p>
-                  
+
+                  {project.specs && (
+                    <dl className="border-t border-gray-200 pt-6 mb-6 space-y-3">
+                      {project.specs.map((spec) => (
+                        <div key={spec.label} className="sm:flex sm:gap-4">
+                          <dt className="text-sm font-semibold text-gray-900 sm:w-40 sm:shrink-0">{spec.label}</dt>
+                          <dd className="text-sm text-gray-600">{spec.value}</dd>
+                        </div>
+                      ))}
+                    </dl>
+                  )}
+
                   <div className="flex flex-col sm:flex-row gap-4">
                     <Link href="/contact" className="btn-primary text-center">
                       Start Your Project

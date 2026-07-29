@@ -12,9 +12,41 @@ type Props = {
 type ProjectFilterType = 'all' | 'new-build' | 'remodel' | 'renovation' | 'ada-upgrade' | 'addition';
 type CategoryFilterType = 'all' | 'commercial' | 'residential';
 
+const ALL_CATEGORY = { id: 'all', label: 'All Projects' } as const;
+const ALL_TYPE = { id: 'all', label: 'All Types' } as const;
+
+const CATEGORIES = [
+  { id: 'commercial', label: 'Commercial' },
+  { id: 'residential', label: 'Residential' },
+] as const;
+
+const PROJECT_TYPES = [
+  { id: 'new-build', label: 'New Build' },
+  { id: 'remodel', label: 'Remodel' },
+  { id: 'renovation', label: 'Renovation' },
+  { id: 'addition', label: 'Addition' },
+  { id: 'ada-upgrade', label: 'ADA Upgrade' },
+] as const;
+
 export default function ProjectGrid({ projects }: Props) {
   const [projectTypeFilter, setProjectTypeFilter] = useState<ProjectFilterType>('all');
   const [categoryFilter, setCategoryFilter] = useState<CategoryFilterType>('all');
+
+  // Only offer filters that would actually return something, so the empty state
+  // is unreachable through the controls.
+  const availableCategories = useMemo(
+    () => [ALL_CATEGORY, ...CATEGORIES.filter(c => projects.some(p => p.category === c.id))],
+    [projects]
+  );
+
+  // Types are scoped to the selected category — e.g. ADA Upgrade exists only on
+  // commercial work, so it must not appear under Residential.
+  const availableTypes = useMemo(() => {
+    const inCategory = projects.filter(
+      p => categoryFilter === 'all' || p.category === categoryFilter
+    );
+    return [ALL_TYPE, ...PROJECT_TYPES.filter(t => inCategory.some(p => p.projectType === t.id))];
+  }, [projects, categoryFilter]);
 
   // Filter projects by both category and type together
   const filteredProjects = useMemo(() => {
@@ -53,11 +85,7 @@ export default function ProjectGrid({ projects }: Props) {
         
         {/* Category Filters */}
         <div className="flex flex-wrap justify-center gap-8 md:gap-14 border-b border-gray-200 pb-4">
-          {[
-            { id: 'all', label: 'All Projects' },
-            { id: 'commercial', label: 'Commercial' },
-            { id: 'residential', label: 'Residential' }
-          ].map((cat) => (
+          {availableCategories.map((cat) => (
             <button
               key={cat.id}
               onClick={() => {
@@ -90,14 +118,7 @@ export default function ProjectGrid({ projects }: Props) {
             exit={{ opacity: 0, height: 0 }}
             className="flex flex-wrap justify-center gap-3 md:gap-4 origin-top"
           >
-            {[
-              { id: 'all', label: 'All Types' },
-              { id: 'new-build', label: 'New Build' },
-              { id: 'remodel', label: 'Remodel' },
-              { id: 'renovation', label: 'Renovation' },
-              { id: 'addition', label: 'Addition' },
-              { id: 'ada-upgrade', label: 'ADA Upgrade' }
-            ].map((type) => (
+            {availableTypes.map((type) => (
               <button
                 key={type.id}
                 onClick={() => setProjectTypeFilter(type.id as ProjectFilterType)}

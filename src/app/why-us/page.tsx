@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Why Choose Us | HJS Construction',
+  title: 'Why Choose Us',
   description: 'Trusted since 2011. 100% project completion, zero safety incidents, and expert commercial & residential construction services in Los Angeles.',
   openGraph: {
     title: 'Why Choose HJS Construction?',

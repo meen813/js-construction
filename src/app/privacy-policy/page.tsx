@@ -1,7 +1,12 @@
-'use client';
-
 import Link from 'next/link';
+import { Metadata } from 'next';
 import StructuredData, { generateBreadcrumbSchema } from '@/components/StructuredData';
+
+export const metadata: Metadata = {
+  title: 'Privacy Policy',
+  description:
+    'What information HJS Construction collects through this website, how it is used, and the choices available to you.',
+};
 
 export default function PrivacyPolicyPage() {
   const breadcrumbSchema = generateBreadcrumbSchema([

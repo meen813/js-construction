@@ -1,7 +1,12 @@
-'use client';
-
 import Link from 'next/link';
+import { Metadata } from 'next';
 import StructuredData, { generateBreadcrumbSchema } from '@/components/StructuredData';
+
+export const metadata: Metadata = {
+  title: 'Accessibility Statement',
+  description:
+    'How HJS Construction works to keep this website usable for everyone, the standards we measure against, and how to reach us about an accessibility barrier.',
+};
 
 export default function AccessibilityPage() {
   const breadcrumbSchema = generateBreadcrumbSchema([

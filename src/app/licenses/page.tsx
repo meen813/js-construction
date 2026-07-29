@@ -1,7 +1,12 @@
-'use client';
-
 import Link from 'next/link';
+import { Metadata } from 'next';
 import StructuredData, { generateBreadcrumbSchema } from '@/components/StructuredData';
+
+export const metadata: Metadata = {
+  title: 'Licenses & Certifications',
+  description:
+    'HJS Construction is a licensed and insured California general contractor, CSLB License #960757. Licensing, insurance, and documentation details for commercial clients.',
+};
 
 export default function LicensesPage() {
   const breadcrumbSchema = generateBreadcrumbSchema([

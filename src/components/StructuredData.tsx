@@ -1,5 +1,5 @@
-'use client';
-
+// No 'use client': this only renders a JSON-LD <script>, and the schema helpers
+// below must stay callable from server components.
 interface StructuredDataProps {
   data: Record<string, any>;
 }

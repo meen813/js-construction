@@ -1,7 +1,12 @@
-'use client';
-
 import Link from 'next/link';
+import { Metadata } from 'next';
 import StructuredData, { generateBreadcrumbSchema } from '@/components/StructuredData';
+
+export const metadata: Metadata = {
+  title: 'Terms of Service',
+  description:
+    'The terms governing use of the HJS Construction website and the scope of information published here.',
+};
 
 export default function TermsOfServicePage() {
   const breadcrumbSchema = generateBreadcrumbSchema([

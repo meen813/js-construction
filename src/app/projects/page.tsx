@@ -1,8 +1,18 @@
-'use client';
-
+import { Metadata } from 'next';
 import ProjectGrid from '@/components/ProjectGrid';
 import { projects } from '../../projects/data';
 import StructuredData, { generateBreadcrumbSchema } from '@/components/StructuredData';
+
+export const metadata: Metadata = {
+  title: 'Projects',
+  description:
+    'Completed commercial and residential work across Orange County and Los Angeles — mall renovations, tenant improvements, ADA upgrades, ADUs, and remodels.',
+  openGraph: {
+    title: 'HJS Construction Projects',
+    description: 'Commercial renovation, tenant improvement, and ADA work across Southern California.',
+    images: ['/logo/logo.png'],
+  },
+};
 
 export default function ProjectsPage() {
   const breadcrumbSchema = generateBreadcrumbSchema([

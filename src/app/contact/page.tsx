@@ -1,4 +1,16 @@
+import { Metadata } from "next";
 import ContactForm from "@/components/ContactForm";
+
+export const metadata: Metadata = {
+  title: 'Contact',
+  description:
+    'Request an estimate for commercial renovation, tenant improvement, ADA upgrades, or residential work in Orange County and Los Angeles.',
+  openGraph: {
+    title: 'Contact HJS Construction',
+    description: 'Tell us about your project and we will get back to you.',
+    images: ['/logo/logo.png'],
+  },
+};
 
 export default function Page() {
   

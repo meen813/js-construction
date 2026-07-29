@@ -100,44 +100,13 @@ export default function ProjectDetailView({ project }: Props) {
     setCurrentDetailImageIndex((prev) => (prev - 1 + allImages.length) % allImages.length);
   };
 
-  // Generate location based on project id
-  const projectLocation = 
-    project.id === 1 ? 'La Palma, California' :
-    project.id === 2 ? 'Fountain Valley, California' :
-    project.id === 3 ? 'Orange County, California' :
-    project.id === 4 ? 'Manhattan Beach, California' :
-    project.id === 5 ? 'Fullerton, California' :
-    project.id === 6 ? 'Manhattan Beach, California' :
-    project.id === 7 ? 'Garden Grove, California' :
-    project.id === 8 ? 'Buena Park, California' :
-    project.id === 9 ? 'Pomona, California' :
-    project.id === 10 ? 'Lynwood, California' :
-    project.id === 11 ? 'Santa Ana, California' : 
-    project.id === 12 ? 'San Diego, California' :
-    project.id === 13 ? 'Manhattan Beach, California' : 'California';
-
-  const projectCompletionDate =
-    project.id === 1 ? '2025-12' :
-    project.id === 2 ? '2024' :
-    project.id === 3 ? '2024' :
-    project.id === 4 ? '2025' :
-    project.id === 5 ? '2022' :
-    project.id === 6 ? '2025' :
-    project.id === 7 ? '2019' :
-    project.id === 8 ? '2016' :
-    project.id === 9 ? '2017' :
-    project.id === 10 ? '2017' :
-    project.id === 11 ? '2016' : 
-    project.id === 12 ? '2026' :
-    project.id === 13 ? '2026-03' : undefined;
-
   const projectSchema = generateProjectSchema({
     id: project.id,
     title: project.title,
     description: project.description,
     image: typeof project.image === 'string' ? project.image : project.image.src,
-    location: projectLocation,
-    completionDate: projectCompletionDate
+    location: project.location,
+    completionDate: project.completionDate
   });
 
   const breadcrumbSchema = generateBreadcrumbSchema([
@@ -398,50 +367,17 @@ export default function ProjectDetailView({ project }: Props) {
                 <div className="space-y-4 md:space-y-6 mb-6 md:mb-8">
                   <div>
                     <h3 className="text-lg font-semibold text-gray-900 mb-1 md:mb-2">Project Type</h3>
-                    <p className="text-gray-600">{project.id === 1 ? 'Commercial Mall Renovation' : 
-                      project.id === 2 ? 'Accessory Dwelling Unit (ADU)' :
-                      project.id === 3 ? 'Custom Staircase Design' :
-                      project.id === 4 ? 'Mall Entrance Renovation' :
-                      project.id === 5 ? 'Kitchen Remodel' :
-                      project.id === 6 ? 'ADA Improvement' :
-                      project.id === 7 ? 'Residential Backyard Patio' :
-                      project.id === 8 ? 'Commercial Interior Renovation' :
-                      project.id === 9 ? 'Commercial Roof Renovation' :
-                      project.id === 10 ? 'Residential Renovation & Conversion' :
-                      project.id === 11 ? 'Commercial Renovation' : 
-                      project.id === 12 ? 'Commercial Asphalt Replacement' : 'Construction Project'}</p>
+                    <p className="text-gray-600">{project.projectTypeLabel}</p>
                   </div>
                   
                   <div>
                     <h3 className="text-lg font-semibold text-gray-900 mb-1 md:mb-2">Location</h3>
-                    <p className="text-gray-600">{project.id === 1 ? 'La Palma, California' :
-                      project.id === 2 ? 'Fountain Valley, California' :
-                      project.id === 3 ? 'Orange County, California' :
-                      project.id === 4 ? 'Manhattan Beach, California' :
-                      project.id === 5 ? 'Fullerton, California' :
-                      project.id === 6 ? 'Manhattan Beach, California' :
-                      project.id === 7 ? 'Garden Grove, California' :
-                      project.id === 8 ? 'Buena Park, California' :
-                      project.id === 9 ? 'Pomona, California' :
-                      project.id === 10 ? 'Lynwood, California' :
-                      project.id === 11 ? 'Santa Ana, California' : 
-                      project.id === 12 ? 'San Diego, California' : 'California'}</p>
+                    <p className="text-gray-600">{project.location}</p>
                   </div>
                   
                   <div>
                     <h3 className="text-lg font-semibold text-gray-900 mb-1 md:mb-2">Timeline</h3>
-                    <p className="text-gray-600">{project.id === 1 ? 'Completed in December 2025' :
-                      project.id === 2 ? 'Completed 2024-2025' :
-                      project.id === 3 ? 'Completed 2024' :
-                      project.id === 4 ? 'Completed 2025' :
-                      project.id === 5 ? 'Completed 2022' :
-                      project.id === 6 ? 'Completed Early 2025' :
-                      project.id === 7 ? 'Completed 2019' :
-                      project.id === 8 ? 'Completed 2016' :
-                      project.id === 9 ? 'Completed 2017' :
-                      project.id === 10 ? 'Completed 2017' :
-                      project.id === 11 ? 'Completed 2016' : 
-                      project.id === 12 ? 'Completed in 2 Weeks (2026)' : 'Completed'}</p>
+                    <p className="text-gray-600">{project.timeline}</p>
                   </div>
                 </div>
 

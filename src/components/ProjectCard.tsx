@@ -70,7 +70,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
         <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-70 group-hover:opacity-90 transition-opacity duration-700"></div>
 
         {/* Content Block */}
-        <div className="absolute inset-0 p-6 sm:p-8 flex flex-col justify-end">
+        <div className="absolute inset-0 p-6 sm:p-8 pt-16 sm:pt-20 flex flex-col justify-end">
           {/* Top Label */}
           <div className="absolute top-6 left-6">
              <span className="inline-flex items-center px-3 py-1.5 bg-black/40 text-white backdrop-blur-md border border-white/20 text-[10px] sm:text-xs font-semibold tracking-[0.15em] rounded uppercase z-10">
@@ -80,7 +80,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
 
           {/* Text Area */}
           <div className="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500 ease-out z-10">
-            <h3 className="text-2xl sm:text-3xl font-bold text-white leading-tight mb-3 drop-shadow-md tracking-tight">
+            <h3 className="text-xl sm:text-2xl font-bold text-white leading-tight mb-3 drop-shadow-md tracking-tight line-clamp-3 break-words">
               {cleanedTitle}
             </h3>
             

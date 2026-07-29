@@ -104,6 +104,20 @@ import sdAsphalt10 from '../../public/san-diego-university-ave-parking-lot-aspha
 import sdAsphalt11 from '../../public/san-diego-university-ave-parking-lot-asphalt-replacement/11.jpg';
 import sdAsphalt12 from '../../public/san-diego-university-ave-parking-lot-asphalt-replacement/12.jpg';
 
+// Project 13 Images (in construction sequence)
+import trashEnclosure1 from '../../public/manhattan-beach-trash-enclosure/1.jpg';
+import trashEnclosure2 from '../../public/manhattan-beach-trash-enclosure/2.jpg';
+import trashEnclosure3 from '../../public/manhattan-beach-trash-enclosure/3.jpg';
+import trashEnclosure4 from '../../public/manhattan-beach-trash-enclosure/4.jpg';
+import trashEnclosure5 from '../../public/manhattan-beach-trash-enclosure/5.jpg';
+import trashEnclosure6 from '../../public/manhattan-beach-trash-enclosure/6.jpg';
+import trashEnclosure7 from '../../public/manhattan-beach-trash-enclosure/7.jpg';
+import trashEnclosure8 from '../../public/manhattan-beach-trash-enclosure/8.jpg';
+import trashEnclosure9 from '../../public/manhattan-beach-trash-enclosure/9.jpg';
+import trashEnclosure10 from '../../public/manhattan-beach-trash-enclosure/10.jpg';
+import trashEnclosure11 from '../../public/manhattan-beach-trash-enclosure/11.jpg';
+import trashEnclosure12 from '../../public/manhattan-beach-trash-enclosure/12.jpg';
+
 export const projects: Project[] = [
   // Project 1 - La Palma Commercial Mall Remodel (2025)
   {
@@ -239,6 +253,24 @@ export const projects: Project[] = [
     additionalImages: [
       sdAsphalt2, sdAsphalt3, sdAsphalt4, sdAsphalt5, sdAsphalt6,
       sdAsphalt7, sdAsphalt8, sdAsphalt9, sdAsphalt10, sdAsphalt11, sdAsphalt12
+    ],
+  },
+
+  // Project 13 - Manhattan Beach Commercial Mall Trash Enclosure (2026)
+  {
+    id: 13,
+    title: 'Manhattan Beach Commercial Mall Trash Enclosure (2026)',
+    shortDescription: 'Ground-up covered trash enclosure with reinforced CMU walls and trench drain.',
+    tagline: 'Covered waste enclosure built to city standards',
+    year: 2026,
+    category: 'commercial',
+    projectType: 'addition',
+    description: "A ground-up trash enclosure built for the Manhattan Beach commercial mall, our third project at this property. Work began with excavation and a reinforced concrete slab poured over a compacted base, with perimeter footings and vertical dowels set for the walls. A trench drain was cast into the slab to capture and direct runoff, meeting the covered-and-drained requirements that apply to commercial waste enclosures. Reinforced CMU walls were laid and grouted, then finished in stucco matched to the existing mall exterior. A welded steel frame with corrugated metal roofing and steel gates complete the structure. Completed in March 2026.",
+    image: trashEnclosure12,
+    additionalImages: [
+      trashEnclosure1, trashEnclosure2, trashEnclosure3, trashEnclosure4,
+      trashEnclosure5, trashEnclosure6, trashEnclosure7, trashEnclosure8,
+      trashEnclosure9, trashEnclosure10, trashEnclosure11
     ],
   },
 ];

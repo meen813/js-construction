@@ -17,6 +17,8 @@ export type Project = {
   timeline: string;
   category: 'residential' | 'commercial';
   projectType: 'new-build' | 'remodel' | 'renovation' | 'ada-upgrade' | 'addition';
+  /** Key spec facts shown as a definition list under the description. */
+  specs?: { label: string; value: string }[];
   image: StaticImageData;
   additionalImages?: StaticImageData[];
   comparisonImages?: {

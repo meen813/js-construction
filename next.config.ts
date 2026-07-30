@@ -16,6 +16,17 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+  async redirects() {
+    return [
+      // The mall entrance remodel was retired from the portfolio; /projects/4 was
+      // already in the submitted sitemap, so send it to the list instead of 404ing.
+      {
+        source: '/projects/4',
+        destination: '/projects',
+        permanent: true,
+      },
+    ];
+  },
   async headers() {
     return [
       {

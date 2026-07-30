@@ -43,8 +43,11 @@ import aduImage14 from '../../public/adu/20250114_082715.jpg';
 import aduImage15 from '../../public/adu/20250304_123150.jpg';
 import aduImage16 from '../../public/adu/20250304_123215.jpg';
 
-// Project 14 Images (after first, then pre-existing conditions)
-import repaintAfterButchery from '../../public/manhattan-beach-exterior-repaint/after-butchery.jpg';
+// Project 14 Images (completed buildings first, then pre-existing conditions)
+import repaintAfterGoodwillBuilding from '../../public/manhattan-beach-exterior-repaint/after-goodwill-building.jpg';
+import repaintAfterStorefronts from '../../public/manhattan-beach-exterior-repaint/after-storefronts.jpg';
+import repaintAfterGoodwillWide from '../../public/manhattan-beach-exterior-repaint/after-goodwill-wide.jpg';
+import repaintAfterPureBeanRear from '../../public/manhattan-beach-exterior-repaint/after-pure-bean-rear.jpg';
 import repaintBeforeStorefronts from '../../public/manhattan-beach-exterior-repaint/before-storefronts.jpg';
 import repaintBeforeFedex from '../../public/manhattan-beach-exterior-repaint/before-fedex.jpg';
 import repaintBeforePanorama from '../../public/manhattan-beach-exterior-repaint/before-panorama.jpg';
@@ -172,11 +175,16 @@ export const projects: Project[] = [
     timeline: 'Completed in two phases, 2025',
     category: 'commercial',
     projectType: 'renovation',
-    description: "A full exterior repaint of a Manhattan Beach retail center, taking the buildings from a dated beige-and-purple scheme to a white and charcoal palette. The center stays busy all day, so the work was split into two phases and then broken down further into zones — each building was prepped, patched, and painted inside its own short window, and crews moved on before the next storefront was touched. No tenant closed and no parking field was taken out of service for the duration. The first phase ran through the middle of 2025 and the remaining zones were sequenced across October and November. Three of the photographs below show the center as we found it; the last shows a completed building.",
-    image: repaintAfterButchery,
+    description: "A full exterior repaint of a Manhattan Beach retail center, taking the buildings from a dated beige-and-purple scheme to a white and charcoal palette. The center stays busy all day, so the work was split into two phases and then broken down further into zones — each building was prepped, patched, and painted inside its own short window, and crews moved on before the next storefront was touched. No tenant closed and no parking field was taken out of service for the duration. The first phase ran through the middle of 2025 and the remaining zones were sequenced across October and November. The gallery opens on one row of storefronts before and after, and the photographs that follow show the completed buildings alongside the center as we found it.",
+    image: repaintAfterGoodwillBuilding,
     additionalImages: [
+      repaintAfterStorefronts, repaintAfterGoodwillWide, repaintAfterPureBeanRear,
       repaintBeforePanorama, repaintBeforeStorefronts, repaintBeforeFedex
     ],
+    comparisonImages: {
+      before: repaintBeforeStorefronts,
+      after: repaintAfterStorefronts
+    },
     specs: [
       { label: 'Scope', value: 'Exterior repaint of a multi-building retail center, including stucco prep and patching' },
       { label: 'Sequencing', value: 'Two phases, subdivided into zones with short per-building windows' },

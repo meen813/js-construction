@@ -96,6 +96,28 @@
 > `fedex copy.jpg`는 `KakaoTalk_..._02.jpg`와 차량 위치·구름까지 동일합니다.
 > 게시에서 전부 제외했습니다. 실사 4장 중 **완공 사진은 `_03` 한 장뿐**이고 나머지 3장은 시공 전입니다.
 
+#### 완공 사진 보강 및 The Butchery 동 제외 (2026-07-30)
+
+`OneDrive/Documents/카카오톡 받은 파일/construction projects/Manhattan beach mall repaint` 폴더로
+완공 실사 7장을 추가 확보했습니다(전부 동일 우천일 촬영). Paint Schedule 도면의 존 구획과 대조한 결과:
+
+| 존 | 기간 | 대상 동 |
+| :--- | :--- | :--- |
+| Red | 10/16~10/18 | UCATAN / Pure Bean 동 (TANNING·CLEANERS·dr LASER·NOOR NAIL·pure BEAN) |
+| Blue | 10/20~11/05 | 서측 입면 (Afterburn Fitness 측) |
+| Purple | 11/06~11/18 | Goodwill / Reset Bodyworks / Pita & Basil 2층 동 |
+| Yellow | 11/19~11/22 | FedEx Office / Rush My Passport 동 |
+
+> ⚠️ **The Butchery 동은 어느 존에도 없습니다.** 해당 동은 테넌트 브랜드가 자체 시공한 것으로
+> 소유주가 확인했고, 도면상 시공 범위와도 일치합니다. 기존 대표 이미지였던 `after-butchery.jpg`
+> (구 `_03`)를 **삭제**했고, The Butchery / Fatburger가 찍힌 신규 사진 3장(`_01`·`_02`·`_03`)도
+> 같은 이유로 게시에서 제외했습니다.
+
+게시한 완공 사진 4장은 모두 존 내부 동입니다 — `after-goodwill-building`·`after-goodwill-wide`
+(Purple), `after-storefronts`(Red), `after-pure-bean-rear`(Red+Purple).
+`after-storefronts`는 기존 `before-storefronts`와 **피사체·구도·해상도(2992×2992)가 동일**해
+`comparisonImages` Before/After 분할 뷰로 사용했습니다.
+
 ### #4 Mall Entrance Remodel — 삭제
 
 사진 1장으로는 상세 페이지를 구성할 수 없어 내렸습니다.
@@ -131,7 +153,7 @@ for i, pg in enumerate(r.pages):
 | 항목 | 내용 |
 | :--- | :--- |
 | ADU 수도 계량기 | 기존 구경이 도면(5/8")과 부담금 내역서(3/4")에서 불일치. 현재 구경 표기 없이 "1인치로 승압"만 기재 |
-| #14 완공 사진 | 완공 실사가 1장뿐이라 갤러리가 얇음. 추가 확보 시 보강 필요 |
+| ~~#14 완공 사진~~ | ~~완공 실사가 1장뿐이라 갤러리가 얇음~~ → **해소 (2026-07-30)**. 완공 4장 + 시공 전 3장 + Before/After 분할 뷰 |
 | Pomona (2218 S Garey) | 존 3개 3일 순차 시공 공정표는 있으나 시공 사진 미확인. 사진 확보 시 추가 검토 |
 | Gardena (1367 Redondo Beach) | 시 점용허가 하수 인입관 보수(2025-03). 단독 항목으로는 규모가 작아 보류 |
 

@@ -43,8 +43,11 @@ import aduImage14 from '../../public/adu/20250114_082715.jpg';
 import aduImage15 from '../../public/adu/20250304_123150.jpg';
 import aduImage16 from '../../public/adu/20250304_123215.jpg';
 
-// Project 4 Images
-import lobbyImage from '../../public/Mall Office Lobby/20250715_130946.jpg';
+// Project 14 Images (after first, then pre-existing conditions)
+import repaintAfterButchery from '../../public/manhattan-beach-exterior-repaint/after-butchery.jpg';
+import repaintBeforeStorefronts from '../../public/manhattan-beach-exterior-repaint/before-storefronts.jpg';
+import repaintBeforeFedex from '../../public/manhattan-beach-exterior-repaint/before-fedex.jpg';
+import repaintBeforePanorama from '../../public/manhattan-beach-exterior-repaint/before-panorama.jpg';
 
 // Project 5 Images
 import kitchenImage1 from '../../public/Kitchen Renovation/temp_1600188712382.2053667570.jpeg';
@@ -132,8 +135,15 @@ export const projects: Project[] = [
     timeline: 'Completed in December 2025',
     category: 'commercial',
     projectType: 'renovation',
-    description: "A comprehensive commercial mall renovation project in La Palma, California. This project involved expanding from 2 to 3 retail spaces and completely modernizing the exterior facade. The renovation includes contemporary design elements, improved accessibility, and enhanced customer experience. Project started in May 2025 and was completed in December 2025.",
+    description: "A comprehensive commercial mall renovation in La Palma, California, running from May through December 2025. The tenant shell was divided from two retail spaces into three, and the exterior facade was rebuilt and modernized around the new configuration. Because the work touched the building envelope, the site, and its services at once, it was permitted as a single combined architectural, landscape, and MEP package and revised through multiple rounds of city plan check before approval. Exterior scope included new stucco under a dedicated subcontract, refreshed landscaping, and gas service coordination for the affected suites. A master sign plan was filed alongside the building permit so tenant signage could be approved against one consistent standard rather than piecemeal.",
     image: mallImage19,
+    specs: [
+      { label: 'Reconfiguration', value: 'Two retail spaces divided into three' },
+      { label: 'Permit package', value: 'Combined architectural, landscape, and MEP set, approved after multiple plan check revisions' },
+      { label: 'Exterior', value: 'Facade rebuild with new stucco, refreshed landscaping' },
+      { label: 'Entitlements', value: 'Master sign plan filed to govern tenant signage' },
+      { label: 'Schedule', value: 'May to December 2025' },
+    ],
     additionalImages: [
       mallImage1, mallImage2, mallImage3, mallImage4, mallImage5, mallImage6, 
       mallImage7, mallImage8, mallImage9, mallImage10, mallImage11, 
@@ -146,23 +156,32 @@ export const projects: Project[] = [
     },
   },
   
-  // Project 4 - Manhattan Beach Mall Entrance Renovation (2025)
+  // Project 14 - Manhattan Beach Commercial Mall Exterior Repaint (2025)
   {
-    id: 4,
-    title: 'Manhattan Beach Mall Entrance Remodel (2025)',
-    shortDescription: 'Modern entrance with textured panels and sleek metal staircase.',
-    tagline: 'Professional gateway with enhanced accessibility',
+    id: 14,
+    title: 'Manhattan Beach Commercial Mall Exterior Repaint (2025)',
+    shortDescription: 'Phased exterior repaint of an occupied retail center, sequenced so no tenant lost a trading day.',
+    tagline: 'Repainted around a center that never closed',
     year: 2025,
     location: 'Manhattan Beach, California',
-    completionDate: '2025',
-    projectTypeLabel: 'Mall Entrance Renovation',
-    timeline: 'Completed 2025',
+    completionDate: '2025-11',
+    projectTypeLabel: 'Commercial Exterior Repaint',
+    timeline: 'Completed in two phases, 2025',
     category: 'commercial',
-    projectType: 'remodel',
-    description: "This project involved a complete remodel of the main entrance at the Manhattan Beach Mall, transforming it into a modern and welcoming gateway. The design features warm textured wall panels, durable tile flooring, and a sleek metal staircase with clean lines. The refreshed entrance enhances both accessibility and aesthetics, offering a professional first impression for visitors and tenants.",
-    image: lobbyImage,
+    projectType: 'renovation',
+    description: "A full exterior repaint of a Manhattan Beach retail center, taking the buildings from a dated beige-and-purple scheme to a white and charcoal palette. The center stays busy all day, so the work was split into two phases and then broken down further into zones — each building was prepped, patched, and painted inside its own short window, and crews moved on before the next storefront was touched. No tenant closed and no parking field was taken out of service for the duration. The first phase ran through the middle of 2025 and the remaining zones were sequenced across October and November. Three of the photographs below show the center as we found it; the last shows a completed building.",
+    image: repaintAfterButchery,
+    additionalImages: [
+      repaintBeforePanorama, repaintBeforeStorefronts, repaintBeforeFedex
+    ],
+    specs: [
+      { label: 'Scope', value: 'Exterior repaint of a multi-building retail center, including stucco prep and patching' },
+      { label: 'Sequencing', value: 'Two phases, subdivided into zones with short per-building windows' },
+      { label: 'Tenant impact', value: 'No closures and no loss of parking capacity during the work' },
+      { label: 'Palette', value: 'Existing beige and purple replaced with white and charcoal' },
+    ],
   },
-  
+
   // Project 6 - Manhattan Beach Commercial Mall ADA Improvement (2025)
   {
     id: 6,
@@ -198,8 +217,15 @@ export const projects: Project[] = [
     timeline: 'Completed 2024-2025',
     category: 'residential',
     projectType: 'addition',
-    description: "A stunning 1,200 sq ft Accessory Dwelling Unit (ADU) project in Fountain Valley, California. This modern home addition features contemporary design elements, energy-efficient construction, and seamless integration with the existing property. Completed in 2024-2025, this project showcases our expertise in ADU construction and design.",
+    description: "A 1,200 sq ft attached Accessory Dwelling Unit in Fountain Valley, California, built onto the existing house rather than set apart from it. Because it shares structure with the primary dwelling, the design went through a dedicated structural plan review by the city's third-party reviewer and was approved without outstanding comments. The work reached past the property line as well: the water service was upsized from a 3/4-inch to a 1-inch meter, and the public improvements in the parkway were built under a separate encroachment permit with its own plan check and inspections. Demolition debris was hauled and recycled under tracked weight tickets. Completed in 2024-2025.",
     image: aduImage16,
+    specs: [
+      { label: 'Type', value: '1,200 sq ft attached ADU' },
+      { label: 'Permit', value: 'City of Fountain Valley 2024-440' },
+      { label: 'Code basis', value: '2022 California Building, Green Building Standards, and Energy Codes' },
+      { label: 'Utilities', value: 'Water service upsized from 3/4-inch to 1-inch meter' },
+      { label: 'Public works', value: 'Parkway improvements under a separate encroachment permit' },
+    ],
     additionalImages: [
       aduImage1, aduImage2, aduImage3, aduImage4, aduImage5, aduImage6, 
       aduImage7, aduImage8, aduImage9, aduImage10, aduImage11, 
@@ -271,7 +297,7 @@ export const projects: Project[] = [
   {
     id: 12,
     title: 'San Diego University Ave Parking Lot Asphalt Replacement (2026)',
-    shortDescription: 'Complete asphalt replacement and restriping for a commercial mall parking lot in San Diego.',
+    shortDescription: 'Complete asphalt replacement and restriping for a commercial mall lot run as paid public parking.',
     tagline: 'Durable, high-quality parking lot surfacing',
     year: 2026,
     location: 'San Diego, California',
@@ -280,8 +306,14 @@ export const projects: Project[] = [
     timeline: 'Completed in 2 Weeks (2026)',
     category: 'commercial',
     projectType: 'renovation',
-    description: "A comprehensive parking lot asphalt replacement project for a commercial mall located on University Ave in San Diego, California. Completed efficiently over a 2-week period, this project involved the complete removal of old, deteriorated asphalt, proper grading and base preparation, and the installation of a new, durable asphalt surface. The renovation was finished with clear, compliant restriping to ensure optimal traffic flow, enhanced safety, and a fresh, professional aesthetic for the commercial property.",
+    description: "A full parking lot asphalt replacement for a commercial mall on University Ave in San Diego, California. The lot is operated as paid public parking, so it turns over constantly and every closed stall costs the property revenue — the whole job was planned around finishing in two weeks. The deteriorated surface was removed down to grade rather than overlaid, the base was regraded and prepared, and roughly 7,400 square feet of new asphalt was laid over it. The lot was then restriped to a compliant layout for clear traffic flow and safe pedestrian routes.",
     image: sdAsphalt1,
+    specs: [
+      { label: 'Area', value: 'Approximately 7,400 sq ft' },
+      { label: 'Method', value: 'Full removal to grade, base regrading and preparation, new asphalt' },
+      { label: 'Finish', value: 'Compliant restriping for traffic flow and pedestrian safety' },
+      { label: 'Schedule', value: 'Two weeks, on a lot in continuous paid public use' },
+    ],
     additionalImages: [
       sdAsphalt2, sdAsphalt3, sdAsphalt4, sdAsphalt5, sdAsphalt6,
       sdAsphalt7, sdAsphalt8, sdAsphalt9, sdAsphalt10, sdAsphalt11, sdAsphalt12
@@ -301,7 +333,7 @@ export const projects: Project[] = [
     timeline: 'Completed spring 2026',
     category: 'commercial',
     projectType: 'addition',
-    description: "A ground-up trash enclosure built for the Manhattan Beach commercial mall, our third project at this property. The undersized existing enclosure was demolished and replaced with a structure more than double its footprint, sized for separate trash, recycling, and organics containers. Work began with excavation, a reinforced concrete footing and slab, and a floor sloped to a channel drain tied into the sanitary sewer through a self-priming trap. Solid-grouted CMU walls were laid under masonry special inspection, then stucco-finished and given an anti-graffiti coating to match the existing mall exterior; a welded steel frame carries a sloped corrugated metal deck roof over painted steel swing gates. Coordinating the city plan check, two addenda, a deferred fire sprinkler submittal, and the parking and bicycle changes the new footprint triggered was as much of the job as the concrete and block. Completed in spring 2026.",
+    description: "A ground-up trash enclosure built for a Manhattan Beach commercial mall. The undersized existing enclosure was demolished and replaced with a structure more than double its footprint, sized for separate trash, recycling, and organics containers. Work began with excavation, a reinforced concrete footing and slab, and a floor sloped to a channel drain tied into the sanitary sewer through a self-priming trap. Solid-grouted CMU walls were laid under masonry special inspection, then stucco-finished and given an anti-graffiti coating to match the existing mall exterior; a welded steel frame carries a sloped corrugated metal deck roof over painted steel swing gates. Coordinating the city plan check, two addenda, a deferred fire sprinkler submittal, and the parking and bicycle changes the new footprint triggered was as much of the job as the concrete and block. Completed in spring 2026.",
     specs: [
       { label: 'Footprint', value: '143 sq ft, replacing a 67 sq ft enclosure' },
       { label: 'Capacity', value: '4 CY trash + 4 CY recycling bins, two 64-gal organics carts (SB 1383)' },

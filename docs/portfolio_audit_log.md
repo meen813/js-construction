@@ -166,6 +166,7 @@ for i, pg in enumerate(r.pages):
 | #1 | #13 트래시 인클로저 상세 보강, `Project.specs` 옵셔널 필드 신설 |
 | #2 | 전체 감사 — #14 추가, #4 삭제 + 리다이렉트, #1/#2/#12 수정 및 `specs` 확대 |
 | #3 | 승인 도면 검증 — #1 La Palma 주차장·ADA 범위 추가, #2 ADU 면적 정정 |
+| #4 | 감사 로그 문서 신설. #14 리페인트 갤러리 시공 범위 정정 — The Butchery 동 제외, 완공 사진 4장 추가, `comparisonImages` Before/After 분할 뷰 신설 |
 
 > PR #2는 base가 `enrich-trash-enclosure-details`였고 PR #1이 그보다 먼저 main에 머지되어,
 > 커밋 `f660049`가 main에 반영되지 않은 상태였습니다. PR #3이 main 기준이라 함께 포함됩니다.

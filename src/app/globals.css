@@ -162,6 +162,44 @@ body {
   animation: float 3s ease-in-out infinite;
 }
 
+/* Hero entrance reveals.
+   These replace the previous framer-motion `initial={{ opacity: 0 }}` elements.
+   Driving them from CSS means the server-rendered hero copy is painted by the
+   browser immediately instead of staying invisible until hydration completes.
+   Per-element stagger comes from the --hero-reveal-delay custom property.
+   The global prefers-reduced-motion rule below collapses these to ~0ms. */
+.hero-reveal {
+  opacity: 0;
+  animation: fadeIn 0.6s ease-out forwards;
+  animation-delay: var(--hero-reveal-delay, 0ms);
+}
+
+.hero-reveal-scale {
+  opacity: 0;
+  animation: scaleIn 0.5s ease-out forwards;
+  animation-delay: var(--hero-reveal-delay, 0ms);
+}
+
+/* Scales on the compositor instead of animating `width` like the previous
+   framer-motion version, which forced layout on every frame. */
+@keyframes heroDividerReveal {
+  from {
+    opacity: 0;
+    transform: scaleX(0);
+  }
+  to {
+    opacity: 1;
+    transform: scaleX(1);
+  }
+}
+
+.hero-reveal-divider {
+  opacity: 0;
+  transform-origin: center;
+  animation: heroDividerReveal 0.8s ease-out forwards;
+  animation-delay: var(--hero-reveal-delay, 0ms);
+}
+
 /* Enhanced Image Container */
 .image-container {
   position: absolute;

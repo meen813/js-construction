@@ -4,6 +4,14 @@ import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Analytics } from "@vercel/analytics/react";
+import {
+  LOGO_PATH,
+  OG_IMAGE_ALT,
+  OG_IMAGE_HEIGHT,
+  OG_IMAGE_PATH,
+  OG_IMAGE_WIDTH,
+  SITE_URL,
+} from "@/config/site";
 
 const outfit = Outfit({ subsets: ["latin"] });
 
@@ -16,7 +24,7 @@ export const viewport = {
 } as const;
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://www.hjsconstruction.com'),
+  metadataBase: new URL(SITE_URL),
   title: {
     default: "HJS Construction - Commercial Renovation & Tenant Improvement Specialists",
     template: "%s | HJS Construction"
@@ -34,16 +42,16 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     locale: 'en_US',
-    url: 'https://www.hjsconstruction.com',
+    url: SITE_URL,
     siteName: 'HJS Construction',
     title: 'HJS Construction - Commercial Renovation & TI Specialists',
     description: 'Expert commercial construction and tenant improvements in Southern California. Licensed & Insured.',
     images: [
       {
-        url: '/logo/logo.png',
-        width: 1200,
-        height: 630,
-        alt: 'HJS Construction Logo',
+        url: OG_IMAGE_PATH,
+        width: OG_IMAGE_WIDTH,
+        height: OG_IMAGE_HEIGHT,
+        alt: OG_IMAGE_ALT,
       }
     ],
   },
@@ -51,7 +59,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'HJS Construction - Commercial Renovation & TI Specialists',
     description: 'Expert commercial construction and tenant improvements in Southern California.',
-    images: ['/logo/logo.png'],
+    images: [OG_IMAGE_PATH],
   },
   robots: {
     index: true,
@@ -64,14 +72,8 @@ export const metadata: Metadata = {
       'max-snippet': -1,
     },
   },
-  icons: {
-    icon: {
-      url: '/logo/logo.png',
-      type: 'image/png',
-    },
-    shortcut: '/logo/logo.png',
-    apple: '/logo/logo.png',
-  },
+  // Icons are file-convention based: src/app/icon.png and src/app/apple-icon.png.
+  // They are small, purpose-built exports rather than the 1024x1024 brand mark.
   verification: {
     google: 'your-google-verification-code', // Google Search Console에서 받은 코드로 교체하세요
   },
@@ -86,9 +88,9 @@ export default function RootLayout({
     "@context": "https://schema.org",
     "@type": "ProfessionalService",
     "name": "HJS Construction (Hwang J&S Construction)",
-    "image": "https://www.hjsconstruction.com/logo/logo.png",
-    "@id": "https://www.hjsconstruction.com",
-    "url": "https://www.hjsconstruction.com",
+    "image": `${SITE_URL}${LOGO_PATH}`,
+    "@id": SITE_URL,
+    "url": SITE_URL,
     "address": {
       "@type": "PostalAddress",
       "streetAddress": "16431 Fitzpatrick Ct #277",
@@ -114,9 +116,7 @@ export default function RootLayout({
       "opens": "08:00",
       "closes": "18:00"
     },
-    "sameAs": [
-      "https://www.hjsconstruction.com"
-    ],
+    "sameAs": [SITE_URL],
     "priceRange": "$$",
     "description": "Commercial Renovation & Tenant Improvement Specialists in Southern California. Licensed & Insured (CA License #960757).",
     "areaServed": [

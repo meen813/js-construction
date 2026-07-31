@@ -11,8 +11,14 @@ export default function Hero() {
     <section className="h-screen relative overflow-hidden bg-black">
       <HeroVideoLayer />
 
+      {/*
+        The mid stop is 60%, not 50%. At 50% the brightest frames of the second
+        clip left the body copy at 4.06:1 against white — under the 4.5:1 WCAG AA
+        floor for normal-size text. 60% puts the worst measured frame at 5.85:1.
+        Lower this only after re-measuring against the actual clips.
+      */}
       <div
-        className="absolute inset-0 bg-gradient-to-br from-black/70 via-black/50 to-black/80"
+        className="absolute inset-0 bg-gradient-to-br from-black/70 via-black/60 to-black/80"
         style={{ zIndex: 1 }}
       />
 

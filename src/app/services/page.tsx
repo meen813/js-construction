@@ -107,17 +107,16 @@ export default function ServicesPage() {
       image: adaImage1,
       icon: "ada",
       title: "ADA Compliance Upgrades",
-      subtitle: "Accessibility that meets all standards.",
-      description: "Full ADA compliance upgrades for commercial properties. Ramps, handrails, accessible restrooms, and proper signage to meet all accessibility requirements and city standards.",
-      features: ["ADA Code Compliance", "City Standards Verification", "Complete Accessibility Solutions"],
+      subtitle: "Accessible upgrades built to code.",
+      description: "ADA accessibility upgrades for commercial properties — ramps, handrails, accessible restrooms, and signage — built to California Building Code Chapter 11B and the ADA Standards for Accessible Design. Final compliance is confirmed by city inspection.",
+      features: ["CBC Chapter 11B Construction", "City Inspection Support", "Accessible Path of Travel"],
       details: [
-        "ADA-compliant ramps and walkways",
-        "Handrail installation and compliance",
+        "Ramps and walkways built to CBC Chapter 11B",
+        "Handrail installation to code",
         "Accessible restroom modifications",
-        "Proper signage and wayfinding",
-        "City standards verification",
-        "Digital level inspection and verification",
-        "Complete accessibility solutions"
+        "Signage and wayfinding",
+        "Slope and cross-slope verified by digital level",
+        "Documentation prepared for city inspection"
       ]
     },
     {

@@ -1,6 +1,10 @@
 import Link from "next/link";
 
 export default function Footer() {
+  // Server component, so this is stamped at build time rather than drifting
+  // stale the way a hard-coded year does.
+  const currentYear = new Date().getFullYear();
+
   return (
     <footer role="contentinfo" className="bg-gradient-to-br from-gray-900 via-slate-900 to-gray-800 text-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
@@ -47,7 +51,7 @@ export default function Footer() {
           <div className="flex flex-col md:flex-row justify-between items-center">
             <div className="text-center md:text-left">
               <p className="text-gray-400 text-sm">
-                ©2025 HJS Construction | All Rights Reserved
+                ©{currentYear} HJS Construction | All Rights Reserved
               </p>
               <p className="text-gray-400 text-sm mt-1">
                 HJS Construction is a trade name of Hwang J&S Construction | CA CSLB License #960757

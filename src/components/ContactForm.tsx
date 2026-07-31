@@ -1,5 +1,6 @@
 'use client'
 import { useState, useRef, useEffect } from 'react';
+import Link from 'next/link';
 
 export default function ContactForm() {
   const [formData, setFormData] = useState({
@@ -343,6 +344,19 @@ export default function ContactForm() {
                 )}
               </button>
             </div>
+
+            {/* Notice at the point of collection — this form takes name, email,
+                phone, address and project details. */}
+            <p className="text-center text-sm text-gray-500">
+              We use the details you submit only to respond to your enquiry. See our{' '}
+              <Link
+                href="/privacy-policy"
+                className="underline hover:text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 rounded"
+              >
+                Privacy Policy
+              </Link>
+              .
+            </p>
 
             {/* Status Message */}
             <div

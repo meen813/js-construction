@@ -26,7 +26,7 @@ export default function LicensesPage() {
               <span className="text-gradient">Licenses & Certifications</span>
             </h1>
             <p className="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed mb-8">
-              Hwang J&S Construction is fully licensed, bonded, and insured. We maintain all required 
+              Hwang J&S Construction is licensed, bonded, and insured. We maintain the required
               certifications to provide professional construction services in California.
             </p>
             <div className="w-24 h-1 bg-gradient-to-r from-blue-500 to-emerald-500 mx-auto rounded-full"></div>
@@ -53,12 +53,13 @@ export default function LicensesPage() {
                     License Number: #960757
                   </h3>
                   <p className="text-lg text-gray-700 mb-4">
-                    California State License Board (CSLB) General Contractor License
+                    Contractors State License Board (CSLB) — Class B, General Building Contractor
                   </p>
                   <p className="text-gray-700 mb-4">
-                    This license authorizes Hwang J&S Construction to perform general contracting work 
-                    throughout the state of California, including commercial and residential construction, 
-                    renovations, and tenant improvements.
+                    A Class B licensee contracts for projects that require at least two unrelated
+                    building trades, which covers commercial and residential construction,
+                    renovations, and tenant improvements throughout California. Specialty trade
+                    work is performed by subcontractors holding the appropriate classification.
                   </p>
                   <p className="text-gray-700">
                     <strong className="font-semibold text-gray-900">License Status:</strong> Active and in good standing
@@ -75,8 +76,8 @@ export default function LicensesPage() {
             </h2>
             <div className="bg-white rounded-lg shadow-lg p-6 md:p-8 border border-gray-200">
               <p className="text-lg text-gray-700 mb-4">
-                You can verify our license status and view our license details through the California State 
-                License Board (CSLB) website:
+                You can verify our license status and view our license details through the Contractors
+                State License Board (CSLB) website:
               </p>
               <div className="bg-blue-50 border-l-4 border-blue-500 p-4 rounded mb-4">
                 <p className="text-gray-700 mb-2">

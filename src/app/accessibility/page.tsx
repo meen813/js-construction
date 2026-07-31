@@ -121,8 +121,9 @@ export default function AccessibilityPage() {
                   <div>
                     <h3 className="font-semibold text-gray-900 mb-1">Color Contrast</h3>
                     <p className="text-gray-700">
-                      Text and interactive elements meet WCAG Level AA contrast requirements 
-                      (4.5:1 for normal text, 3:1 for large text).
+                      We target the WCAG Level AA contrast ratios (4.5:1 for normal text, 3:1 for
+                      large text) and check them as part of our review process. Text placed over
+                      photography or video is measured against the darkest overlay in use.
                     </p>
                   </div>
                 </li>

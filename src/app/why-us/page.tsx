@@ -1,6 +1,7 @@
 
 import Link from 'next/link';
 import { Metadata } from 'next';
+import { OG_IMAGE_PATH } from '@/config/site';
 
 export const metadata: Metadata = {
   title: 'Why Choose Us',
@@ -8,7 +9,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Why Choose HJS Construction?',
     description: 'Reliable, code-compliant construction with a focus on safety and completion.',
-    images: ['/logo/logo.png'],
+    images: [OG_IMAGE_PATH],
   },
 };
 

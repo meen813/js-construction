@@ -2,6 +2,7 @@ import { Metadata } from 'next';
 import ProjectGrid from '@/components/ProjectGrid';
 import { projects } from '../../projects/data';
 import StructuredData, { generateBreadcrumbSchema } from '@/components/StructuredData';
+import { OG_IMAGE_PATH } from '@/config/site';
 
 export const metadata: Metadata = {
   title: 'Projects',
@@ -10,7 +11,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'HJS Construction Projects',
     description: 'Commercial renovation, tenant improvement, and ADA work across Southern California.',
-    images: ['/logo/logo.png'],
+    images: [OG_IMAGE_PATH],
   },
 };
 

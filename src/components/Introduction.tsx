@@ -1,3 +1,4 @@
+'use client';
 import React, { useState, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
@@ -12,6 +13,18 @@ import lobbyImage from '../../public/Mall Office Lobby/20250715_130946.jpg';
 import adaImage1 from '../../public/ada project/20250520_092908.jpg';
 import aduImage1 from '../../public/adu_la.png';
 import bgImage from '../../public/architectural-bg.png';
+
+/**
+ * Headline figures. Every entry here has to be something we can evidence on
+ * request — contract records for the completion rate, safety records for the
+ * incident count. Do not add a figure we cannot back up.
+ */
+const COMPANY_STATS = [
+  { value: '2011', label: 'Established', accent: 'text-blue-600' },
+  { value: '100%', label: 'Project Completion Rate', accent: 'text-emerald-600' },
+  { value: 'Zero', label: 'Safety Incidents', accent: 'text-blue-600' },
+  { value: '15+', label: 'Years in Business', accent: 'text-emerald-600' },
+] as const;
 
 // Service Icon Component
 const ServiceIcon = ({ icon }: { icon: string }) => {
@@ -60,9 +73,9 @@ export default function Introduction() {
       image: adaImage1,
       icon: "ada",
       title: "ADA Compliance Upgrades",
-      subtitle: "Accessibility that meets all standards.",
-      description: "Full ADA compliance upgrades for commercial properties. We ensure your building meets all accessibility requirements with ramps, handrails, accessible restrooms, and proper signage.",
-      features: ["ADA Code Compliance", "City Standards Verification", "Complete Accessibility Solutions"]
+      subtitle: "Accessible upgrades built to code.",
+      description: "ADA accessibility upgrades for commercial properties — ramps, handrails, accessible restrooms, and signage — built to California Building Code Chapter 11B and the ADA Standards for Accessible Design.",
+      features: ["CBC Chapter 11B Construction", "City Inspection Support", "Accessible Path of Travel"]
     },
     {
       image: renovationImage,
@@ -141,27 +154,17 @@ export default function Introduction() {
             <span className="text-gradient">Our Expertise</span>
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-            From commercial complexes to dream homes, we bring decades of experience and precision to every project.
+            From commercial complexes to dream homes, we bring 15+ years of experience and precision to every project.
           </p>
           
           {/* Stats Bar */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-12 mb-12 max-w-5xl mx-auto">
-             <div className="bg-white/80 backdrop-blur-sm p-6 rounded-2xl shadow-sm border border-gray-100 flex flex-col items-center hover:shadow-md transition-shadow">
-               <span className="text-4xl md:text-5xl font-extrabold text-blue-600 mb-2">2011</span>
-               <span className="text-gray-600 font-medium text-sm md:text-base">Established</span>
-             </div>
-             <div className="bg-white/80 backdrop-blur-sm p-6 rounded-2xl shadow-sm border border-gray-100 flex flex-col items-center hover:shadow-md transition-shadow">
-               <span className="text-4xl md:text-5xl font-extrabold text-emerald-600 mb-2">50+</span>
-               <span className="text-gray-600 font-medium text-sm md:text-base">Projects Completed</span>
-             </div>
-             <div className="bg-white/80 backdrop-blur-sm p-6 rounded-2xl shadow-sm border border-gray-100 flex flex-col items-center hover:shadow-md transition-shadow">
-               <span className="text-4xl md:text-5xl font-extrabold text-blue-600 mb-2">100%</span>
-               <span className="text-gray-600 font-medium text-sm md:text-base">Client Satisfaction</span>
-             </div>
-             <div className="bg-white/80 backdrop-blur-sm p-6 rounded-2xl shadow-sm border border-gray-100 flex flex-col items-center hover:shadow-md transition-shadow">
-               <span className="text-4xl md:text-5xl font-extrabold text-emerald-600 mb-2">A+</span>
-               <span className="text-gray-600 font-medium text-sm md:text-base">Grade Quality</span>
-             </div>
+             {COMPANY_STATS.map((stat) => (
+               <div key={stat.label} className="bg-white/80 backdrop-blur-sm p-6 rounded-2xl shadow-sm border border-gray-100 flex flex-col items-center hover:shadow-md transition-shadow">
+                 <span className={`text-4xl md:text-5xl font-extrabold ${stat.accent} mb-2`}>{stat.value}</span>
+                 <span className="text-gray-600 font-medium text-sm md:text-base">{stat.label}</span>
+               </div>
+             ))}
           </div>
         </div>
 

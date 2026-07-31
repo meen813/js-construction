@@ -1,5 +1,6 @@
 import { Metadata } from "next";
 import ContactForm from "@/components/ContactForm";
+import { OG_IMAGE_PATH } from "@/config/site";
 
 export const metadata: Metadata = {
   title: 'Contact',
@@ -8,7 +9,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Contact HJS Construction',
     description: 'Tell us about your project and we will get back to you.',
-    images: ['/logo/logo.png'],
+    images: [OG_IMAGE_PATH],
   },
 };
 
